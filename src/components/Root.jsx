@@ -1,11 +1,15 @@
 import { Outlet } from "react-router-dom"
 import Footer from "./Footer"
-import Header from "./Header"
+import Stubborn from "./Stubborn"
+import NavBar from "./NavBar"
+import StubbornImg from "./StubbornImg"
 
 const Root = () => {
   return (
     <>
-      <Header/>
+      <Stubborn/>
+      <NavBar/>
+      <StubbornImg/>
       <Outlet/>
       <Footer/>
     </>

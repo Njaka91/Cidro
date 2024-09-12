@@ -3,6 +3,7 @@ import Footer from "./Footer"
 import Stubborn from "./Stubborn"
 import NavBar from "./NavBar"
 import StubbornImg from "./StubbornImg"
+import AppointmentBottom from "./AppointmentBottom"
 
 const Root = () => {
   return (
@@ -11,6 +12,7 @@ const Root = () => {
       <NavBar/>
       <StubbornImg/>
       <Outlet/>
+      <AppointmentBottom/>
       <Footer/>
     </>
   )

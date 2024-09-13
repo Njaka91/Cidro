@@ -1,8 +1,10 @@
+import PresidentSection from "../components/PresidentSection"
+
 const Home = () => {
   return (
-    <div className="h-96">
-      
-    </div>
+    <>
+      <PresidentSection/>
+    </>
   )
 }
 

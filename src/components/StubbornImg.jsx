@@ -1,8 +1,21 @@
 import { Link } from "react-router-dom";
 import bgimg from "../assets/images/bgimg.jpeg";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const StubbornImg = () => {
+
+  const { scrollYProgress } = useScroll();
+
+  const text1YScroll = useTransform(scrollYProgress, [0, 0.2], [0, -200]);
+  const text1OpacityScroll = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+
+  const text2YScroll = useTransform(scrollYProgress, [0, 0.2], [0, -300]);
+  const text2OpacityScroll = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+
+  const buttonScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.5]);
+  const buttonOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+
+
   return (
     <div className="relative overflow-hidden h-[450px] bg-slate-600">
       <img src={bgimg} alt="logo" className="object-cover w-full h-full" />
@@ -17,7 +30,8 @@ const StubbornImg = () => {
         className="text-xl font-semibold text-white"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1}}
-        transition={{ duration: 0.3, delay: 0.2 }}>
+        transition={{ duration: 0.3, delay: 0.2 }}
+        style={{ y: text1YScroll, opacity: text1OpacityScroll }}>
         Retrouver le sourire
         </motion.div>
         <motion.div
@@ -25,14 +39,17 @@ const StubbornImg = () => {
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1,}}
           transition={{ duration: 0.3, delay: 0.5 }}
+          style={{ y: text2YScroll, opacity: text2OpacityScroll }}
         >
           Cabinet du Dr Razakatiana
         </motion.div>
-        <div className="btn relative bg-[#1B2C51] w-[15%] rounded-full shadow-xl border-0 text-white font-medium mt-14 group hover:bg-[#1B2C51]">
+        <motion.div 
+        style={{ scale: buttonScale, opacity: buttonOpacity }}
+        className="btn relative bg-[#1B2C51] w-[15%] rounded-full shadow-xl border-0 text-white font-medium mt-14 group hover:bg-[#1B2C51]">
           <span className="relative z-40">
             <Link to="/prendrerendez-vous">Prendre rendez-vous</Link></span>
           <span className="absolute inset-0 w-0 h-full opacity-0 rounded-full bg-fuchsia-900 transition-all duration-300 group-hover:opacity-75 group-hover:w-full"></span>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

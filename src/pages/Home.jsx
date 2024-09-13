@@ -1,7 +1,9 @@
+import FirmHistory from "../components/FirmHistory"
+
 const Home = () => {
   return (
-    <div className="h-96">
-      
+    <div>
+      <FirmHistory></FirmHistory>
     </div>
   )
 }

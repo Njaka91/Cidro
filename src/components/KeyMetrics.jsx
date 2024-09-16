@@ -12,7 +12,7 @@ const KeyMetrics = ({ n }) => {
         from: {number: 0},
         number: inView ? n : 0,
         delay: 200,
-        config: {mass: 1, tension: 10, friction: 10},
+        config: {mass: 1, tension: 25, friction: 10},
     })
   return (
     <div ref={ref}>

@@ -1,18 +1,41 @@
 import photeuil from "../assets/images/photeuill.jpg";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const FirmHistory = () => {
+  // Create a reference for the animated section
+  const ref = useRef(null);
+  // Monitor if the section is in view with a 0.1 threshold
+  const isInView = useInView(ref, { threshold: 0.1 });
   return (
     <div className="flex flex-row my-20 px-32 gap-20 ">
-      <div className="w-1/2 h-[550px] flex relative items-center rounded-tl-[60px] rounded-br-[60px]">
-        <div className="w-full h-full overflow-hidden rounded-tl-[60px] rounded-br-[60px] z-40">
-          <img
-          src={photeuil}
-          alt=""
-          className="object-cover "
-        />
-        </div>
-        <div className="z-[39] absolute bg-none bottom-2 right-2 h-full w-full border-2 border-fuchsia-900 border-opacity-20 rounded-tl-[60px] rounded-br-[60px]"></div>
-        <div className="z-[41] absolute bg-none top-2 left-2 h-full w-full border-2 border-fuchsia-900 border-opacity-20 rounded-tl-[60px] rounded-br-[60px]"></div>
+      <div 
+      ref={ref} // Attach ref to the container to track its visibility
+      className="w-1/2 h-[550px] flex relative items-center rounded-tl-[60px] rounded-br-[60px]">
+        {isInView && (
+          <>
+            <motion.div
+              className="w-full h-full overflow-hidden rounded-tl-[60px] rounded-br-[60px] z-40"
+              // initial={{ opacity: 0, scale: 0 }}
+              // animate={{ opacity: 1, scale: 1 }}
+              // transition={{ duration: 0.3, delay: 0.2 }}
+            >
+              <img src={photeuil} alt="" className="object-cover " />
+            </motion.div>
+            <motion.div
+              className="z-[39] absolute bg-none bottom-2 right-2 h-full w-full border-2 border-[#1B2C51] border-opacity-50 rounded-tl-[60px] rounded-br-[60px]"
+              initial={{ right:0,bottom:0 }}
+              animate={{  right:8,bottom:8 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            ></motion.div>
+            <motion.div
+              className="z-[41] absolute bg-none top-2 left-2 h-full w-full border-2 border-fuchsia-900 border-opacity-50 rounded-tl-[60px] rounded-br-[60px]"
+              initial={{ top:0, left:0}}
+              animate={{ top:8, left:8 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            ></motion.div>
+          </>
+        )}
       </div>
       <div className="w-[50%] flex flex-col">
         <h1 className="text-3xl font-semibold text-[#1B2C51] pb-5">

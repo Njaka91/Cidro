@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import bgimg from "../assets/images/bgimg.jpeg";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-const StubbornImg = () => {
+// eslint-disable-next-line react/prop-types
+const StubbornImg = ({imgBg}) => {
 
   const { scrollYProgress } = useScroll();
 
-  const text1YScroll = useTransform(scrollYProgress, [0, 0.2], [0, -200]);
+  const text1YScroll = useTransform(scrollYProgress, [0, 0.25], [0, -200]);
   const text1OpacityScroll = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   const text2YScroll = useTransform(scrollYProgress, [0, 0.2], [0, -300]);
@@ -17,8 +17,8 @@ const StubbornImg = () => {
 
 
   return (
-    <div className="relative overflow-hidden h-[450px] bg-slate-600">
-      <img src={bgimg} alt="logo" className="object-cover w-full h-full" />
+    <div className="relative overflow-hidden h-[73vh] bg-slate-600">
+      <img src={imgBg} alt="logo" className="sticky object-cover w-full h-full" />
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="h-4/5 w-4/5 rounded-full bg-[#1ea06c] opacity-50 blur-3xl shadow-[0_0_30px_rgba(0,0,0,0.8)]"></div>
       </div>

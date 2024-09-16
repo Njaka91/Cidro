@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 const KeyMetrics = ({ n }) => {
     const {ref, inView} = useInView({
       triggerOnce: true,
-      threshold: 1,  
+      threshold: 0.75,  
     })
     const {number} = useSpring({
         from: {number: 0},

@@ -1,6 +1,7 @@
 import photeuil from "../assets/images/photeuill.jpg";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import firm from "../assets/images/firm.png"
 
 const FirmHistory = () => {
   // Create a reference for the animated section
@@ -8,7 +9,7 @@ const FirmHistory = () => {
   // Monitor if the section is in view with a 0.1 threshold
   const isInView = useInView(ref, { threshold: 0.1 });
   return (
-    <div className="flex flex-row my-20 px-32 gap-20 ">
+    <div className="flex flex-row my-20 px-32 gap-20">
       <div 
       ref={ref} // Attach ref to the container to track its visibility
       className="w-1/2 h-[550px] flex relative items-center rounded-tl-[60px] rounded-br-[60px]">
@@ -37,7 +38,7 @@ const FirmHistory = () => {
           </>
         )}
       </div>
-      <div className="w-[50%] flex flex-col">
+      <div className="w-[50%] flex flex-col z-10">
         <h1 className="text-3xl font-semibold text-[#1B2C51] pb-5">
           Historique du cabinet
         </h1>
@@ -143,6 +144,9 @@ const FirmHistory = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className={`absolute right-0 h-4/6 w-50 `}>
+        <img src={firm} alt=""  className="object-contain w-full h-full"/>
       </div>
     </div>
   );

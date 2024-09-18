@@ -4,21 +4,23 @@ import { useScroll, useTransform, motion } from "framer-motion";
 
 const PresidentSection = () => {
   const { scrollYProgress } = useScroll({
+    offset: ["start end", "center center"],
   });
 
-  const imgY = useTransform(scrollYProgress, [0.15, 0.28], [200, 0]);
-  const imgScale = useTransform(scrollYProgress, [0, 0.28], [0.85, 1]);
-  const imgOpacity = useTransform(scrollYProgress, [0.17, 0.27], [1, 0]);
-  const imgLine = useTransform(scrollYProgress, [0.28, 0.3], [0.5, 1]);
+  const imgY = useTransform(scrollYProgress, [0, 0.57], [250, 0]);
+  const imgScale = useTransform(scrollYProgress, [0, 0.57], [0.8, 1]);
+  const imgOpacity = useTransform(scrollYProgress, [0.15, 0.57], [1, 0]);
+  const imgLine = useTransform(scrollYProgress, [0.5, 0.57], [0.5, 1]);
 
-  const borderY = useTransform(scrollYProgress, [0.21, 0.28], [-6.3, 0]);
-  const borderX = useTransform(scrollYProgress, [0.21, 0.28], [-7.5, 0]);
+  const borderY = useTransform(scrollYProgress, [0.4, 0.56], [-6.3, 0]);
+  const borderX = useTransform(scrollYProgress, [0.4, 0.56], [-7.5, 0]);
 
-  const border2Y = useTransform(scrollYProgress, [0.21, 0.28], [7.5, 0]);
-  const border2X = useTransform(scrollYProgress, [0.21, 0.28], [7.5, 0]);
+  const border2Y = useTransform(scrollYProgress, [0.4, 0.56], [7.5, 0]);
+  const border2X = useTransform(scrollYProgress, [0.4, 0.56], [7.5, 0]);
 
-  const textY = useTransform(scrollYProgress, [0.1, 0.3], [200, 0]);
-  const TitleY = useTransform(scrollYProgress, [0, 0.22], [200, 0]);
+  const textY = useTransform(scrollYProgress, [0, 0.57], [700, 0]);
+  const TitleY = useTransform(scrollYProgress, [0, 0.57], [400, 0]);
+
 
   return (
     <div className="flex flex-row relative justify-between bg-slate-300 my-16 px-32">
@@ -40,7 +42,7 @@ const PresidentSection = () => {
         </motion.div>
         <motion.div
         style={{y: textY}}
-        transition={{delay:2 }}>
+        >
         <p className="mt-4">
           Les évolutions technologiques du monde de la médecine actuelle ont fait des grands pas de géant,
           et les soins dentaires en particulier en ont énormément bénéficiés.

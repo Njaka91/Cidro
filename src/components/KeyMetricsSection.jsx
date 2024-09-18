@@ -2,9 +2,11 @@ import KeyMetrics from "./KeyMetrics";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const KeyMetricsSection = () => {
-  const { scrollYProgress } = useScroll();
+  const { scrollYProgress } = useScroll(
+    {offset: ["start end", "center center"]}
+  );
 
-  const opacity = useTransform(scrollYProgress, [0.65, 0.70], [0, 1]); 
+  const opacity = useTransform(scrollYProgress, [0.9, 0.95], [0, 1]); 
   const yPosition = useTransform(scrollYProgress, [0.60, 0.70], [100, 0]);
 
   const metricsData = [

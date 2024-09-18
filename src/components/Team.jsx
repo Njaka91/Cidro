@@ -3,8 +3,10 @@ import drRazakatiana from "../assets/images/drRazakatiana.jpg";
 import doctorEquipe1 from "../assets/images/doctorEquipe1.jpg";
 
 const Team = () => {
-  const { scrollYProgress } = useScroll({});
-  const imgY = useTransform(scrollYProgress, [0.15, 0.28], [200, 0]);
+  const { scrollYProgress } = useScroll({
+    offset : ["start end", "center center"]
+  });
+  const imgY = useTransform(scrollYProgress, [0.2, 0.25], [200, 0]);
   const imgScale = useTransform(scrollYProgress, [0, 0.28], [0.85, 1]);
 
   const borderY = useTransform(scrollYProgress, [0.21, 0.28], [-6.3, 0]);
@@ -79,11 +81,11 @@ const Team = () => {
         </div>
       </div>
 
-      <div className="flex flex-row relative justify-between pb-8 px-32">
-        <div className="relative w-[40%] z-10">
-          <div className=" absolute h-5/6 w-5/6 top-20 left-20  bg-[#df0baa] opacity-50 blur-[200px] shadow-[0_0_30px_rgba(0,0,0,0.8)]" />
+      <div className="flex flex-row relative justify-between mb-20 px-32">
+        <div className="relative w-[40%]">
+          <div className=" absolute h-5/6 w-5/6 z-0 top-20 left-20  bg-[#df0baa] opacity-50 blur-[200px] shadow-[0_0_30px_rgba(0,0,0,0.8)]" />
           <motion.div
-            className="overflow-hidden rounded-tr-3xl rounded-bl-3xl  h-full "
+            className="absolute overflow-hidden z-10 rounded-tr-3xl rounded-bl-3xl  h-full "
             style={{ y: imgY, scale: imgScale }}
           >
             <img

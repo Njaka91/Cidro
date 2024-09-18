@@ -1,48 +1,75 @@
 import photeuil from "../assets/images/photeuill.jpg";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import firm from "../assets/images/firm.png"
+import { useScroll } from "framer-motion";
+import { useTransform } from "framer-motion";
 
 const FirmHistory = () => {
-  // Create a reference for the animated section
-  const ref = useRef(null);
-  // Monitor if the section is in view with a 0.1 threshold
-  const isInView = useInView(ref, { threshold: 0.1 });
+  const {scrollYProgress} = useScroll({
+    offset: ["start end", "end start"]
+  })
+
+  const borderY = useTransform(scrollYProgress, [0.38, 0.42], [-9, 0]);
+  const borderX = useTransform(scrollYProgress, [0.38, 0.42], [-7.5, 0]);
+
+  const border2Y = useTransform(scrollYProgress, [0.38, 0.42], [6.3, 0]);
+  const border2X = useTransform(scrollYProgress, [0.38, 0.42], [7.5, 0]);
+
+  const titleY = useTransform(scrollYProgress, [0, 0.38], [300, 0]);
+  const textY = useTransform(scrollYProgress, [0, 0.38], [500, 0]);
+
+  const x = useTransform(scrollYProgress, [0.25, 0.4], [-100, 0]);
+  const X1 = useTransform(scrollYProgress, [0.25, 0.4], [100, 0]);
+  const opacity = useTransform(scrollYProgress, [0.37, 0.4], [0, 1]);
+
+  const x2 = useTransform(scrollYProgress, [0.35, 0.42], [-100, 0]);
+  const X2 = useTransform(scrollYProgress, [0.35, 0.42], [100, 0]);
+  const opacity2 = useTransform(scrollYProgress, [0.40, 0.42], [0, 1]);
+
+
   return (
     <div className="flex flex-row my-20 px-32 gap-20">
       <div 
-      ref={ref} // Attach ref to the container to track its visibility
       className="w-1/2 h-[550px] flex relative items-center rounded-tl-[60px] rounded-br-[60px]">
-        {isInView && (
-          <>
+        
+          
             <motion.div
-              className="w-full h-full overflow-hidden rounded-tl-[60px] rounded-br-[60px] z-40"
-              // initial={{ opacity: 0, scale: 0 }}
-              // animate={{ opacity: 1, scale: 1 }}
-              // transition={{ duration: 0.3, delay: 0.2 }}
+              className="w-full h-full overflow-hidden rounded-tl-[60px] rounded-br-[60px] z-40 shadow-lg"
             >
               <img src={photeuil} alt="" className="object-cover " />
             </motion.div>
             <motion.div
+            style={{
+              y: border2Y,
+              x: border2X,
+            }}
               className="z-[39] absolute bg-none bottom-2 right-2 h-full w-full border-2 border-[#1B2C51] border-opacity-50 rounded-tl-[60px] rounded-br-[60px]"
-              initial={{ right:0,bottom:0 }}
-              animate={{  right:8,bottom:8 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              
             ></motion.div>
             <motion.div
+             style={{
+              y: borderY,
+              x: borderX,
+             }}
               className="z-[41] absolute bg-none top-2 left-2 h-full w-full border-2 border-fuchsia-900 border-opacity-50 rounded-tl-[60px] rounded-br-[60px]"
-              initial={{ top:0, left:0}}
-              animate={{ top:8, left:8 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+             
             ></motion.div>
-          </>
-        )}
+          
+       
       </div>
       <div className="w-[50%] flex flex-col z-10">
-        <h1 className="text-3xl font-semibold text-[#1B2C51] pb-5">
+        <motion.h1 
+        style={{
+          y: titleY,
+        }}
+        className="text-3xl font-semibold text-[#1B2C51] pb-5">
           Historique du cabinet
-        </h1>
-        <p className="text-[#1B2C51] text-justify">
+        </motion.h1>
+        <motion.p 
+        style={{
+          y: textY,
+        }}
+        className="text-[#1B2C51] text-justify">
           Lorem Ipsum IS simpy ummy text o t e printing an typesetting industry.
           When an unknown printer took a galley of type and scrambled it to make
           a type specimen book.
@@ -51,11 +78,16 @@ const FirmHistory = () => {
           electronic typesetting, remaining essentially unchanged. It was
           popularised in the 1960s with the release of Letraset sheets
           containing Lorem Ipsum passages.
-        </p>
+        </motion.p>
 
         <div className="flex flex-col mt-8">
           <div className="flex flex-row mb-5 justify-between">
-            <div className="flex flex-col items-center w-[47%]">
+            <motion.div 
+            style={{
+              x: x,
+              opacity: opacity,
+            }}
+            className="flex flex-col items-center w-[47%]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 color="#701a75"
@@ -73,9 +105,14 @@ const FirmHistory = () => {
                 Qualité de nos équipements et produits aux normes les plus
                 exigeantes
               </p>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col items-center w-[47%]">
+            <motion.div 
+            style={{
+              x: X1,
+              opacity: opacity
+            }}
+            className="flex flex-col items-center w-[47%]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 color="#701a75"
@@ -98,11 +135,16 @@ const FirmHistory = () => {
               <p className="text-[#1B2C51] text-center">
                 Personnel d&apos;appui hautement qualifié
               </p>
-            </div>
+            </motion.div>
           </div>
 
           <div className="flex flex-row justify-between">
-            <div className="flex flex-col items-center w-[47%]">
+            <motion.div 
+             style={{
+              x: x2,
+              opacity: opacity2,
+            }}
+            className="flex flex-col items-center w-[47%]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 color="#701a75"
@@ -123,9 +165,14 @@ const FirmHistory = () => {
               <p className="text-[#1B2C51] text-center">
                 Travail en collaboratioin avec les entreprises d&apos;assurance
               </p>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col items-center w-[47%]">
+            <motion.div 
+             style={{
+              x: X2,
+              opacity: opacity2,
+            }}
+            className="flex flex-col items-center w-[47%]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 color="#701a75"
@@ -141,7 +188,7 @@ const FirmHistory = () => {
               <p className="text-[#1B2C51] text-center">
                 Large gamme de soins offerts
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

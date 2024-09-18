@@ -17,7 +17,13 @@ const Team = () => {
   const TitleY = useTransform(scrollYProgress, [0, 0.22], [200, 0]);
 
   return (
-    <>
+    <div className="flex flex-col">
+      <div className="flex relative justify-center items-center bg-[#1B2C51] py-8">
+        <span className="text-white text-5xl font-medium">
+          Equipe
+        </span>
+        <span className="absolute h-[6px] w-40 bg-fuchsia-900 bottom-4  rounded-full left-1/2 transform -translate-x-1/2"/>
+      </div>
       <div className="flex flex-row relative justify-between  px-32">
         <div className="flex flex-col w-2/5 text-[#1B2C51] mt-32 z-10">
           <div className="absolute border-4 h-1/2 w-1/2 right-0 top-1/4 bg-[#1ea06c] opacity-50 blur-[200px] shadow-[0_0_30px_rgba(0,0,0,0.8)]" />
@@ -130,7 +136,7 @@ const Team = () => {
           </motion.div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

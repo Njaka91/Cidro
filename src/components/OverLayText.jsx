@@ -15,8 +15,6 @@ const OverLayText = ({ subHeading, heading }) => {
 
   return (
     <motion.div 
-   
-   
     ref={targetRef}
     className="absolute -top-28 flex h-screen w-full flex-col items-center justify-center text-white">
       <motion.p

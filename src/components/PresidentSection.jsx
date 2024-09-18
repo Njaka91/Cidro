@@ -8,7 +8,7 @@ const PresidentSection = () => {
 
   const imgY = useTransform(scrollYProgress, [0.15, 0.28], [200, 0]);
   const imgScale = useTransform(scrollYProgress, [0, 0.28], [0.85, 1]);
-  const imgOpacity = useTransform(scrollYProgress, [0.17, 0.27], [1, 0.15]);
+  const imgOpacity = useTransform(scrollYProgress, [0.17, 0.27], [1, 0]);
   const imgLine = useTransform(scrollYProgress, [0.28, 0.3], [0.5, 1]);
 
   const borderY = useTransform(scrollYProgress, [0.21, 0.28], [-6.3, 0]);

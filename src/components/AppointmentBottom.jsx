@@ -1,11 +1,19 @@
-import { motion, useInView } from "framer-motion";
+import { motion} from "framer-motion";
 import { useRef } from "react";
 import accueil from "../assets/images/accueil.jpg";
 import { Link } from "react-router-dom";
+import { useScroll } from "framer-motion";
+import { useTransform } from "framer-motion";
 
 const AppointmentBottom = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.1 }); // 'once: true' means it will trigger only once
+  const {scrollYProgress} = useScroll({
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0.5, 0.80], [500, 0])
+  const opacity = useTransform(scrollYProgress, [0.75, 0.80], [0, 1])
+
 
   return (
     <div className="relative overflow-hidden h-[300px] bg-slate-600">
@@ -25,13 +33,14 @@ const AppointmentBottom = () => {
           <span className="absolute inset-0 w-0 h-full opacity-0 rounded-full bg-fuchsia-900 transition-all duration-300 group-hover:opacity-75 group-hover:w-full"></span>
         </div>
 
-        {isInView && (
+        
           <>
             <motion.div
               className="text-5xl font-semibold text-white"
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
+              style={{
+                y:y,
+                opacity: opacity,
+              }}
             >
               Contactez nous par téléphone
             </motion.div>
@@ -45,7 +54,7 @@ const AppointmentBottom = () => {
               +261 38 08 500 00
             </motion.div>
           </>
-        )}
+       
       </div>
     </div>
   );

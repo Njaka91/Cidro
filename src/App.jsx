@@ -6,12 +6,14 @@ import Office from "./pages/Ofiice"
 import Home from "./pages/Home"
 import Team from "./pages/Team";
 import Cares from "./pages/Cares";
+import ErroPage from "./pages/ErrorPage";
 
 const App = () => {
   const router = createBrowserRouter ([
     {
       path: "/",
       element: <Root/>,
+      errorElement: <ErroPage/>,
       children: [
         {
           path:"/",

@@ -3,17 +3,19 @@ import drRazakatiana from "../assets/images/drRazakatiana.jpg";
 import doctorEquipe1 from "../assets/images/doctorEquipe1.jpg";
 
 const Team = () => {
-  const { scrollYProgress } = useScroll({
-    offset : ["start end", "center center"]
-  });
-  const imgY = useTransform(scrollYProgress, [0.2, 0.25], [200, 0]);
-  const imgScale = useTransform(scrollYProgress, [0, 0.28], [0.85, 1]);
+  const { scrollYProgress } = useScroll({});
+  const imgY = useTransform(scrollYProgress, [0.45, 0.63], [200, 0]);
+  const img2Y = useTransform(scrollYProgress, [0.50, 0.73], [200, 0]);
 
-  const borderY = useTransform(scrollYProgress, [0.21, 0.28], [-6.3, 0]);
-  const borderX = useTransform(scrollYProgress, [0.21, 0.28], [-7.5, 0]);
 
-  const border2Y = useTransform(scrollYProgress, [0.21, 0.28], [7.5, 0]);
-  const border2X = useTransform(scrollYProgress, [0.21, 0.28], [7.5, 0]);
+  const headScale = useTransform(scrollYProgress, [0, 0.55], [0, 1]);
+  const headopacity = useTransform(scrollYProgress, [0.45, 0.55], [0, 1]);
+
+  const borderY = useTransform(scrollYProgress, [0.47, 0.53], [-6.3, 0]);
+  const borderX = useTransform(scrollYProgress, [0.47, 0.53], [-7.5, 0]);
+
+  const border2Y = useTransform(scrollYProgress, [0.4, 0.53], [7.5, 0]);
+  const border2X = useTransform(scrollYProgress, [0.4, 0.53], [7.5, 0]);
 
   const textY = useTransform(scrollYProgress, [0.1, 0.3], [200, 0]);
   const TitleY = useTransform(scrollYProgress, [0, 0.22], [200, 0]);
@@ -21,13 +23,20 @@ const Team = () => {
   return (
     <div className="flex flex-col">
       <div className="flex relative justify-center items-center bg-[#1B2C51] py-8">
-        <span className="text-white text-5xl font-medium">
+        <div></div>
+        <motion.span
+          style={{
+            scale: headScale,
+            opacity: headopacity,
+          }}
+          className="text-white text-5xl font-medium"
+        >
           Equipe
-        </span>
-        <span className="absolute h-[6px] w-40 bg-fuchsia-900 bottom-4  rounded-full left-1/2 transform -translate-x-1/2"/>
+        </motion.span>
+        <span className="absolute h-[6px] w-40 bg-fuchsia-900 bottom-4  rounded-full left-1/2 transform -translate-x-1/2" />
       </div>
       <div className="flex flex-row relative justify-between  px-32">
-        <div className="flex flex-col w-2/5 text-[#1B2C51] mt-32 z-10">
+        <div className="flex flex-col w-2/5 justify-center items-center text-[#1B2C51]z-10">
           <div className="absolute border-4 h-1/2 w-1/2 right-0 top-1/4 bg-[#1ea06c] opacity-50 blur-[200px] shadow-[0_0_30px_rgba(0,0,0,0.8)]" />
           <motion.div
             style={{
@@ -36,11 +45,11 @@ const Team = () => {
             className="relative flex flex-col"
           >
             <motion.div
-              className="absolute -bottom-1 -right-[-25px] bg-none border-2 border-[#1B2C51] border-opacity-20 rounded-tl-3xl rounded-br-3xl h-20 w-[450px]"
+              className="absolute bottom-0 -right-5 bg-none border-2 border-[#1B2C51] border-opacity-20 rounded-tl-3xl rounded-br-3xl h-20 w-[450px]"
               style={{ y: border2Y, x: border2X }}
             ></motion.div>
             <motion.div
-              className="absolute -bottom-4 -right-[-9px] bg-none border-2 border-fuchsia-900 border-opacity-20 rounded-tl-3xl rounded-br-3xl h-20 w-[450px]"
+              className="absolute -bottom-4 -right-10 bg-none border-2 border-fuchsia-900 border-opacity-20 rounded-tl-3xl rounded-br-3xl h-20 w-[450px]"
               style={{ y: borderY, x: borderX }}
             ></motion.div>
             <span className="text-4xl font-medium text-fuchsia-900">
@@ -69,7 +78,7 @@ const Team = () => {
         <div className="relative w-[40%] my-16 z-10">
           <motion.div
             className="overflow-hidden rounded-tr-3xl rounded-bl-3xl shadow-xl h-full"
-            style={{ y: imgY, scale: imgScale }}
+            style={{ y: imgY }}
           >
             <img
               src={drRazakatiana}
@@ -77,27 +86,12 @@ const Team = () => {
               className="object-cover w-full h-96"
             />
           </motion.div>
-          
         </div>
       </div>
 
-      <div className="flex flex-row relative justify-between mb-20 px-32">
-        <div className="relative w-[40%]">
-          <div className=" absolute h-5/6 w-5/6 z-0 top-20 left-20  bg-[#df0baa] opacity-50 blur-[200px] shadow-[0_0_30px_rgba(0,0,0,0.8)]" />
-          <motion.div
-            className="absolute overflow-hidden z-10 rounded-tr-3xl rounded-bl-3xl  h-full "
-            style={{ y: imgY, scale: imgScale }}
-          >
-            <img
-              src={doctorEquipe1}
-              alt="dentiste"
-              className="object-cover w-full h-96"
-            />
-          </motion.div>
-         
-        </div>
-
-        <div className="flex flex-col w-2/5 text-[#1B2C51] mt-16 z-10">
+      <div className="flex flex-row-reverse relative justify-between  px-32">
+        <div className="flex flex-col w-2/5 justify-center text-[#1B2C51]z-10">
+          <div className="absolute border-4 h-1/2 w-1/2 left-0 top-1/4 bg-fuchsia-900 opacity-50 blur-[200px] shadow-[0_0_30px_rgba(0,0,0,0.8)]" />
           <motion.div
             style={{
               y: TitleY,
@@ -105,36 +99,45 @@ const Team = () => {
             className="relative flex flex-col"
           >
             <motion.div
-              className="absolute -bottom-1 -right-[-270px] bg-none border-2 border-[#1B2C51] border-opacity-20 rounded-tl-3xl rounded-br-3xl h-20 w-[200px]"
+              className="absolute bottom-0 -left-6 bg-none border-2 border-[#1B2C51] border-opacity-20 rounded-tr-3xl rounded-bl-3xl h-20 w-[250px]"
               style={{ y: border2Y, x: border2X }}
             ></motion.div>
             <motion.div
-              className="absolute -bottom-4 -right-[-256px] bg-none border-2 border-fuchsia-900 border-opacity-20 rounded-tl-3xl rounded-br-3xl h-20 w-[200px]"
+              className="absolute -bottom-4 -left-2 bg-none border-2 border-fuchsia-900 border-opacity-20 rounded-tr-3xl rounded-bl-3xl h-20 w-[250px]"
               style={{ y: borderY, x: borderX }}
             ></motion.div>
             <span className="text-4xl font-medium text-fuchsia-900">
-              Dr Tsiaro
+              Dr Allain
             </span>
-            <span className="text-1xl font-medium">Docteur dentiste</span>
+            <span className="text-1xl font-medium">
+              Docteur en chirurgie dentaire
+            </span>
           </motion.div>
           <motion.div style={{ y: textY }} transition={{ delay: 2 }}>
             <ul className="mt-7 ml-11 list-disc">
               <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-                laudantium sapiente placeat explicabo ratione
+                Diplôme de l&apos;Université de Bordeaux Il en Biomatériaux et
+                Système Implantable
               </li>
               <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-                laudantium sapiente placeat explicabo ratione
+                Attestation d&apos;Etudes de Recherches Approfondies en
+                Implantologie Orale (AERAIO)
               </li>
-
-              <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-                laudantium sapiente placeat explicabo ratione
-              </li>
-
+              <li>Diplôme d&apos;Etat ESCD Mahajanga</li>
               <li>Membre associé de l&apos;Académie Malagasy</li>
             </ul>
+          </motion.div>
+        </div>
+        <div className="relative w-[40%] my-16 z-10">
+          <motion.div
+            className="overflow-hidden rounded-tl-3xl rounded-br-3xl shadow-xl h-full"
+            style={{ y: img2Y }}
+          >
+            <img
+              src={doctorEquipe1}
+              alt="dentiste"
+              className="object-cover w-full h-96"
+            />
           </motion.div>
         </div>
       </div>

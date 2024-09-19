@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
+// eslint-disable-next-line react/prop-types
 const OfficeImgRight = ({ title, description, img }) => {
 
     const ref = useRef(null);
@@ -70,11 +70,6 @@ const OfficeImgRight = ({ title, description, img }) => {
   );
 };
 
-// Validation des props
-OfficeImgRight.propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
-  };
+
 
 export default OfficeImgRight;

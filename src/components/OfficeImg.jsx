@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-const OfficeImgLeft = ({ title, description, img }) => {
+// eslint-disable-next-line react/prop-types
+const OfficeImg = ({ title, description, img, className }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -16,7 +16,7 @@ const OfficeImgLeft = ({ title, description, img }) => {
   const opacity = useTransform(scrollYProgress, [0, 0.81], [0, 1]);
 
   return (
-    <div ref={ref} className="flex flex-row relative px-32 my-14 gap-12">
+    <div ref={ref} className={`flex ${className} relative px-32 my-14 gap-12`}>
       <div className="relative w-1/2 h-[25rem]">
         <motion.div
           style={{ scale: scale }}
@@ -62,11 +62,4 @@ const OfficeImgLeft = ({ title, description, img }) => {
   );
 };
 
-// Validation des props
-OfficeImgLeft.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
-};
-
-export default OfficeImgLeft;
+export default OfficeImg;

@@ -7,6 +7,7 @@ import Home from "./pages/Home"
 import Team from "./pages/Team";
 import Cares from "./pages/Cares";
 import ErroPage from "./pages/ErrorPage";
+import Appointment from "./pages/Appointment";
 
 const App = () => {
   const router = createBrowserRouter ([
@@ -30,6 +31,10 @@ const App = () => {
         {
           path:"/nossoins",
           element: <Cares/>
+        },
+        {
+          path:"/prendrerendez-vous",
+          element: <Appointment/>
         }
       ]
     }

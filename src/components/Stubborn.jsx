@@ -13,10 +13,9 @@ const Stubborn = () => {
             className="w-[75px] h-[75px] rounded-3xl mt-4 mb-4"
           />
         </Link>
-        <div className="text-xl font-semibold">
-          Cabinet du <br />
-          <span className="text-fuchsia-900 text-xl font-semibold">
-            Dr Razakatiana
+        <div className="text-5xl font-bold">
+          <span className="text-fuchsia-900">
+            Cidro
           </span>
         </div>
       </div>

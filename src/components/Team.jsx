@@ -31,7 +31,7 @@ const Team = () => {
           }}
           className="text-white text-5xl font-medium"
         >
-          Equipe
+          Nos praticiens
         </motion.span>
         <span className="absolute h-[6px] w-40 bg-fuchsia-900 bottom-4  rounded-full left-1/2 transform -translate-x-1/2" />
       </div>

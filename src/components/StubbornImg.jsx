@@ -41,7 +41,7 @@ const StubbornImg = ({imgBg}) => {
           transition={{ duration: 0.3, delay: 0.5 }}
           style={{ y: text2YScroll, opacity: text2OpacityScroll }}
         >
-          Cabinet du Dr Razakatiana
+          CIDRO
         </motion.div>
         <motion.div 
         style={{ scale: buttonScale, opacity: buttonOpacity }}

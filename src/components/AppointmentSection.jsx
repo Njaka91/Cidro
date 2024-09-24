@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 const AppointmentSection = () => {
+  const [hasMutuelle, setHasMutuelle] = useState("");
+  const [isForMe, setIsForMe] = useState("");
   const days = [
     "Lundi",
     "Mardi",
@@ -50,7 +54,6 @@ const AppointmentSection = () => {
                   placeholder="Nom"
                 />
               </div>
-
               <div className="relative flex items-center w-72">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +70,6 @@ const AppointmentSection = () => {
                   placeholder="Prénom"
                 />
               </div>
-
               <div className="relative flex items-center w-72">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +86,6 @@ const AppointmentSection = () => {
                   placeholder="Date de naissance"
                 />
               </div>
-
               <div className="relative flex items-center w-72">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +101,6 @@ const AppointmentSection = () => {
                   placeholder="Adresse"
                 />
               </div>
-
               <div className="relative flex items-center w-72">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +116,6 @@ const AppointmentSection = () => {
                   placeholder="Ville"
                 />
               </div>
-
               <div className="relative flex items-center w-72">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +132,6 @@ const AppointmentSection = () => {
                   placeholder="Code postal"
                 />
               </div>
-
               <div className="relative flex items-center w-72">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +149,6 @@ const AppointmentSection = () => {
                   placeholder="Adresse email"
                 />
               </div>
-
               <div className="relative flex items-center w-72">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -175,8 +172,7 @@ const AppointmentSection = () => {
                   placeholder="N° de telephone"
                 />
               </div>
-
-              <div className="relative flex items-center w-72">
+              <div className="relative flex items-center w-72 mb-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="1em"
@@ -194,8 +190,12 @@ const AppointmentSection = () => {
                     <path d="m3.583 9.781l.75.75a1.06 1.06 0 1 0 1.5-1.5L4.669 7.867a2 2 0 0 0-1.414-.586H.583"></path>
                   </g>
                 </svg>
-                <select className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full">
-                  <option value="" disabled selected>
+                <select
+                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
+                  value={hasMutuelle}
+                  onChange={(e) => setHasMutuelle(e.target.value)}
+                >
+                  <option value="" disabled>
                     Disposez-vous d&apos;une mutuelle ?
                   </option>
                   <option value="oui">Oui, j&apos;ai une mutuelle.</option>
@@ -205,31 +205,33 @@ const AppointmentSection = () => {
                 </select>
               </div>
 
-              <div className="relative flex items-center w-72">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 14 14"
-                  className="absolute left-3 h-4 w-4 opacity-70"
-                >
-                  <g
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+              {/* L'input n'est affiché que si "oui" est sélectionné */}
+              {hasMutuelle === "oui" && (
+                <div className="relative flex items-center w-72 mb-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 14 14"
+                    className="absolute left-3 h-4 w-4 opacity-70"
                   >
-                    <path d="M8.315 1.031a.5.5 0 0 0-.5.5v1.407H6.409a.5.5 0 0 0-.5.5v1.625a.5.5 0 0 0 .5.5h1.406v1.406a.5.5 0 0 0 .5.5H9.94a.5.5 0 0 0 .5-.5V5.563h1.406a.5.5 0 0 0 .5-.5V3.438a.5.5 0 0 0-.5-.5H10.44V1.53a.5.5 0 0 0-.5-.5zm-7.732 9.75l2.444 2.037a2 2 0 0 0 1.28.463h6.443c.46 0 .833-.373.833-.833c0-.92-.746-1.667-1.667-1.667H5.437"></path>
-                    <path d="m3.583 9.781l.75.75a1.06 1.06 0 1 0 1.5-1.5L4.669 7.867a2 2 0 0 0-1.414-.586H.583"></path>
-                  </g>
-                </svg>
-                <input
-                  type="text"
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
-                  placeholder="Si oui laquelle ?"
-                />
-              </div>
-
+                    <g
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M8.315 1.031a.5.5 0 0 0-.5.5v1.407H6.409a.5.5 0 0 0-.5.5v1.625a.5.5 0 0 0 .5.5h1.406v1.406a.5.5 0 0 0 .5.5H9.94a.5.5 0 0 0 .5-.5V5.563h1.406a.5.5 0 0 0 .5-.5V3.438a.5.5 0 0 0-.5-.5H10.44V1.53a.5.5 0 0 0-.5-.5zm-7.732 9.75l2.444 2.037a2 2 0 0 0 1.28.463h6.443c.46 0 .833-.373.833-.833c0-.92-.746-1.667-1.667-1.667H5.437"></path>
+                      <path d="m3.583 9.781l.75.75a1.06 1.06 0 1 0 1.5-1.5L4.669 7.867a2 2 0 0 0-1.414-.586H.583"></path>
+                    </g>
+                  </svg>
+                  <input
+                    type="text"
+                    className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
+                    placeholder="Si oui laquelle ?"
+                  />
+                </div>
+              )}
               <div className="relative flex items-center w-72">
                 <svg
                   className="absolute left-3 h-4 w-4 opacity-70"
@@ -255,10 +257,9 @@ const AppointmentSection = () => {
                   placeholder="N° de sécurité sociale"
                 />
               </div>
-
-              <div className="relative flex items-center w-72">
+              <div className="relative flex items-center w-72 mb-2">
                 <svg
-                className="absolute left-3 h-4 w-4 opacity-70"
+                  className="absolute left-3 h-4 w-4 opacity-70"
                   xmlns="http://www.w3.org/2000/svg"
                   width="1em"
                   height="1em"
@@ -273,52 +274,58 @@ const AppointmentSection = () => {
                     d="M23.5 15a3.5 3.5 0 1 1 3.5-3.5a3.504 3.504 0 0 1-3.5 3.5m0-5a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5M8 9a4 4 0 1 1 4-4a4.004 4.004 0 0 1-4 4m0-6a2 2 0 1 0 2 2a2 2 0 0 0-2-2"
                   ></path>
                 </svg>
-                <select 
-                className="pl-10 bg-white placeholder:text-red-600 text-black p-2 rounded-2xl  border border-slate-400 w-full">
-                  <option value="" disabled selected>
+                <select
+                  className="pl-10 bg-white placeholder:text-red-600 text-black p-2 rounded-2xl border border-slate-400 w-full"
+                  value={isForMe}
+                  onChange={(e) => setIsForMe(e.target.value)}
+                >
+                  <option value="" disabled>
                     Le rendez-vous est-il pour?
                   </option>
                   <option value="oui">Oui, c&apos;est pour moi</option>
-                  <option value="non">Non, c&apos; est pour mon enfant</option>
+                  <option value="non">Non, c&apos;est pour mon enfant</option>
                 </select>
               </div>
 
-              <div className="relative flex items-center w-72">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1.5em"
-                  height="1.5em"
-                  viewBox="0 0 256 256"
-                  className="absolute left-3 h-4 w-4 opacity-70"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M230.92 212c-15.23-26.33-38.7-45.21-66.09-54.16a72 72 0 1 0-73.66 0c-27.39 8.94-50.86 27.82-66.09 54.16a8 8 0 1 0 13.85 8c18.84-32.56 52.14-52 89.07-52s70.23 19.44 89.07 52a8 8 0 1 0 13.85-8M72 96a56 56 0 1 1 56 56a56.06 56.06 0 0 1-56-56"
-                  ></path>
-                </svg>
-                <input
-                  type="text"
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
-                  placeholder="Nom et prenom de l'enfant"
-                />
-              </div>
-
-              <div className="relative flex items-center w-72">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  className="absolute left-3 h-4 w-4 opacity-70"
-                >
-                  <path d="M3 0a.5.5 0 00-.5.5V1h-1A1.5 1.5 0 000 2.5v11A1.5 1.5 0 001.5 15h13A1.5 1.5 0 0016 13.5v-11A1.5 1.5 0 0014.5 1h-1V.5a.5.5 0 00-.5-.5h-1a.5.5 0 00-.5.5V1h-5V.5a.5.5 0 00-.5-.5h-1zM1 4h14v10H1V4zm3 3h2v2H4V7zm4 0h2v2H8V7z" />
-                </svg>
-
-                <input
-                  type="text"
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
-                  placeholder="Sa date de naissance"
-                />
-              </div>
+              {/* Les deux derniers champs n'apparaissent que si "Non" est sélectionné */}
+              {isForMe === "non" && (
+                <>
+                  <div className="relative flex items-center w-72 mb-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1.5em"
+                      height="1.5em"
+                      viewBox="0 0 256 256"
+                      className="absolute left-3 h-4 w-4 opacity-70"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M230.92 212c-15.23-26.33-38.7-45.21-66.09-54.16a72 72 0 1 0-73.66 0c-27.39 8.94-50.86 27.82-66.09 54.16a8 8 0 1 0 13.85 8c18.84-32.56 52.14-52 89.07-52s70.23 19.44 89.07 52a8 8 0 1 0 13.85-8M72 96a56 56 0 1 1 56 56a56.06 56.06 0 0 1-56-56"
+                      ></path>
+                    </svg>
+                    <input
+                      type="text"
+                      className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
+                      placeholder="Nom et prénom de l'enfant"
+                    />
+                  </div>
+                  <div className="relative flex items-center w-72 mb-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                      className="absolute left-3 h-4 w-4 opacity-70"
+                    >
+                      <path d="M3 0a.5.5 0 00-.5.5V1h-1A1.5 1.5 0 000 2.5v11A1.5 1.5 0 001.5 15h13A1.5 1.5 0 0016 13.5v-11A1.5 1.5 0 0014.5 1h-1V.5a.5.5 0 00-.5-.5h-1a.5.5 0 00-.5.5V1h-5V.5a.5.5 0 00-.5-.5h-1zM1 4h14v10H1V4zm3 3h2v2H4V7zm4 0h2v2H8V7z" />
+                    </svg>
+                    <input
+                      type="text"
+                      className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
+                      placeholder="Sa date de naissance"
+                    />
+                  </div>
+                </>
+              )}
             </div>
             <div>
               <div className="flex w-3/4 max-w-3xl mx-auto flex-row flex-wrap justify-between gap-4 py-7">
@@ -346,7 +353,7 @@ const AppointmentSection = () => {
                     <input
                       type="radio"
                       name="day"
-                      className="radio  bg-white border-0 checked:bg-amber-500 checked:ring-white text-white" // Stylisation du bouton radio
+                      className="radio w-4 h-4 bg-white border border-white checked:bg-black checked:border-white checked:ring-4 checked:ring-white focus:outline-none"
                     />
                   </div>
                 ))}
@@ -370,7 +377,7 @@ const AppointmentSection = () => {
                     <input
                       type="radio"
                       name="hour"
-                      className="radio radio-primary bg-white text-white border-white" // Stylisation du bouton radio
+                      className="radio w-4 h-4 bg-white border border-white checked:bg-black checked:border-white checked:ring-4 checked:ring-white focus:outline-none"
                     />
                   </div>
                 ))}

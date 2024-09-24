@@ -346,7 +346,7 @@ const AppointmentSection = () => {
                     <input
                       type="radio"
                       name="day"
-                      className="radio  bg-white border-0 checked:bg-amber-500 checked:ring-white text-white" // Stylisation du bouton radio
+                      className="radio  bg-white border-0 checked:bg-fuchsia-900 checked:ring-white text-white" // Stylisation du bouton radio
                     />
                   </div>
                 ))}
@@ -370,7 +370,7 @@ const AppointmentSection = () => {
                     <input
                       type="radio"
                       name="hour"
-                      className="radio radio-primary bg-white text-white border-white" // Stylisation du bouton radio
+                      className="radio radio-primary bg-white text-white checked:bg-fuchsia-900 border-none" // Stylisation du bouton radio
                     />
                   </div>
                 ))}

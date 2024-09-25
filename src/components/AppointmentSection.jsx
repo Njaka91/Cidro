@@ -1,4 +1,27 @@
+import { useState } from "react";
+import emailjs from "emailjs-com";
+
 const AppointmentSection = () => {
+  const [hasMutuelle, setHasMutuelle] = useState("");
+  const [isForMe, setIsForMe] = useState("");
+  const [appointementDay, setAppointementDay] = useState("");
+  const [appointementHour, setAppointementHour] = useState("");
+  const [formData, setFormData] = useState({
+    nom: "",
+    prenom: "",
+    dateNaissance: "",
+    adresse: "",
+    ville: "",
+    codePostal: "",
+    email: "",
+    telephone: "",
+    mutuelle: "",
+    secuSociale: "",
+    nomEtPernomEnfant: "",
+    dateNaissanceEnfant: "",
+    demande: "",
+  });
+
   const days = [
     "Lundi",
     "Mardi",
@@ -10,6 +33,58 @@ const AppointmentSection = () => {
   ];
 
   const hour = ["8h30-12h", "14h00-17h"];
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const templateParams = {
+      nom: formData.nom,
+      prenom: formData.prenom,
+      dateNaissance: formData.dateNaissance,
+      adresse: formData.adresse,
+      ville: formData.ville,
+      codePostal: formData.codePostal,
+      email: formData.email,
+      telephone: formData.telephone,
+      mutuelle: formData.mutuelle,
+      secuSociale: formData.secuSociale,
+      nomEtPernomEnfant: formData.nomEtPernomEnfant,
+      dateNaissanceEnfant: formData.dateNaissanceEnfant,
+      demande: formData.demande,
+      appointementDay: appointementDay,
+      appointementHour: appointementHour,
+    };
+
+    emailjs
+      .send(
+        "service_vvr0s0i", // Remplacez par votre service ID
+        "template_4gfsnca", // Remplacez par votre template ID
+        templateParams,
+        "tuKu1SRcKJQ7bZc5p" // Remplacez par votre user ID
+      )
+      .then(
+        (result) => {
+          console.log("Email envoyé avec succès!", result.text);
+        },
+        (error) => {
+          console.log("Erreur lors de l'envoi de l'email:", error.text);
+        }
+      );
+    console.log(
+      "Form data: ",
+      formData,
+      hasMutuelle,
+      isForMe,
+      appointementDay,
+      appointementHour
+    );
+    // Add API submission or other logic here
+  };
+
   return (
     <div className="py-10">
       <div className="bg-[#1B2C51] bg-opacity-60 w-3/5 mx-auto rounded-3xl py-7">
@@ -29,7 +104,7 @@ const AppointmentSection = () => {
         </div>
 
         <div className="py-7">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="flex w-3/4 max-w-3xl mx-auto flex-row flex-wrap justify-between gap-4">
               <div className="relative flex items-center w-72">
                 <svg
@@ -46,7 +121,10 @@ const AppointmentSection = () => {
                 </svg>
                 <input
                   type="text"
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
+                  name="nom"
+                  value={formData.nom}
+                  onChange={handleChange}
+                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full focus:ring-2"
                   placeholder="Nom"
                 />
               </div>
@@ -63,6 +141,9 @@ const AppointmentSection = () => {
 
                 <input
                   type="text"
+                  name="prenom"
+                  value={formData.prenom}
+                  onChange={handleChange}
                   className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
                   placeholder="Prénom"
                 />
@@ -80,6 +161,9 @@ const AppointmentSection = () => {
 
                 <input
                   type="text"
+                  name="dateNaissance"
+                  value={formData.dateNaissance}
+                  onChange={handleChange}
                   className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
                   placeholder="Date de naissance"
                 />
@@ -96,6 +180,9 @@ const AppointmentSection = () => {
                 </svg>
                 <input
                   type="text"
+                  name="adresse"
+                  value={formData.adresse}
+                  onChange={handleChange}
                   className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
                   placeholder="Adresse"
                 />
@@ -112,6 +199,9 @@ const AppointmentSection = () => {
                 </svg>
                 <input
                   type="text"
+                  name="ville"
+                  value={formData.ville}
+                  onChange={handleChange}
                   className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
                   placeholder="Ville"
                 />
@@ -129,6 +219,9 @@ const AppointmentSection = () => {
                 </svg>
                 <input
                   type="text"
+                  name="codePostal"
+                  value={formData.codePostal}
+                  onChange={handleChange}
                   className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
                   placeholder="Code postal"
                 />
@@ -147,6 +240,9 @@ const AppointmentSection = () => {
 
                 <input
                   type="text"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
                   placeholder="Adresse email"
                 />
@@ -171,6 +267,9 @@ const AppointmentSection = () => {
                 </svg>
                 <input
                   type="text"
+                  name="telephone"
+                  value={formData.telephone}
+                  onChange={handleChange}
                   className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
                   placeholder="N° de telephone"
                 />
@@ -194,7 +293,11 @@ const AppointmentSection = () => {
                     <path d="m3.583 9.781l.75.75a1.06 1.06 0 1 0 1.5-1.5L4.669 7.867a2 2 0 0 0-1.414-.586H.583"></path>
                   </g>
                 </svg>
-                <select className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full">
+                <select
+                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
+                  value={hasMutuelle}
+                  onChange={(e) => setHasMutuelle(e.target.value)}
+                >
                   <option value="" disabled selected>
                     Disposez-vous d&apos;une mutuelle ?
                   </option>
@@ -225,8 +328,16 @@ const AppointmentSection = () => {
                 </svg>
                 <input
                   type="text"
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
+                  name="mutuelle"
+                  value={formData.mutuelle}
+                  onChange={handleChange}
+                  className={`pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full ${
+                    hasMutuelle === "non" || hasMutuelle === ""
+                      ? "opacity-75"
+                      : ""
+                  }`}
                   placeholder="Si oui laquelle ?"
+                  disabled={hasMutuelle === "non" || hasMutuelle === ""}
                 />
               </div>
 
@@ -251,6 +362,9 @@ const AppointmentSection = () => {
                 </svg>
                 <input
                   type="text"
+                  name="secuSociale"
+                  value={formData.secuSociale}
+                  onChange={handleChange}
                   className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
                   placeholder="N° de sécurité sociale"
                 />
@@ -258,7 +372,7 @@ const AppointmentSection = () => {
 
               <div className="relative flex items-center w-72">
                 <svg
-                className="absolute left-3 h-4 w-4 opacity-70"
+                  className="absolute left-3 h-4 w-4 opacity-70"
                   xmlns="http://www.w3.org/2000/svg"
                   width="1em"
                   height="1em"
@@ -273,8 +387,11 @@ const AppointmentSection = () => {
                     d="M23.5 15a3.5 3.5 0 1 1 3.5-3.5a3.504 3.504 0 0 1-3.5 3.5m0-5a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5M8 9a4 4 0 1 1 4-4a4.004 4.004 0 0 1-4 4m0-6a2 2 0 1 0 2 2a2 2 0 0 0-2-2"
                   ></path>
                 </svg>
-                <select 
-                className="pl-10 bg-white placeholder:text-red-600 text-black p-2 rounded-2xl  border border-slate-400 w-full">
+                <select
+                  className="pl-10 bg-white placeholder:text-red-600 text-black p-2 rounded-2xl  border border-slate-400 w-full"
+                  value={isForMe}
+                  onChange={(e) => setIsForMe(e.target.value)}
+                >
                   <option value="" disabled selected>
                     Le rendez-vous est-il pour?
                   </option>
@@ -298,8 +415,14 @@ const AppointmentSection = () => {
                 </svg>
                 <input
                   type="text"
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
+                  name="nomEtPernomEnfant"
+                  value={formData.nomEtPernomEnfant}
+                  onChange={handleChange}
+                  className={`${
+                    isForMe === "oui" || isForMe === "" ? "opacity-75" : ""
+                  } pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full`}
                   placeholder="Nom et prenom de l'enfant"
+                  disabled={isForMe === "oui" || isForMe === ""}
                 />
               </div>
 
@@ -315,8 +438,14 @@ const AppointmentSection = () => {
 
                 <input
                   type="text"
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
+                  name="dateNaissanceEnfant"
+                  value={formData.dateNaissanceEnfant}
+                  onChange={handleChange}
+                  className={`${
+                    isForMe === "oui" || isForMe === "" ? "opacity-75" : ""
+                  } pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full`}
                   placeholder="Sa date de naissance"
+                  disabled={isForMe === "oui" || isForMe === ""}
                 />
               </div>
             </div>
@@ -325,6 +454,9 @@ const AppointmentSection = () => {
                 <textarea
                   className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full h-28"
                   placeholder="Avez-vous une demande particulière ?"
+                  name="demande"
+                  value={formData.demande}
+                  onChange={handleChange}
                 ></textarea>
               </div>
               <div className="flex w-3/4 max-w-3xl mx-auto flex-row flex-wrap justify-between gap-4 ">
@@ -345,7 +477,9 @@ const AppointmentSection = () => {
                     </label>
                     <input
                       type="radio"
-                      name="day"
+                      name="appointementDay"
+                      value={day}
+                      onChange={(e) => setAppointementDay(e.target.value)}
                       className="radio  bg-white border-0 checked:bg-fuchsia-900 checked:ring-white text-white" // Stylisation du bouton radio
                     />
                   </div>
@@ -370,6 +504,8 @@ const AppointmentSection = () => {
                     <input
                       type="radio"
                       name="hour"
+                      value={hour}
+                      onChange={(e) => setAppointementHour(e.target.value)}
                       className="radio radio-primary bg-white text-white checked:bg-fuchsia-900 border-none" // Stylisation du bouton radio
                     />
                   </div>

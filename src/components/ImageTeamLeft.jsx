@@ -20,7 +20,7 @@ const ImageTeamLeft = ({nameLeft, lastNameLeft, professionLeft, descriptionLeft,
 
   return (
     <div className="flex flex-row relative justify-between items-center">
-      <div className="relative w-1/2 h-96 bg-fuchsia-200 py-8 px-32">
+      <div className="relative w-1/2 h-96  py-8 px-32">
       <motion.div 
           ref={ref} 
           style={{ scale: scale }}

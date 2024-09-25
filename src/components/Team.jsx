@@ -22,20 +22,24 @@ const Team = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex relative justify-center items-center bg-[#1B2C51] py-8">
-        <div></div>
+      <div className="flex relative justify-center items-center py-2 mt-6">
         <motion.span
           style={{
             scale: headScale,
             opacity: headopacity,
           }}
-          className="text-white text-5xl font-medium"
+          className="text-[#1B2C51] text-3xl font-medium"
         >
           Nos praticiens
         </motion.span>
-        <span className="absolute h-[6px] w-40 bg-fuchsia-900 bottom-4  rounded-full left-1/2 transform -translate-x-1/2" />
+        <motion.span 
+        style={{
+          scale: headScale,
+          opacity: headopacity,
+        }}
+        className="absolute h-1 w-32 -bottom-0 bg-fuchsia-900   rounded-full transform " />
       </div>
-      <div className="flex flex-row relative justify-between  px-32">
+      <div className="flex flex-row relative justify-between  px-32 mt-10">
         <div className="flex flex-col w-2/5 justify-center items-center text-[#1B2C51]z-10">
           <div className="absolute border-4 h-1/2 w-1/2 right-0 top-1/4 bg-[#1ea06c] opacity-50 blur-[200px] shadow-[0_0_30px_rgba(0,0,0,0.8)]" />
           <motion.div
@@ -75,7 +79,7 @@ const Team = () => {
           </motion.div>
         </div>
 
-        <div className="relative w-[40%] my-16 z-10">
+        <div className="relative w-[40%] z-10">
           <motion.div
             className="overflow-hidden rounded-tr-3xl rounded-bl-3xl shadow-xl h-full"
             style={{ y: imgY }}

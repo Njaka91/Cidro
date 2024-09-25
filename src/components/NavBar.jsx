@@ -1,19 +1,17 @@
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 
-// Variantes pour les éléments individuels de la liste
 const liVariants = {
   before: { opacity: 0, y: -20 },
   after: { opacity: 1, y: 0 }
 };
 
-// Variantes pour le container UL (staggerChildren pour le délai entre les enfants)
 const ulVariants = {
   before: { opacity: 0 },
   after: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08, // Délai entre l'animation des enfants
+      staggerChildren: 0.08, 
     },
   },
 };
@@ -32,13 +30,17 @@ const NavBar = () => {
             <NavLink
               to={text === "Accueil" ? "/" : `/${text.toLowerCase().replace(/\s+/g, '')}`}
               className={({ isActive }) =>
-                isActive
+                text === "Prendre rendez-vous"
+                  ? "bg-white text-fuchsia-900 py-2 px-4 rounded-full font-semibold transition-colors duration-300 hover:bg-fuchsia-100 hover:text-fuchsia-950"
+                  : isActive
                   ? "text-white relative after:content-[''] after:absolute after:left-0 after:bottom-[-5px] after:w-full after:h-1 after:rounded-xl after:bg-white"
                   : "text-white relative group"
               }
             >
               {text}
-              <span className="absolute left-0 bottom-[-5px] w-0 h-1 rounded-xl bg-white transition-all duration-300 group-hover:w-full"></span>
+              {text !== "Prendre rendez-vous" && (
+                <span className="absolute left-0 bottom-[-5px] w-0 h-1 rounded-xl bg-white transition-all duration-300 group-hover:w-full"></span>
+              )}
             </NavLink>
           </motion.li>
         ))}

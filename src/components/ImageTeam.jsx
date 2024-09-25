@@ -21,7 +21,7 @@ const ImageTeam = ({name, lastName, profession, description, img}) => {
   return (
     <>
       <div className="flex flex-row relative justify-between items-center">
-        <div className="flex flex-col w-1/2 text-[#1B2C51] px-32 z-10">
+        <div className="flex flex-col w-1/2 px-32 z-10">
           <span className="relative flex flex-col text-fuchsia-900">
             <motion.span 
             ref={ref}
@@ -48,7 +48,7 @@ const ImageTeam = ({name, lastName, profession, description, img}) => {
             </p>
           </motion.div>
         </div>
-        <div className="relative w-1/2 h-96 bg-slate-300 py-8 px-32"
+        <div className="relative w-1/2 h-96 py-8 px-32"
         >
           <motion.div 
           ref={ref} 

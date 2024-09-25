@@ -9,19 +9,22 @@ const ImageCareLeft = ({ tilte, description, img, prix, modalId }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"],
+    offset: ["start end", "center center"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 0.2], [0.8, 1]);
-  const buttonScale = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-  const opacityblur = useTransform(scrollYProgress, [0, 0.2], [0.8, 0]);
-  const buttonOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-  const y2 = useTransform(scrollYProgress, [0, 0.2], [125, 0]);
-  const y = useTransform(scrollYProgress, [0, 0.22], [200, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.8], [0.8, 1]);
+  const buttonScale = useTransform(scrollYProgress, [0.5, 1], [0, 1]);
+  const opacityblur = useTransform(scrollYProgress, [0, 0.8], [0.8, 0]);
+  const buttonOpacity = useTransform(scrollYProgress, [0.5, 1], [0, 1]);
+  const y2 = useTransform(scrollYProgress, [0, 0.8], [125, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.82
+    
+  ], [200, 0]);
   const opacity = useTransform(scrollYProgress, [0, 0.21], [0, 1]);
 
   return (
     <div
+    ref={ref}
       className={`flex ${
         parseInt(
           modalId
@@ -36,12 +39,10 @@ const ImageCareLeft = ({ tilte, description, img, prix, modalId }) => {
     >
       <div className="relative w-1/2 h-[25rem]">
         <motion.div
-          ref={ref}
           style={{ scale: scale }}
           className="relative rounded-tr-3xl rounded-bl-3xl shadow-xl h-full"
         >
           <motion.div
-            ref={ref}
             style={{
               opacity: opacityblur,
             }}
@@ -70,7 +71,6 @@ const ImageCareLeft = ({ tilte, description, img, prix, modalId }) => {
       <div className="relative flex w-1/2 flex-col text-[#1B2C51]">
         <span className="flex flex-col text-fuchsia-900">
           <motion.span
-            ref={ref}
             style={{
               y: y2,
             }}
@@ -80,7 +80,6 @@ const ImageCareLeft = ({ tilte, description, img, prix, modalId }) => {
           </motion.span>
         </span>
         <motion.div
-          ref={ref}
           style={{
             opacity: opacity,
             y: y,
@@ -90,7 +89,6 @@ const ImageCareLeft = ({ tilte, description, img, prix, modalId }) => {
         </motion.div>
         <div className="absolute bottom-14 w-full flex flex-row justify-center items-center h-4">
           <motion.div
-            ref={ref}
             style={{ scale: buttonScale, opacity: buttonOpacity }}
             onClick={() => document.getElementById(modalId).showModal()}
             className="btn relative bg-[#1B2C51] w-[38%] rounded-full shadow-xl border-0 text-white font-medium mt-14 group hover:bg-[#1B2C51]"

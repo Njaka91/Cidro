@@ -6,6 +6,8 @@ const AppointmentSection = () => {
   const [isForMe, setIsForMe] = useState("");
   const [appointementDay, setAppointementDay] = useState("");
   const [appointementHour, setAppointementHour] = useState("");
+  const [errors, setErrors] = useState({});
+
   const [formData, setFormData] = useState({
     nom: "",
     prenom: "",
@@ -36,10 +38,38 @@ const AppointmentSection = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    // Efface l'erreur correspondante si l'utilisateur commence à taper
+    setErrors({ ...errors, [e.target.name]: "" });
+  };
+
+  const validateForm = () => {
+    let newErrors = {};
+    if (!formData.nom.trim()) {
+      newErrors.nom = "Champ obligatoire.";
+    }
+    if (!formData.prenom.trim()) {
+      newErrors.prenom = "Champ obligatoire.";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Champ obligatoire.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Veuillez entrer une adresse email valide.";
+    }
+    // Ajoutez d'autres validations pour les autres champs ici
+
+    setErrors(newErrors);
+    // Si l'objet newErrors est vide, cela signifie qu'il n'y a pas d'erreurs
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
 
     const templateParams = {
       nom: formData.nom,
@@ -52,11 +82,10 @@ const AppointmentSection = () => {
       telephone: formData.telephone,
       mutuelle: formData.mutuelle,
       secuSociale: formData.secuSociale,
-      nomEtPernomEnfant: formData.nomEtPernomEnfant,
-      dateNaissanceEnfant: formData.dateNaissanceEnfant,
       demande: formData.demande,
       appointementDay: appointementDay,
       appointementHour: appointementHour,
+      isForMe:isForMe
     };
 
     emailjs
@@ -124,8 +153,21 @@ const AppointmentSection = () => {
                   name="nom"
                   value={formData.nom}
                   onChange={handleChange}
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full focus:ring-2"
-                  placeholder="Nom"
+                  onFocus={(e) => {
+                    e.target.placeholder = "Nom ";
+                    e.target.classList.remove("placeholder-red-500"); // Supprime la classe d'erreur pour le placeholder
+                  }}
+                  onBlur={(e) => {
+                    if (!formData.nom && !errors.nom) {
+                      e.target.placeholder = "Nom "; // Rétablit le placeholder par défaut
+                    }
+                  }}
+                  className={`pl-10 bg-white text-black p-2 rounded-2xl border ${
+                    errors.nom
+                      ? "border-red-500 placeholder-red-500" // Bordure rouge si erreur
+                      : "border-slate-400 focus:border-fuchsia-900" // Bordure grise par défaut, bleue au focus
+                  } w-full focus:outline-none`} // focus:outline-none pour supprimer le contour par défaut
+                  placeholder={errors.nom || "Nom "} // Affiche l'erreur ou le placeholder par défaut
                 />
               </div>
 
@@ -144,8 +186,21 @@ const AppointmentSection = () => {
                   name="prenom"
                   value={formData.prenom}
                   onChange={handleChange}
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
-                  placeholder="Prénom"
+                  onFocus={(e) => {
+                    e.target.placeholder = "Prénom ";
+                    e.target.classList.remove("placeholder-red-500");
+                  }}
+                  onBlur={(e) => {
+                    if (!formData.prenom && !errors.prenom) {
+                      e.target.placeholder = "Prénom ";
+                    }
+                  }}
+                  className={`pl-10 bg-white text-black p-2 rounded-2xl border ${
+                    errors.prenom
+                      ? "border-red-500 placeholder-red-500"
+                      : "border-slate-400 focus:border-fuchsia-900"
+                  } w-full focus:outline-none`}
+                  placeholder={errors.prenom || "Prénom "}
                 />
               </div>
 
@@ -160,12 +215,28 @@ const AppointmentSection = () => {
                 </svg>
 
                 <input
-                  type="text"
+                  type={formData.dateNaissance ? "date" : "text"} // Type texte si pas de date
                   name="dateNaissance"
                   value={formData.dateNaissance}
                   onChange={handleChange}
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
-                  placeholder="Date de naissance"
+                  onClick={(e) => e.target.showPicker()}
+                  onFocus={(e) => {
+                    e.target.type = "date"; // Changer en date lors du focus
+                    e.target.classList.remove("placeholder-red-500");
+                    e.target.showPicker();
+                  }}
+                  onBlur={(e) => {
+                    if (!formData.dateNaissance && !errors.dateNaissance) {
+                      e.target.type = "text"; // Revenir à texte si vide
+                      e.target.placeholder = "Date de naissance"; // Placeholder personnalisé
+                    }
+                  }}
+                  className={`pl-10 bg-white text-black p-2 rounded-2xl border ${
+                    errors.dateNaissance
+                      ? "border-red-500 placeholder-red-500"
+                      : " focus:border-fuchsia-900"
+                  } w-full focus:outline-none`}
+                  placeholder={errors.dateNaissance || "Date de naissance"} // Placeholder si champ de texte
                 />
               </div>
 
@@ -183,7 +254,7 @@ const AppointmentSection = () => {
                   name="adresse"
                   value={formData.adresse}
                   onChange={handleChange}
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
+                  className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
                   placeholder="Adresse"
                 />
               </div>
@@ -202,7 +273,7 @@ const AppointmentSection = () => {
                   name="ville"
                   value={formData.ville}
                   onChange={handleChange}
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
+                  className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
                   placeholder="Ville"
                 />
               </div>
@@ -222,30 +293,48 @@ const AppointmentSection = () => {
                   name="codePostal"
                   value={formData.codePostal}
                   onChange={handleChange}
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
+                  className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
                   placeholder="Code postal"
                 />
               </div>
+              <div>
+                <div className="relative flex items-center w-72">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                    className="absolute left-3 h-4 w-4 opacity-70"
+                  >
+                    <path d="M1.5 2a.5.5 0 00-.5.5v11a.5.5 0 00.5.5h13a.5.5 0 00.5-.5V2.5a.5.5 0 00-.5-.5h-13zM1 3.5v-.5h14v.5h-14zm0 1h14v10H1V4.5zm0 0z" />
+                    <path d="M1 4.5l7 4.5 7-4.5v10l-7 4.5-7-4.5V4.5z" />
+                  </svg>
 
-              <div className="relative flex items-center w-72">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  className="absolute left-3 h-4 w-4 opacity-70"
-                >
-                  <path d="M1.5 2a.5.5 0 00-.5.5v11a.5.5 0 00.5.5h13a.5.5 0 00.5-.5V2.5a.5.5 0 00-.5-.5h-13zM1 3.5v-.5h14v.5h-14zm0 1h14v10H1V4.5zm0 0z" />
-                  <path d="M1 4.5l7 4.5 7-4.5v10l-7 4.5-7-4.5V4.5z" />
-                </svg>
-
-                <input
-                  type="text"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
-                  placeholder="Adresse email"
-                />
+                  <input
+                    type="text"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    onFocus={(e) => {
+                      e.target.placeholder = "Email ";
+                      e.target.classList.remove("placeholder-red-500"); // Supprime la classe d'erreur pour le placeholder
+                    }}
+                    onBlur={(e) => {
+                      if (!formData.email && !errors.email) {
+                        e.target.placeholder = "Email "; // Rétablit le placeholder par défaut
+                      }
+                    }}
+                    className={`pl-10 bg-white text-black p-2 rounded-2xl border ${
+                      errors.email
+                        ? "border-red-500 placeholder-red-500" // Bordure rouge si erreur
+                        : "border-slate-400 focus:border-fuchsia-900" // Bordure grise par défaut, bleue au focus
+                    } w-full focus:outline-none`} // focus:outline-none pour supprimer le contour par défaut
+                    placeholder={errors.email || "Email "} // Affiche l'erreur ou le placeholder par défaut
+                  />
+                </div>
+                {errors.email ===
+                  "Veuillez entrer une adresse email valide." && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                )}
               </div>
 
               <div className="relative flex items-center w-72">
@@ -270,7 +359,7 @@ const AppointmentSection = () => {
                   name="telephone"
                   value={formData.telephone}
                   onChange={handleChange}
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
+                  className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
                   placeholder="N° de telephone"
                 />
               </div>
@@ -294,7 +383,7 @@ const AppointmentSection = () => {
                   </g>
                 </svg>
                 <select
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
+                  className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
                   value={hasMutuelle}
                   onChange={(e) => setHasMutuelle(e.target.value)}
                 >
@@ -331,7 +420,7 @@ const AppointmentSection = () => {
                   name="mutuelle"
                   value={formData.mutuelle}
                   onChange={handleChange}
-                  className={`pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full ${
+                  className={`focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full ${
                     hasMutuelle === "non" || hasMutuelle === ""
                       ? "opacity-75"
                       : ""
@@ -365,7 +454,7 @@ const AppointmentSection = () => {
                   name="secuSociale"
                   value={formData.secuSociale}
                   onChange={handleChange}
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
+                  className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
                   placeholder="N° de sécurité sociale"
                 />
               </div>
@@ -388,71 +477,22 @@ const AppointmentSection = () => {
                   ></path>
                 </svg>
                 <select
-                  className="pl-10 bg-white placeholder:text-red-600 text-black p-2 rounded-2xl  border border-slate-400 w-full"
+                  className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white placeholder:text-red-600 text-black p-2 rounded-2xl  border border-slate-400 w-full"
                   value={isForMe}
                   onChange={(e) => setIsForMe(e.target.value)}
                 >
                   <option value="" disabled selected>
-                    Le rendez-vous est-il pour?
+                    Le rendez-vous est pour :
                   </option>
-                  <option value="oui">Oui, c&apos;est pour moi</option>
-                  <option value="non">Non, c&apos; est pour mon enfant</option>
+                  <option value="le demandeur">moi</option>
+                  <option value="l'enfant du demandeur">mon enfant</option>
                 </select>
-              </div>
-
-              <div className="relative flex items-center w-72">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1.5em"
-                  height="1.5em"
-                  viewBox="0 0 256 256"
-                  className="absolute left-3 h-4 w-4 opacity-70"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M230.92 212c-15.23-26.33-38.7-45.21-66.09-54.16a72 72 0 1 0-73.66 0c-27.39 8.94-50.86 27.82-66.09 54.16a8 8 0 1 0 13.85 8c18.84-32.56 52.14-52 89.07-52s70.23 19.44 89.07 52a8 8 0 1 0 13.85-8M72 96a56 56 0 1 1 56 56a56.06 56.06 0 0 1-56-56"
-                  ></path>
-                </svg>
-                <input
-                  type="text"
-                  name="nomEtPernomEnfant"
-                  value={formData.nomEtPernomEnfant}
-                  onChange={handleChange}
-                  className={`${
-                    isForMe === "oui" || isForMe === "" ? "opacity-75" : ""
-                  } pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full`}
-                  placeholder="Nom et prenom de l'enfant"
-                  disabled={isForMe === "oui" || isForMe === ""}
-                />
-              </div>
-
-              <div className="relative flex items-center w-72">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  className="absolute left-3 h-4 w-4 opacity-70"
-                >
-                  <path d="M3 0a.5.5 0 00-.5.5V1h-1A1.5 1.5 0 000 2.5v11A1.5 1.5 0 001.5 15h13A1.5 1.5 0 0016 13.5v-11A1.5 1.5 0 0014.5 1h-1V.5a.5.5 0 00-.5-.5h-1a.5.5 0 00-.5.5V1h-5V.5a.5.5 0 00-.5-.5h-1zM1 4h14v10H1V4zm3 3h2v2H4V7zm4 0h2v2H8V7z" />
-                </svg>
-
-                <input
-                  type="text"
-                  name="dateNaissanceEnfant"
-                  value={formData.dateNaissanceEnfant}
-                  onChange={handleChange}
-                  className={`${
-                    isForMe === "oui" || isForMe === "" ? "opacity-75" : ""
-                  } pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full`}
-                  placeholder="Sa date de naissance"
-                  disabled={isForMe === "oui" || isForMe === ""}
-                />
               </div>
             </div>
             <div>
               <div className="flex w-3/4 max-w-3xl mx-auto flex-row flex-wrap justify-between gap-4 py-7">
                 <textarea
-                  className="pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full h-28"
+                  className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full h-28"
                   placeholder="Avez-vous une demande particulière ?"
                   name="demande"
                   value={formData.demande}

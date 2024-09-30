@@ -26,9 +26,9 @@ const Root = () => {
       <NavBar />
       <StubbornImg imgBg={imgBg} />
       <Outlet />
-      {pathname !== "/prendrerendez-vous" && <AppointmentBottom />}
+      {/*{pathname !== "/prendrerendez-vous" && <AppointmentBottom />}
       {pathname !== "/prendrerendez-vous" && <Button/>}
-      <Footer />
+      <Footer /> */}
     </>
   );
 };

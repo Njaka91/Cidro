@@ -10,8 +10,8 @@ const PresidentSection = () => {
     offset: ["start end", "center center"],
   });
 
-  const imgScale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const imgOpacity = useTransform(scrollYProgress, [0.15, 1], [1, 0]);
+  const imgScale = useTransform(scrollYProgress, [0, 1], [0.85, 1]);
+  const imgOpacity = useTransform(scrollYProgress, [0.15, 1], [0.5, 0]);
   const imgLine = useTransform(scrollYProgress, [0.5, 1], [0.5, 1]);
 
   const borderY = useTransform(scrollYProgress, [0.5, 1], [-7.5, 0]);
@@ -20,8 +20,8 @@ const PresidentSection = () => {
   const border2Y = useTransform(scrollYProgress, [0, 1], [8, 0]);
   const border2X = useTransform(scrollYProgress, [0, 1], [8, 0]);
 
-  const textY = useTransform(scrollYProgress, [0, 1], [600, 0]);
-  const TitleY = useTransform(scrollYProgress, [0, 0.9], [400, 0]);
+  const textY = useTransform(scrollYProgress, [0, 1], [300, 0]);
+  const TitleY = useTransform(scrollYProgress, [0, 0.9], [200, 0]);
 
   return (
     <div

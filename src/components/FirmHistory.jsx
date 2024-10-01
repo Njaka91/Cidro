@@ -1,75 +1,82 @@
 import photeuil from "../assets/images/photeuill.jpg";
 import { motion } from "framer-motion";
-import firm from "../assets/images/firm.png"
+import firm from "../assets/images/firm.png";
 import { useScroll } from "framer-motion";
 import { useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const FirmHistory = () => {
-  const {scrollYProgress} = useScroll({
-    offset: ["start end", "end start"]
-  })
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
 
-  const borderY = useTransform(scrollYProgress, [0.38, 0.42], [-9, 0]);
-  const borderX = useTransform(scrollYProgress, [0.38, 0.42], [-7.5, 0]);
+  const borderY = useTransform(scrollYProgress, [0.4, 0.42], [-9, 0]);
+  const borderX = useTransform(scrollYProgress, [0.4, 0.42], [-7.5, 0]);
 
   const border2Y = useTransform(scrollYProgress, [0.38, 0.42], [6.3, 0]);
   const border2X = useTransform(scrollYProgress, [0.38, 0.42], [7.5, 0]);
 
-  const titleY = useTransform(scrollYProgress, [0, 0.38], [300, 0]);
-  const textY = useTransform(scrollYProgress, [0, 0.38], [500, 0]);
+  const titleY = useTransform(scrollYProgress, [0, 0.4], [150, 0]);
+  const textY = useTransform(scrollYProgress, [0, 0.4], [200, 0]);
 
-  const x = useTransform(scrollYProgress, [0.25, 0.4], [-100, 0]);
-  const X1 = useTransform(scrollYProgress, [0.25, 0.4], [100, 0]);
-  const opacity = useTransform(scrollYProgress, [0.37, 0.4], [0, 1]);
+  const x = useTransform(scrollYProgress, [0, 0.45], [-200, 0]);
+  const X1 = useTransform(scrollYProgress, [0, 0.45], [200, 0]);
+  const opacity = useTransform(scrollYProgress, [0.3, 0.4], [0, 1]);
 
-  const x2 = useTransform(scrollYProgress, [0.35, 0.42], [-100, 0]);
-  const X2 = useTransform(scrollYProgress, [0.35, 0.42], [100, 0]);
-  const opacity2 = useTransform(scrollYProgress, [0.40, 0.42], [0, 1]);
-
+  const x2 = useTransform(scrollYProgress, [0.25, 0.48], [-200, 0]);
+  const X2 = useTransform(scrollYProgress, [0.25, 0.48], [200, 0]);
+  const opacity2 = useTransform(scrollYProgress, [0.37, 0.42], [0, 1]);
 
   return (
-    <div className="flex flex-row my-20 px-32 gap-20">
-      <div 
-      className="w-1/2 h-[550px] flex relative items-center rounded-tl-[60px] rounded-br-[60px]">
-        
-          
-            <motion.div
-              className="w-full h-full overflow-hidden rounded-tl-[60px] rounded-br-[60px] z-40 shadow-lg"
-            >
-              <img src={photeuil} alt="" className="object-cover " />
-            </motion.div>
-            <motion.div
-            style={{
-              y: border2Y,
-              x: border2X,
-            }}
-              className="z-[39] absolute bg-none bottom-2 right-2 h-full w-full border-2 border-[#1B2C51] border-opacity-50 rounded-tl-[60px] rounded-br-[60px]"
-              
-            ></motion.div>
-            <motion.div
-             style={{
-              y: borderY,
-              x: borderX,
-             }}
-              className="z-[41] absolute bg-none top-2 left-2 h-full w-full border-2 border-fuchsia-900 border-opacity-50 rounded-tl-[60px] rounded-br-[60px]"
-             
-            ></motion.div>
-          
-       
+    <div
+      ref={ref}
+      className="relative flex flex-col my-14 px-6 gap-10
+      md:px-8 md:flex-row md:gap-12
+      lg:px-24 lg:flex-row lg:gap-14
+      xl:px-32 xl:flex-row xl:gap-20"
+    >
+      <div
+        className="w-full h-full flex relative items-center rounded-tl-[60px] rounded-br-[60px]
+      xl:w-1/2 xl:h-[550px]"
+      >
+        <motion.div className="w-full h-full overflow-hidden bg-black rounded-tl-[60px] rounded-br-[60px] z-40 shadow-lg">
+          <img src={photeuil} alt="" className="object-cover  w-full" />
+        </motion.div>
+        <motion.div
+          style={{
+            y: border2Y,
+            x: border2X,
+          }}
+          className="z-[39] absolute bg-none bottom-2 right-2 h-full w-full border-2 border-[#1B2C51] border-opacity-50 rounded-tl-[60px] rounded-br-[60px]"
+        ></motion.div>
+        <motion.div
+          style={{
+            y: borderY,
+            x: borderX,
+          }}
+          className="z-[41] absolute bg-none top-2 left-2 h-full w-full border-2 border-fuchsia-900 border-opacity-50 rounded-tl-[60px] rounded-br-[60px]"
+        ></motion.div>
       </div>
-      <div className="w-[50%] flex flex-col z-10">
-        <motion.h1 
-        style={{
-          y: titleY,
-        }}
-        className="text-3xl font-semibold text-[#1B2C51] pb-5">
+      <div
+        className="flex flex-col z-10 w-full
+      xl:w-1/2 "
+      >
+        <motion.h1
+          style={{
+            y: titleY,
+          }}
+          className="text-3xl font-semibold text-[#1B2C51] pb-5"
+        >
           Historique du cabinet
         </motion.h1>
-        <motion.p 
-        style={{
-          y: textY,
-        }}
-        className="text-[#1B2C51] text-justify">
+        <motion.p
+          style={{
+            y: textY,
+          }}
+          className="text-[#1B2C51] text-justify"
+        >
           Lorem Ipsum IS simpy ummy text o t e printing an typesetting industry.
           When an unknown printer took a galley of type and scrambled it to make
           a type specimen book.
@@ -80,19 +87,19 @@ const FirmHistory = () => {
           containing Lorem Ipsum passages.
         </motion.p>
 
-        <div className="flex flex-col mt-8">
+        <div className="flex flex-col mt-8 overflow-hidden">
           <div className="flex flex-row mb-5 justify-between">
-            <motion.div 
-            style={{
-              x: x,
-              opacity: opacity,
-            }}
-            className="flex flex-col items-center w-[47%]">
+            <motion.div
+              style={{
+                x: x,
+                opacity: opacity,
+              }}
+              className="flex flex-col items-center w-[47%]"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 color="#701a75"
-                width="3em"
-                height="3em"
+                className="w-8 lg:w-12 "
                 viewBox="0 0 32 32"
               >
                 <path
@@ -107,17 +114,47 @@ const FirmHistory = () => {
               </p>
             </motion.div>
 
-            <motion.div 
-            style={{
-              x: X1,
-              opacity: opacity
-            }}
-            className="flex flex-col items-center w-[47%]">
+            <motion.div
+              style={{
+                x: X1,
+                opacity: opacity,
+              }}
+              className="flex flex-col items-center w-[47%]"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 color="#701a75"
-                width="3em"
-                height="3em"
+                className="w-8 lg:w-12 "
+                viewBox="0 0 14 14"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M8.315 1.031a.5.5 0 0 0-.5.5v1.407H6.409a.5.5 0 0 0-.5.5v1.625a.5.5 0 0 0 .5.5h1.406v1.406a.5.5 0 0 0 .5.5H9.94a.5.5 0 0 0 .5-.5V5.563h1.406a.5.5 0 0 0 .5-.5V3.438a.5.5 0 0 0-.5-.5H10.44V1.53a.5.5 0 0 0-.5-.5zm-7.732 9.75l2.444 2.037a2 2 0 0 0 1.28.463h6.443c.46 0 .833-.373.833-.833c0-.92-.746-1.667-1.667-1.667H5.437"></path>
+                  <path d="m3.583 9.781l.75.75a1.06 1.06 0 1 0 1.5-1.5L4.669 7.867a2 2 0 0 0-1.414-.586H.583"></path>
+                </g>
+              </svg>
+              <p className="text-[#1B2C51] text-center">
+                Travail en collaboratioin avec les entreprises d&apos;assurance
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="flex flex-row justify-between">
+            <motion.div
+              style={{
+                x: x2,
+                opacity: opacity2,
+              }}
+              className="flex flex-col items-center w-[47%]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                color="#701a75"
+                className="w-8 lg:w-12 "
                 viewBox="0 0 24 24"
               >
                 <g
@@ -136,48 +173,18 @@ const FirmHistory = () => {
                 Personnel d&apos;appui hautement qualifié
               </p>
             </motion.div>
-          </div>
 
-          <div className="flex flex-row justify-between">
-            <motion.div 
-             style={{
-              x: x2,
-              opacity: opacity2,
-            }}
-            className="flex flex-col items-center w-[47%]">
+            <motion.div
+              style={{
+                x: X2,
+                opacity: opacity2,
+              }}
+              className="flex flex-col items-center w-[47%]"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 color="#701a75"
-                width="3em"
-                height="3em"
-                viewBox="0 0 14 14"
-              >
-                <g
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M8.315 1.031a.5.5 0 0 0-.5.5v1.407H6.409a.5.5 0 0 0-.5.5v1.625a.5.5 0 0 0 .5.5h1.406v1.406a.5.5 0 0 0 .5.5H9.94a.5.5 0 0 0 .5-.5V5.563h1.406a.5.5 0 0 0 .5-.5V3.438a.5.5 0 0 0-.5-.5H10.44V1.53a.5.5 0 0 0-.5-.5zm-7.732 9.75l2.444 2.037a2 2 0 0 0 1.28.463h6.443c.46 0 .833-.373.833-.833c0-.92-.746-1.667-1.667-1.667H5.437"></path>
-                  <path d="m3.583 9.781l.75.75a1.06 1.06 0 1 0 1.5-1.5L4.669 7.867a2 2 0 0 0-1.414-.586H.583"></path>
-                </g>
-              </svg>
-              <p className="text-[#1B2C51] text-center">
-                Travail en collaboratioin avec les entreprises d&apos;assurance
-              </p>
-            </motion.div>
-
-            <motion.div 
-             style={{
-              x: X2,
-              opacity: opacity2,
-            }}
-            className="flex flex-col items-center w-[47%]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                color="#701a75"
-                width="3em"
-                height="3em"
+                className="w-8 lg:w-12 "
                 viewBox="0 0 32 32"
               >
                 <path
@@ -192,8 +199,10 @@ const FirmHistory = () => {
           </div>
         </div>
       </div>
-      <div className={`absolute right-0 h-4/6 w-50 `}>
-        <img src={firm} alt=""  className="object-contain w-full h-full"/>
+      <div className={`absolute right-0 h-4/6 w-50 top-96
+      md:top-0
+      `}>
+        <img src={firm} alt="" className="object-contain w-full h-full" />
       </div>
     </div>
   );

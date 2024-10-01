@@ -18,9 +18,14 @@ const KeyMetricsSection = () => {
 
   return (
     <motion.div
-      className="flex justify-between items-center bg-[#1ea06c] gap-5 py-4 text-white font-semibold text-5xl"
+      className="flex flex-row flex-wrap justify-between items-center bg-[#1ea06c] px-6 py-4 text-white text-2xl font-semibold
+      md:px-0 
+      md:text-4xl"
     >
-      <div className="relative bg-fuchsia-900 h-[2px] w-32 ">
+      <div className="hidden md:flex md:relative bg-fuchsia-900 h-[2px] 
+      md:w-8
+      lg:w-24
+      xl:w-32 ">
         <div className="absolute top-1/2 right-0 transform -translate-y-1/2 z-50 bg-fuchsia-900 h-3 w-3 rounded-full" />
       </div>
 
@@ -31,6 +36,7 @@ const KeyMetricsSection = () => {
           style={{ y: yPosition, opacity }} 
         >
           {metric.n.toString().length > 3 ? (
+
             <div className="flex justify-center items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,11 +54,14 @@ const KeyMetricsSection = () => {
           ) : (
             <KeyMetrics n={metric.n} />
           )}
-          <span className="text-lg font-medium">{metric.texte}</span>
+          <span className="text-sm lg:text-lg font-medium">{metric.texte}</span>
         </motion.div>
       ))}
 
-      <div className="relative bg-fuchsia-900 h-[2px] w-32 ">
+      <div className="hidden md:flex md:relative bg-fuchsia-900 h-[2px] 
+      md:w-8
+      lg:w-24
+      xl:w-32">
         <div className="absolute top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-fuchsia-900 h-3 w-3 rounded-full" />
       </div>
     </motion.div>

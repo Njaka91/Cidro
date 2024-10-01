@@ -7,10 +7,11 @@ const AppointmentBottom = () => {
   const isInView = useInView(ref);
 
   return (
-    <div className="flex flex-col relative justify-center items-center gap-5 overflow-hidden px-32 pb-14 ">
+    <div className="flex flex-col relative justify-center items-center gap-5 overflow-hidden mt-8 px-32 pb-14 
+    md:mt-0">
       <motion.div
         ref={ref}
-        className="text-3xl font-semibold text-[#1B2C51]"
+        className="text-3xl text-center font-semibold text-[#1B2C51]"
         style={{
           opacity: isInView ? 1 : 0,
           transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.1s",
@@ -19,7 +20,8 @@ const AppointmentBottom = () => {
         Contactez nous :
       </motion.div>
       <div
-        className=" inset-0 flex flex-row items-center justify-center gap-14"
+        className=" inset-0 flex flex-row items-center justify-center gap-8
+        md:gap-14"
         ref={ref}
       >
         <motion.div

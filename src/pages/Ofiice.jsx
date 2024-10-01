@@ -11,7 +11,7 @@ const Ofiice = () => {
           img={office.img}
           title={office.title}
           description={office.description}
-          className={index % 2 === 0 ? "flex-row" : "flex-row-reverse"}
+          positionImg={index % 2 === 0 ? "flex-row" : "flex-row-reverse"}
         />
       ))}
     </>

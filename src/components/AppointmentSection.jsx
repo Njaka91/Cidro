@@ -636,7 +636,7 @@ const AppointmentSection = () => {
               </div>
 
               <div className="flex flex-col w-3/4 mx-auto flex-wrap justify-center items-center gap-4 pt-7">
-                <button className="rounded-full shadow-xl btn w-52  mx-auto bg-[#1B2C51] border-0 text-white hover:bg-fuchsia-900">
+                <button className="rounded-full shadow-lg btn w-52  mx-auto bg-[#1B2C51] border-0 text-white hover:bg-fuchsia-900">
                   {successMessage ? (
                     "Envoyer"
                   ) : (

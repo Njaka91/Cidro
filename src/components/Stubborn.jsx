@@ -5,7 +5,7 @@ import { Clock, EnvelopeSimple, HouseLine, Phone } from "@phosphor-icons/react";
 const Stubborn = () => {
   return (
     <div className="hidden items-center justify-between  
-    md:flex md:flex-row md:px-8 
+    mdIphone:flex mdIphone:flex-row md:px-8 
     lg:px-24 
     xl-px-32">
       <div className="flex items-center 

@@ -25,13 +25,15 @@ const PresidentSection = () => {
 
   return (
     <div
+        ref={ref}
+
       className="flex flex-col-reverse bg-slate-300 mt-8 relative py-14
     md:flex-row md:justify-between md:px-8 
     lg:my-16 lg:px-24
     xl:px-32"
     >
       <div
-        ref={ref}
+        
         className=" relative flex flex-col mt-10 text-[#1B2C51] z-10 px-6
       md:w-1/2
       xl:mt-24"
@@ -82,7 +84,6 @@ const PresidentSection = () => {
         </motion.div>
       </div>
       <div
-        ref={ref}
         className="relative z-10 w-full px-6 
       md:w-1/2 md:px-0
       xl:my-16 "

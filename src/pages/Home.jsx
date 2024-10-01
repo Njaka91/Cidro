@@ -10,7 +10,7 @@ const Home = () => {
       <PresidentSection/>
       <FirmHistory/>
       <KeyMetricsSection/>
-      {/*<Team/> */}
+      <Team/>
 
     </>
   )

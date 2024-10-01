@@ -27,10 +27,10 @@ const NavBar = () => {
   };
 
   return (
-    <div className="sticky top-0 bg-[#701a75] flex items-center justify-between mdIpohne:justify-center py-3 px-5 text-white z-50 mdIpohne:px-10">
+    <div className="sticky top-0 bg-[#701a75] flex items-center justify-between md:justify-center py-3 px-5 text-white z-50 md:px-10">
       {/* Logo (centré) */}
-      <div className="flex-1 mdIpohne:hidden"></div>
-      <div className="text-lg mdIpohne:hidden justify-center items-center font-bold mx-auto">
+      <div className="flex-1 md:hidden"></div>
+      <div className="text-lg md:hidden justify-center items-center font-bold mx-auto">
         <div className="flex items-center gap-2">
           <Link to="/">
             <img src={logo} alt="logo" className="w-9 bg-white rounded-lg" />
@@ -40,7 +40,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      <div className="flex-1 flex justify-end mdIpohne:hidden">
+      <div className="flex-1 flex justify-end md:hidden">
         {/* Mobile Menu Button (droite) */}
         <button onClick={toggleMenu} className="text-white text-2xl">
           {isMenuOpen ? "✖" : "☰"}
@@ -49,7 +49,7 @@ const NavBar = () => {
 
       {/* Desktop Menu */}
       <motion.ul
-        className="hidden mdIpohne:flex gap-8 lg:gap-16 items-center font-medium justify-center"
+        className="hidden md:flex gap-8 lg:gap-16 items-center font-medium justify-center"
         variants={ulVariants}
         initial="before"
         animate="after"
@@ -81,7 +81,7 @@ const NavBar = () => {
           initial={{ opacity: 0, y: -100 }} // Départ en haut de l'écran
           animate={{ opacity: 1, y: 0 }} // Animation vers le bas
           transition={{ type: "tween", duration: 0.3 }} // Transition douce
-          className="absolute mdIpohne:hidden top-full left-0 w-full bg-[#701a75] text-center py-5"
+          className="absolute md:hidden top-full left-0 w-full bg-[#701a75] text-center py-5"
         >
           <ul className="flex flex-col gap-4">
             {["Accueil", "Le cabinet", "Equipe", "Nos soins", "Prendre rendez-vous"].map((text, index) => (
@@ -94,7 +94,8 @@ const NavBar = () => {
                       ? "bg-white text-fuchsia-900 py-2 px-4 rounded-full font-semibold transition-colors duration-300 hover:bg-fuchsia-100 hover:text-fuchsia-950"
                       : "block text-white py-2"
                   }
-                >
+                 
+                 >
                   {text}
                 </NavLink>
               </li>

@@ -1,12 +1,19 @@
 import { useState } from "react";
 import emailjs from "emailjs-com";
+import img from "../assets/images/cabinet_dentaire.jpg";
+import PlusDeco from "./PlusDeco";
+import fond1 from "../assets/images/fond1.png";
+import fond2 from "../assets/images/fond2.png";
 
 const AppointmentSection = () => {
   const [hasMutuelle, setHasMutuelle] = useState("");
   const [isForMe, setIsForMe] = useState("");
   const [appointementDay, setAppointementDay] = useState("");
   const [appointementHour, setAppointementHour] = useState("");
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const [formData, setFormData] = useState({
     nom: "",
@@ -48,8 +55,16 @@ const AppointmentSection = () => {
     if (!formData.nom.trim()) {
       newErrors.nom = "Champ obligatoire.";
     }
+    if (!formData.dateNaissance.trim()) {
+      newErrors.dateNaissance = "Champ obligatoire.";
+    }
     if (!formData.prenom.trim()) {
       newErrors.prenom = "Champ obligatoire.";
+    }
+    if (!formData.telephone.trim()) {
+      newErrors.telephone = "Champ obligatoire.";
+    } else if (!/^\d+$/.test(formData.telephone)) {
+      newErrors.telephone = "Le téléphone doit être uniquement en chiffres.";
     }
 
     if (!formData.email.trim()) {
@@ -57,6 +72,11 @@ const AppointmentSection = () => {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Veuillez entrer une adresse email valide.";
     }
+
+    if (!isForMe) {
+      newErrors.isForMe = "Veuillez sélectionner une option.";
+    }
+
     // Ajoutez d'autres validations pour les autres champs ici
 
     setErrors(newErrors);
@@ -66,26 +86,39 @@ const AppointmentSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrorMessage(false);
+
+    if (
+      errors.nom === "" &&
+      errors.prenom === "" &&
+      errors.dateNaissance === "" &&
+      errors.telephone === "" &&
+      errors.email === ""
+    ) {
+      setErrorMessage(false);
+    }
 
     if (!validateForm()) {
+      setErrorMessage(true);
       return;
     }
+    setSuccessMessage(false);
 
     const templateParams = {
       nom: formData.nom,
       prenom: formData.prenom,
       dateNaissance: formData.dateNaissance,
-      adresse: formData.adresse,
-      ville: formData.ville,
-      codePostal: formData.codePostal,
+      adresse: formData.adresse?formData.adresse:"-----",
+      ville: formData.ville?formData.ville:"-----",
+      codePostal: formData.codePostal?formData.codePostal:"-----",
       email: formData.email,
       telephone: formData.telephone,
-      mutuelle: formData.mutuelle,
-      secuSociale: formData.secuSociale,
-      demande: formData.demande,
+      mutuelle: formData.mutuelle?formData.mutuelle:"Aucune",
+      secuSociale: formData.secuSociale?formData.secuSociale:"Aucun",
+      demande: formData.demande?formData.demande:"Aucune",
       appointementDay: appointementDay,
       appointementHour: appointementHour,
-      isForMe:isForMe
+      isForMe: isForMe,
     };
 
     emailjs
@@ -98,25 +131,30 @@ const AppointmentSection = () => {
       .then(
         (result) => {
           console.log("Email envoyé avec succès!", result.text);
+          setIsOpen(true);
+          setSuccessMessage(true);
+          setErrorMessage(false);
         },
         (error) => {
           console.log("Erreur lors de l'envoi de l'email:", error.text);
         }
       );
-    console.log(
-      "Form data: ",
-      formData,
-      hasMutuelle,
-      isForMe,
-      appointementDay,
-      appointementHour
-    );
-    // Add API submission or other logic here
   };
 
   return (
-    <div className="py-10">
-      <div className="bg-[#1B2C51] bg-opacity-60 w-3/5 mx-auto rounded-3xl py-7">
+    <div className="relative py-10">
+      <div className="absolute left-32 top-32 overflow-hidden rounded-tl-3xl z-10 rounded-br-3xl shadow-xl w-1/4 h-2/6">
+        <img src={img} alt="dentiste" className="object-cover w-full h-full" />
+      </div>
+      <div className="absolute left-36 top-36 overflow-hidden bg-none rounded-tl-3xl border-fuchsia-900 border-2 border-opacity-35 z-20 rounded-br-3xl w-1/4 h-2/6" />
+      <div className="absolute left-28 top-28 overflow-hidden bg-none rounded-tl-3xl border-[#1B2C51] z-0 border-2 border-opacity-35 rounded-br-3xl w-1/4 h-2/6" />
+      <div className="absolute right-32 bottom-32  overflow-hidden rounded-tr-3xl z-10 rounded-bl-3xl shadow-xl w-1/4 h-2/6">
+        <img src={img} alt="dentiste" className="object-cover w-full h-full" />
+      </div>
+      <div className="absolute right-36 bottom-36 overflow-hidden bg-none rounded-tr-3xl border-[#1B2C51] border-2 border-opacity-35 z-0 rounded-bl-3xl w-1/4 h-2/6" />
+      <div className="absolute right-28 bottom-28 overflow-hidden bg-none rounded-tr-3xl border-fuchsia-900 z-20 border-2 border-opacity-35 rounded-bl-3xl w-1/4 h-2/6" />
+
+      <div className="relative bg-[#1B2C51] z-30  bg-opacity-60 w-3/5 mx-auto rounded-3xl py-10 flex items-center flex-col">
         <div>
           <h1 className="text-2xl font-semibold text-white text-center">
             QUESTIONNAIRE DE DEMANDE DE RENDEZ-VOUS
@@ -132,9 +170,9 @@ const AppointmentSection = () => {
           </p>
         </div>
 
-        <div className="py-7">
+        <div className="pt-7">
           <form onSubmit={handleSubmit}>
-            <div className="flex w-3/4 max-w-3xl mx-auto flex-row flex-wrap justify-between gap-4">
+            <div className="flex flex-row flex-wrap justify-center gap-4">
               <div className="relative flex items-center w-72">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -240,6 +278,97 @@ const AppointmentSection = () => {
                 />
               </div>
 
+              <div>
+                <div className="relative flex items-center w-72">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 50 50"
+                    className="absolute left-3 h-4 w-4 opacity-70"
+                  >
+                    <path
+                      fill="none"
+                      stroke="#306cfe"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M43.75 31.25v8.187a4.166 4.166 0 0 1-4.77 4.167A37.5 37.5 0 0 1 6.541 11.021a4.167 4.167 0 0 1 4.146-4.771h8.062a2.083 2.083 0 0 1 2.083 1.854c.207 2.73.913 5.4 2.084 7.875a2.083 2.083 0 0 1-.875 2.625l-1.792 1.02a2.085 2.085 0 0 0-.687 3.043a29.3 29.3 0 0 0 7.687 7.687a2.083 2.083 0 0 0 3.042-.687l1.02-1.792a2.083 2.083 0 0 1 2.709-.792a22.4 22.4 0 0 0 7.875 2.084a2.083 2.083 0 0 1 1.854 2.083"
+                    ></path>
+                  </svg>
+
+                  <input
+                    type="text"
+                    name="telephone"
+                    value={formData.telephone}
+                    onChange={handleChange}
+                    onFocus={(e) => {
+                      e.target.placeholder = "N° de telephone ";
+                      e.target.classList.remove("placeholder-red-500"); // Supprime la classe d'erreur pour le placeholder
+                    }}
+                    onBlur={(e) => {
+                      if (!formData.telephone && !errors.telephone) {
+                        e.target.placeholder = "N° de telephone "; // Rétablit le placeholder par défaut
+                      }
+                    }}
+                    className={`pl-10 bg-white text-black p-2 rounded-2xl border ${
+                      errors.telephone
+                        ? "border-red-500 placeholder-red-500" // Bordure rouge si erreur
+                        : "border-slate-400 focus:border-fuchsia-900" // Bordure grise par défaut, bleue au focus
+                    } w-full focus:outline-none`} // focus:outline-none pour supprimer le contour par défaut
+                    placeholder={errors.telephone || "N° de telephone "} // Affiche l'erreur ou le placeholder par défaut
+                  />
+                </div>
+                {errors.telephone ===
+                  "Le téléphone doit être uniquement en chiffres." && (
+                  <p className="text-red-500 text-sm mt-1 bg-white bg-opacity-50 rounded-full px-1">
+                    {errors.telephone}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <div className="relative flex items-center w-72">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                    className="absolute left-3 h-4 w-4 opacity-70"
+                  >
+                    <path d="M1.5 2a.5.5 0 00-.5.5v11a.5.5 0 00.5.5h13a.5.5 0 00.5-.5V2.5a.5.5 0 00-.5-.5h-13zM1 3.5v-.5h14v.5h-14zm0 1h14v10H1V4.5zm0 0z" />
+                    <path d="M1 4.5l7 4.5 7-4.5v10l-7 4.5-7-4.5V4.5z" />
+                  </svg>
+
+                  <input
+                    type="text"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    onFocus={(e) => {
+                      e.target.placeholder = "Email ";
+                      e.target.classList.remove("placeholder-red-500"); // Supprime la classe d'erreur pour le placeholder
+                    }}
+                    onBlur={(e) => {
+                      if (!formData.email && !errors.email) {
+                        e.target.placeholder = "Email "; // Rétablit le placeholder par défaut
+                      }
+                    }}
+                    className={`pl-10 bg-white text-black p-2 rounded-2xl border ${
+                      errors.email
+                        ? "border-red-500 placeholder-red-500" // Bordure rouge si erreur
+                        : "border-slate-400 focus:border-fuchsia-900" // Bordure grise par défaut, bleue au focus
+                    } w-full focus:outline-none`} // focus:outline-none pour supprimer le contour par défaut
+                    placeholder={errors.email || "Email "} // Affiche l'erreur ou le placeholder par défaut
+                  />
+                </div>
+                {errors.email ===
+                  "Veuillez entrer une adresse email valide." && (
+                  <p className="text-red-500 text-sm mt-1 bg-white bg-opacity-50 rounded-full px-1 text-center">
+                    {errors.email}
+                  </p>
+                )}
+              </div>
+
               <div className="relative flex items-center w-72">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -295,72 +424,6 @@ const AppointmentSection = () => {
                   onChange={handleChange}
                   className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
                   placeholder="Code postal"
-                />
-              </div>
-              <div>
-                <div className="relative flex items-center w-72">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 16 16"
-                    fill="currentColor"
-                    className="absolute left-3 h-4 w-4 opacity-70"
-                  >
-                    <path d="M1.5 2a.5.5 0 00-.5.5v11a.5.5 0 00.5.5h13a.5.5 0 00.5-.5V2.5a.5.5 0 00-.5-.5h-13zM1 3.5v-.5h14v.5h-14zm0 1h14v10H1V4.5zm0 0z" />
-                    <path d="M1 4.5l7 4.5 7-4.5v10l-7 4.5-7-4.5V4.5z" />
-                  </svg>
-
-                  <input
-                    type="text"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    onFocus={(e) => {
-                      e.target.placeholder = "Email ";
-                      e.target.classList.remove("placeholder-red-500"); // Supprime la classe d'erreur pour le placeholder
-                    }}
-                    onBlur={(e) => {
-                      if (!formData.email && !errors.email) {
-                        e.target.placeholder = "Email "; // Rétablit le placeholder par défaut
-                      }
-                    }}
-                    className={`pl-10 bg-white text-black p-2 rounded-2xl border ${
-                      errors.email
-                        ? "border-red-500 placeholder-red-500" // Bordure rouge si erreur
-                        : "border-slate-400 focus:border-fuchsia-900" // Bordure grise par défaut, bleue au focus
-                    } w-full focus:outline-none`} // focus:outline-none pour supprimer le contour par défaut
-                    placeholder={errors.email || "Email "} // Affiche l'erreur ou le placeholder par défaut
-                  />
-                </div>
-                {errors.email ===
-                  "Veuillez entrer une adresse email valide." && (
-                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-                )}
-              </div>
-
-              <div className="relative flex items-center w-72">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 50 50"
-                  className="absolute left-3 h-4 w-4 opacity-70"
-                >
-                  <path
-                    fill="none"
-                    stroke="#306cfe"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M43.75 31.25v8.187a4.166 4.166 0 0 1-4.77 4.167A37.5 37.5 0 0 1 6.541 11.021a4.167 4.167 0 0 1 4.146-4.771h8.062a2.083 2.083 0 0 1 2.083 1.854c.207 2.73.913 5.4 2.084 7.875a2.083 2.083 0 0 1-.875 2.625l-1.792 1.02a2.085 2.085 0 0 0-.687 3.043a29.3 29.3 0 0 0 7.687 7.687a2.083 2.083 0 0 0 3.042-.687l1.02-1.792a2.083 2.083 0 0 1 2.709-.792a22.4 22.4 0 0 0 7.875 2.084a2.083 2.083 0 0 1 1.854 2.083"
-                  ></path>
-                </svg>
-                <input
-                  type="text"
-                  name="telephone"
-                  value={formData.telephone}
-                  onChange={handleChange}
-                  className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
-                  placeholder="N° de telephone"
                 />
               </div>
 
@@ -458,37 +521,57 @@ const AppointmentSection = () => {
                   placeholder="N° de sécurité sociale"
                 />
               </div>
-
-              <div className="relative flex items-center w-72">
-                <svg
-                  className="absolute left-3 h-4 w-4 opacity-70"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 32 32"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M26 16h-8.532l-5-6H5a3.003 3.003 0 0 0-3 3v6a2 2 0 0 0 2 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-7h-2v7H6v-9H4v-6a1 1 0 0 1 1-1h6.532l5 6H26a1 1 0 0 1 1 1v3h-2v6h-3v-6h-2v6a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-4a2 2 0 0 0 2-2v-3a3.003 3.003 0 0 0-3-3"
-                  ></path>
-                  <path
-                    fill="currentColor"
-                    d="M23.5 15a3.5 3.5 0 1 1 3.5-3.5a3.504 3.504 0 0 1-3.5 3.5m0-5a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5M8 9a4 4 0 1 1 4-4a4.004 4.004 0 0 1-4 4m0-6a2 2 0 1 0 2 2a2 2 0 0 0-2-2"
-                  ></path>
-                </svg>
-                <select
-                  className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white placeholder:text-red-600 text-black p-2 rounded-2xl  border border-slate-400 w-full"
-                  value={isForMe}
-                  onChange={(e) => setIsForMe(e.target.value)}
-                >
-                  <option value="" disabled selected>
-                    Le rendez-vous est pour :
-                  </option>
-                  <option value="le demandeur">moi</option>
-                  <option value="l'enfant du demandeur">mon enfant</option>
-                </select>
+              <div>
+                <div className="relative flex items-center w-72">
+                  <svg
+                    className="absolute left-3 h-4 w-4 opacity-70"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M26 16h-8.532l-5-6H5a3.003 3.003 0 0 0-3 3v6a2 2 0 0 0 2 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-7h-2v7H6v-9H4v-6a1 1 0 0 1 1-1h6.532l5 6H26a1 1 0 0 1 1 1v3h-2v6h-3v-6h-2v6a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-4a2 2 0 0 0 2-2v-3a3.003 3.003 0 0 0-3-3"
+                    ></path>
+                    <path
+                      fill="currentColor"
+                      d="M23.5 15a3.5 3.5 0 1 1 3.5-3.5a3.504 3.504 0 0 1-3.5 3.5m0-5a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5M8 9a4 4 0 1 1 4-4a4.004 4.004 0 0 1-4 4m0-6a2 2 0 1 0 2 2a2 2 0 0 0-2-2"
+                    ></path>
+                  </svg>
+                  <select
+                    className={`focus:outline-none pl-10 bg-white placeholder:text-red-600 text-black p-2 rounded-2xl border ${
+                      errors.isForMe
+                        ? "border-red-500 placeholder-red-500"
+                        : "border-slate-400 focus:border-fuchsia-900"
+                    } w-full`}
+                    value={isForMe}
+                    onChange={(e) => {
+                      setIsForMe(e.target.value);
+                      // Efface l'erreur si une option est sélectionnée
+                      if (e.target.value) {
+                        setErrors((prevErrors) => ({ ...prevErrors, isForMe: "" }));
+                      }
+                    }}
+                    
+                  >
+                    <option value="" disabled selected>
+                      Le rendez-vous est pour :
+                    </option>
+                    <option value="le demandeur">moi</option>
+                    <option value="l'enfant du demandeur">mon enfant</option>
+                  </select>
+                </div>
+                {errors.isForMe && (
+                  <p className="text-red-500 text-sm mt-1 bg-white bg-opacity-50 rounded-full px-1 text-center">
+                    {errors.isForMe}
+                  </p>
+                )}
               </div>
             </div>
+
+            {/* Afficher un message d'erreur si une option n'est pas sélectionnée */}
+
             <div>
               <div className="flex w-3/4 max-w-3xl mx-auto flex-row flex-wrap justify-between gap-4 py-7">
                 <textarea
@@ -552,15 +635,87 @@ const AppointmentSection = () => {
                 ))}
               </div>
 
-              <div className="flex w-3/4 max-w-3xl mx-auto flex-row flex-wrap justify-between gap-4 py-7">
-                <button className="rounded-full shadow-xl btn w-52 max-w-sm mx-auto bg-[#1B2C51] border-0 text-white hover:bg-fuchsia-900">
-                  Envoyer
+              <div className="flex flex-col w-3/4 mx-auto flex-wrap justify-center items-center gap-4 pt-7">
+                <button className="rounded-full shadow-lg btn w-52  mx-auto bg-[#1B2C51] border-0 text-white hover:bg-fuchsia-900">
+                  {successMessage ? (
+                    "Envoyer"
+                  ) : (
+                    <span className="loading loading-spinner loading-md"></span>
+                  )}
                 </button>
+
+                {errorMessage && (
+                  <p className="text-red-500 text-sm text-center mt-1 w-1/2 bg-white bg-opacity-50 rounded-full px-1">
+                    Veuillez bien remplir tous les champs
+                  </p>
+                )}
               </div>
             </div>
           </form>
         </div>
       </div>
+
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex justify-center items-center">
+          <div className="absolute inset-0 bg-black bg-opacity-75 backdrop-blur-md"></div>
+          <div className="relative p-10 w-1/2 rounded-2xl overflow-hidden z-10 flex flex-col justify-center bg-[#F5F5F5] items-center">
+            <PlusDeco />
+            <div
+              style={{
+                backgroundImage: `url(${fond1})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+              className="z-0 absolute left-0 bottom-0 w-1/3 h-3/4"
+            />
+            <div
+              style={{
+                backgroundImage: `url(${fond2})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+              className="z-0 absolute right-0 top-10 w-1/4 h-1/2"
+            />
+
+            <div className="flex flex-col justify-center items-center p-4 w-full z-40 rounded-xl bg-opacity-50 bg-[#faf9f9] shadow-md">
+              <div className="text-fuchsia-900 flex flex-row items-center justify-center">
+                <span className="w-28">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                    <path
+                      fill="currentColor"
+                      d="M16 3C8.8 3 3 8.8 3 16s5.8 13 13 13s13-5.8 13-13c0-1.4-.188-2.794-.688-4.094L26.688 13.5c.2.8.313 1.6.313 2.5c0 6.1-4.9 11-11 11S5 22.1 5 16S9.9 5 16 5c3 0 5.694 1.194 7.594 3.094L25 6.688C22.7 4.388 19.5 3 16 3m11.28 4.28L16 18.563l-4.28-4.28l-1.44 1.437l5 5l.72.686l.72-.687l12-12l-1.44-1.44z"
+                    />
+                  </svg>
+                </span>
+                <span className="font-medium text-4xl text-center">
+                  Votre demande a bien été envoyé !!!
+                </span>
+              </div>
+
+              <span className="text-center text-[#1B2C51] mt-4">
+                Nous avons bien reçu votre demande. Notre secrétaire vous
+                contactera sous peu pour convenir d&apos;une date de
+                rendez-vous. Merci pour votre confiance !
+              </span>
+            </div>
+            <div className="modal-action">
+              <form method="dialog">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="btn relative bg-[#1B2C51] w-52 rounded-full shadow-xl border-0 text-white font-medium group hover:bg-[#1B2C51]"
+                >
+                  <span className="relative z-40">
+                    <span>Fermer</span>
+                  </span>
+                  <span className="absolute inset-0 w-0 h-full opacity-0 rounded-full bg-fuchsia-900 transition-all duration-300 group-hover:opacity-75 group-hover:w-full"></span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

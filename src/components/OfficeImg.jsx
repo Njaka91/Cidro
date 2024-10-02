@@ -33,8 +33,6 @@ const OfficeImg = ({ title, description, img, positionImg }) => {
         className="
         relative w-full h-[25rem]
         md:w-1/2 
-        lg:w-1/2 
-        xl:w-1/2
         "
       >
         <motion.div
@@ -61,8 +59,7 @@ const OfficeImg = ({ title, description, img, positionImg }) => {
         className="
         relative flex w-full flex-col text-[#1B2C51]
         md:w-1/2 
-        lg:w-1/2 
-        xl:w-1/2"
+        "
       >
         <span className="flex flex-col text-fuchsia-900">
           <motion.span

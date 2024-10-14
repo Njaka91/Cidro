@@ -16,7 +16,7 @@ const KeyMetrics = ({ n }) => {
     })
   return (
     <div ref={ref}>
-    <animated.div>{number.to((n) => n.
+    <animated.div className="text-center">{number.to((n) => n.
     // eslint-disable-next-line react/prop-types
     toFixed(0))}</animated.div>
     </div>

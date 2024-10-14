@@ -1,4 +1,4 @@
-import dentiste from "../assets/images/dentiste.jpg";
+import dentiste from "../assets/images/Dr Allain.png";
 import dent from "../assets/images/dent.png";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
@@ -25,50 +25,47 @@ const PresidentSection = () => {
 
   return (
     <div
-        ref={ref}
-
+      ref={ref}
       className="flex flex-col-reverse bg-slate-300 mt-8 relative py-14
     md:flex-row md:justify-between md:px-8 
     lg:my-16 lg:px-24
     xl:px-32"
     >
       <div
-        
         className=" relative flex flex-col mt-10 text-[#1B2C51] z-10 px-6
       md:w-1/2
       xl:mt-24"
       >
         <div className="relative ">
-        <motion.div
-          style={{
-            y: TitleY,
-          }}
-          className=" flex flex-col "
-
-        >
           <motion.div
-            className="absolute w-72 h-24 -left-4 bottom-0 bg-none border-2 border-[#1B2C51] border-opacity-20 rounded-tl-3xl rounded-br-3xl 
+            style={{
+              y: TitleY,
+            }}
+            className=" flex flex-col "
+          >
+            <motion.div
+              className="absolute w-72 h-24 -left-4 bottom-0 bg-none border-2 border-[#1B2C51] border-opacity-20 rounded-tl-3xl rounded-br-3xl 
             lg:w-96 
             xl:h-32 xl:w-[450px] xl:-bottom-2 xl:-left-8"
-            style={{ y: border2Y, x: border2X }}
-          ></motion.div>
-          <motion.div
-            className="absolute w-72 h-24 -bottom-3 -left-2 bg-none border-2 border-fuchsia-900 border-opacity-20 rounded-tl-3xl rounded-br-3xl 
+              style={{ y: border2Y, x: border2X }}
+            ></motion.div>
+            <motion.div
+              className="absolute w-72 h-24 -bottom-3 -left-2 bg-none border-2 border-fuchsia-900 border-opacity-20 rounded-tl-3xl rounded-br-3xl 
             lg:w-96
             xl:h-32 xl:w-[450px] xl:-bottom-6"
-            style={{ y: borderY, x: borderX }}
-          ></motion.div>
-          <span className="text-3xl font-medium">Dr Allain</span>
-          <span
-            className="font-semibold text-4xl
+              style={{ y: borderY, x: borderX }}
+            ></motion.div>
+            <span className="text-3xl font-medium">Dr Allain</span>
+            <span
+              className="font-semibold text-4xl
           lg:text-5xl lg:font-semibold
           xl:text-6xl xl:font-semibold"
-          >
-            RAZAKATIANA
-          </span>
-        </motion.div>
+            >
+              RAZAKATIANA
+            </span>
+          </motion.div>
         </div>
-        
+
         <motion.div style={{ y: textY }}>
           <p className="mt-4 text-justify md:w-4/5">
             Les évolutions technologiques du monde de la médecine actuelle ont

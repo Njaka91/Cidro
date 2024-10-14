@@ -31,15 +31,7 @@ const AppointmentSection = () => {
     demande: "",
   });
 
-  const days = [
-    "Lundi",
-    "Mardi",
-    "Mercredi",
-    "Jeudi",
-    "Vendredi",
-    "Samedi",
-    "Dimanche",
-  ];
+  const days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"];
 
   const hour = ["8h30-12h", "14h00-17h"];
 
@@ -108,14 +100,14 @@ const AppointmentSection = () => {
       nom: formData.nom,
       prenom: formData.prenom,
       dateNaissance: formData.dateNaissance,
-      adresse: formData.adresse?formData.adresse:"-----",
-      ville: formData.ville?formData.ville:"-----",
-      codePostal: formData.codePostal?formData.codePostal:"-----",
+      adresse: formData.adresse ? formData.adresse : "-----",
+      ville: formData.ville ? formData.ville : "-----",
+      codePostal: formData.codePostal ? formData.codePostal : "-----",
       email: formData.email,
       telephone: formData.telephone,
-      mutuelle: formData.mutuelle?formData.mutuelle:"Aucune",
-      secuSociale: formData.secuSociale?formData.secuSociale:"Aucun",
-      demande: formData.demande?formData.demande:"Aucune",
+      mutuelle: formData.mutuelle ? formData.mutuelle : "Aucune",
+      secuSociale: formData.secuSociale ? formData.secuSociale : "Aucun",
+      demande: formData.demande ? formData.demande : "Aucune",
       appointementDay: appointementDay,
       appointementHour: appointementHour,
       isForMe: isForMe,
@@ -143,18 +135,24 @@ const AppointmentSection = () => {
 
   return (
     <div className="relative py-10">
-      <div className="absolute left-32 top-32 overflow-hidden rounded-tl-3xl z-10 rounded-br-3xl shadow-xl w-1/4 h-2/6">
+      <div className="absolute hidden md:block left-32 top-32 overflow-hidden rounded-tl-3xl z-10 rounded-br-3xl shadow-xl w-1/4 h-2/6">
         <img src={img} alt="dentiste" className="object-cover w-full h-full" />
       </div>
-      <div className="absolute left-36 top-36 overflow-hidden bg-none rounded-tl-3xl border-fuchsia-900 border-2 border-opacity-35 z-20 rounded-br-3xl w-1/4 h-2/6" />
-      <div className="absolute left-28 top-28 overflow-hidden bg-none rounded-tl-3xl border-[#1B2C51] z-0 border-2 border-opacity-35 rounded-br-3xl w-1/4 h-2/6" />
-      <div className="absolute right-32 bottom-32  overflow-hidden rounded-tr-3xl z-10 rounded-bl-3xl shadow-xl w-1/4 h-2/6">
+      <div className="absolute hidden md:block left-36 top-36 overflow-hidden bg-none rounded-tl-3xl border-fuchsia-900 border-2 border-opacity-35 z-20 rounded-br-3xl w-1/4 h-2/6" />
+      <div className="absolute hidden md:block left-28 top-28 overflow-hidden bg-none rounded-tl-3xl border-[#1B2C51] z-0 border-2 border-opacity-35 rounded-br-3xl w-1/4 h-2/6" />
+      <div className="absolute hidden md:block right-32 bottom-32  overflow-hidden rounded-tr-3xl z-10 rounded-bl-3xl shadow-xl w-1/4 h-2/6">
         <img src={img} alt="dentiste" className="object-cover w-full h-full" />
       </div>
-      <div className="absolute right-36 bottom-36 overflow-hidden bg-none rounded-tr-3xl border-[#1B2C51] border-2 border-opacity-35 z-0 rounded-bl-3xl w-1/4 h-2/6" />
-      <div className="absolute right-28 bottom-28 overflow-hidden bg-none rounded-tr-3xl border-fuchsia-900 z-20 border-2 border-opacity-35 rounded-bl-3xl w-1/4 h-2/6" />
+      <div className="absolute hidden md:block right-36 bottom-36 overflow-hidden bg-none rounded-tr-3xl border-[#1B2C51] border-2 border-opacity-35 z-0 rounded-bl-3xl w-1/4 h-2/6" />
+      <div className="absolute hidden md:block right-28 bottom-28 overflow-hidden bg-none rounded-tr-3xl border-fuchsia-900 z-20 border-2 border-opacity-35 rounded-bl-3xl w-1/4 h-2/6" />
 
-      <div className="relative bg-[#1B2C51] z-30  bg-opacity-60 w-3/5 mx-auto rounded-3xl py-10 flex items-center flex-col">
+      <div
+        className="
+      relative bg-[#1B2C51] z-30  bg-opacity-60 w-[90%] mx-auto rounded-3xl py-10 flex items-center flex-col
+      lg:w-3/5 
+
+      "
+      >
         <div>
           <h1 className="text-2xl font-semibold text-white text-center">
             QUESTIONNAIRE DE DEMANDE DE RENDEZ-VOUS
@@ -550,10 +548,12 @@ const AppointmentSection = () => {
                       setIsForMe(e.target.value);
                       // Efface l'erreur si une option est sélectionnée
                       if (e.target.value) {
-                        setErrors((prevErrors) => ({ ...prevErrors, isForMe: "" }));
+                        setErrors((prevErrors) => ({
+                          ...prevErrors,
+                          isForMe: "",
+                        }));
                       }
                     }}
-                    
                   >
                     <option value="" disabled selected>
                       Le rendez-vous est pour :
@@ -570,10 +570,8 @@ const AppointmentSection = () => {
               </div>
             </div>
 
-            {/* Afficher un message d'erreur si une option n'est pas sélectionnée */}
-
-            <div>
-              <div className="flex w-3/4 max-w-3xl mx-auto flex-row flex-wrap justify-between gap-4 py-7">
+            <div className="w-full">
+              <div className="w-[90%] md:w-3/4 mx-auto  justify-between py-7">
                 <textarea
                   className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full h-28"
                   placeholder="Avez-vous une demande particulière ?"
@@ -590,7 +588,7 @@ const AppointmentSection = () => {
                   Jour:
                 </h1>
               </div>
-              <div className="flex flex-row items-center gap-4 w-3/4 justify-between mx-auto">
+              <div className="flex flex-row flex-wrap items-center gap-4 w-3/4 justify-evenly mx-auto">
                 {days.map((day, index) => (
                   <div key={index} className="flex flex-col items-center">
                     <label className="label cursor-pointer">

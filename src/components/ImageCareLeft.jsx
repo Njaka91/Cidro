@@ -11,21 +11,18 @@ const ImageCareLeft = ({ tilte, description, img, prix, modalId }) => {
     target: ref,
     offset: ["start end", "center center"],
   });
-
   const scale = useTransform(scrollYProgress, [0, 0.8], [0.8, 1]);
   const buttonScale = useTransform(scrollYProgress, [0.5, 1], [0, 1]);
   const opacityblur = useTransform(scrollYProgress, [0, 0.8], [0.8, 0]);
   const buttonOpacity = useTransform(scrollYProgress, [0.5, 1], [0, 1]);
   const y2 = useTransform(scrollYProgress, [0, 0.8], [125, 0]);
-  const y = useTransform(scrollYProgress, [0, 0.82
-    
-  ], [200, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.82], [200, 0]);
   const opacity = useTransform(scrollYProgress, [0, 0.21], [0, 1]);
 
   return (
     <div
-    ref={ref}
-      className={`flex ${
+      ref={ref}
+      className={`flex flex-col ${
         parseInt(
           modalId
             // eslint-disable-next-line react/prop-types
@@ -33,11 +30,15 @@ const ImageCareLeft = ({ tilte, description, img, prix, modalId }) => {
         ) %
           2 ===
         0
-          ? "flex-row-reverse"
-          : "flex-row"
-      } relative px-32 my-14 gap-12`}
+          ? "md:flex-row-reverse"
+          : "md:flex-row"
+      } relative my-14 gap-12 px-6
+      md:px-8
+      lg:px-24
+      xl:px-32`}
     >
-      <div className="relative w-1/2 h-[25rem]">
+      <div className="relative w-full h-[25rem]
+      md:w-1/2">
         <motion.div
           style={{ scale: scale }}
           className="relative rounded-tr-3xl rounded-bl-3xl shadow-xl h-full"
@@ -68,7 +69,7 @@ const ImageCareLeft = ({ tilte, description, img, prix, modalId }) => {
         </motion.div>
         <div className="absolute inset-0 bg-slate-900/8 overflow-hidden" />
       </div>
-      <div className="relative flex w-1/2 flex-col text-[#1B2C51]">
+      <div className="relative flex md:w-1/2 flex-col text-[#1B2C51]">
         <span className="flex flex-col text-fuchsia-900">
           <motion.span
             style={{

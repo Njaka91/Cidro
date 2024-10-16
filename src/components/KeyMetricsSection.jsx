@@ -1,13 +1,13 @@
 import KeyMetrics from "./KeyMetrics";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer"; // Importer useInView
 
 const KeyMetricsSection = () => {
-  const { scrollYProgress } = useScroll({
-    offset: ["start end", "center center"],
+  // Utilisation de useInView pour suivre la visibilité de la section
+  const { ref: inViewRef, inView } = useInView({
+    triggerOnce: false, // Animation à l'entrée et à la sortie
+    threshold: 0.2, // Déclencher quand 20% de l'élément est visible
   });
-
-  const opacity = useTransform(scrollYProgress, [0.9, 0.95], [0, 1]);
-  const yPosition = useTransform(scrollYProgress, [0.6, 0.7], [100, 0]);
 
   const metricsData = [
     { n: 40, texte: "Années dans le domaine de la dentisterie générale" },
@@ -16,7 +16,8 @@ const KeyMetricsSection = () => {
 
   return (
     <motion.div
-      className="flex flex-row flex-wrap justify-between px-6 py-4 text-[#1B2C51] text-2xl font-semibold
+      ref={inViewRef} // Référence pour observer cette section
+      className="flex flex-row justify-center md:justify-between px-6 py-4 text-[#1B2C51] text-2xl font-semibold
       md:px-0 
       md:text-4xl"
     >
@@ -34,8 +35,10 @@ const KeyMetricsSection = () => {
       {metricsData.map((metric, index) => (
         <motion.div
           key={index}
-          className="flex flex-col items-center"
-          style={{ y: yPosition, opacity }}
+          className="flex flex-col"
+          initial={{ y: 100, opacity: 0 }} // Position et opacité de départ
+          animate={{ y: inView ? 0 : 100, opacity: inView ? 1 : 0 }} // Animation selon la visibilité
+          transition={{ duration: 0.8 }} // Durée de la transition
         >
           {metric.n.toString().length > 3 ? (
             <div className="flex justify-center items-center">
@@ -44,7 +47,7 @@ const KeyMetricsSection = () => {
           ) : (
             <KeyMetrics n={metric.n} />
           )}
-          <span className="text-sm lg:text-lg font-medium w-60 text-center">
+          <span className="text-sm lg:text-lg font-medium w-36 md:w-60 text-center">
             {metric.texte}
           </span>
         </motion.div>

@@ -4,6 +4,7 @@ import KeyMetricsSection from "../components/KeyMetricsSection";
 import SectionPinkTitle from "../components/SectionPinkTitle";
 import initiateur from "../assets/images/initiateur.jpg";
 import PresidentCart from "../components/PresidentCart";
+import WelcomeSection from "../components/WelcomeSection";
 
 // import Team from "../components/Team"
 
@@ -30,6 +31,7 @@ PageMaker including versions of Lorem Ipsum."
       />
       <PresidentCart />
       <FirmHistory />
+      <WelcomeSection/>
 
       {/* <Team/> */}
     </>

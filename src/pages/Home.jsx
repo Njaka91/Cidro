@@ -3,6 +3,7 @@ import FirmHistory from "../components/FirmHistory";
 import KeyMetricsSection from "../components/KeyMetricsSection";
 import OfficeImg from "../components/OfficeImg";
 import initiateur from "../assets/images/initiateur.jpg";
+import WelcomeSection from "../components/WelcomeSection";
 
 // import Team from "../components/Team"
 
@@ -22,6 +23,7 @@ make a type specimen book."
         positionImg="flex-row"
       />
       <FirmHistory />
+      <WelcomeSection/>
 
       {/* <Team/> */}
     </>

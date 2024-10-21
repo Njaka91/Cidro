@@ -1,25 +1,28 @@
 import { CaretRight, Dot } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
-import logo from "../assets/images/logo.jpg";
+import logo from "../assets/images/cidroLogo.jpg";
 
 const Footer = () => {
   return (
     <div className="flex flex-col  bg-slate-800">
-      <div className="flex flex-row justify-between px-32 bg-slate-800 pt-10">
+      <div className="
+      flex flex-row justify-between px-1 bg-slate-800 pt-10
+      md:px-8 
+      lg:px-24 
+      xl:px-32
+      ">
         <div className="flex flex-col ">
           <div className="flex items-center justify-center gap-4">
             <Link to="/">
               <img
                 src={logo}
                 alt="logo"
-                className="w-[75px] h-[75px] rounded-3xl mt-4 mb-4"
+                className=" h-[80px] md:h-[130px] mt-4 mb-4"
               />
             </Link>
-            <div className="text-5xl font-bold">
-              <span className="text-white">Cidro</span>
-            </div>
+            
           </div>
-          <div className="text-white flex flex-col gap-1 justify-center items-center">
+          <div className="text-white text-xs md:text-base flex flex-col gap-1 justify-center items-center">
             <div className="text-white flex flex-row items-start gap-4">
               <div className="flex flex-col justify-center items-center">
                 <div>
@@ -36,22 +39,26 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-3 mt-4">
+        <div className="flex flex-col gap-3 mt-4 text-xs md:text-base">
           <span className="text-lg font-semibold text-white">
-            Heures d&apos;ouverture
+          Informations légales
           </span>
           <div className="text-white flex flex-col gap-2 ">
             <div className="text-white flex flex-row items-center gap-3 ">
               <Dot size={18} weight="fill" color="white" />
-              <div>Lundi - Vendredi 8.00-20.OO</div>
+              <div>Conditions générales d&apos;utilisation</div>
             </div>
             <div className="text-white flex flex-row items-center gap-3">
               <Dot size={18} weight="fill" color="white" />
-              <div>Samedi 9.00-18.30</div>
+              <div>Mentions légales</div>
+            </div>
+            <div className="text-white flex flex-row items-center gap-3">
+              <Dot size={18} weight="fill" color="white" />
+              <div>Politiques de confidentialités et charte de coolies</div>
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-3 mt-3">
+        <div className="flex-col gap-3 mt-3 hidden md:flex">
           <span className="text-lg font-semibold text-white">Liens</span>
           <div className="text-white flex flex-col gap-2 ">
             <Link
@@ -61,13 +68,7 @@ const Footer = () => {
               <CaretRight size={12} color="white" weight="fill" />
               <div>Le cabinet</div>
             </Link>
-            <Link
-              to="/equipe"
-              className="text-white flex flex-row items-center gap-3"
-            >
-              <CaretRight size={12} color="white" weight="fill" />
-              <div>Equipe </div>
-            </Link>
+            
             <Link
               to="/nossoins"
               className="text-white flex flex-row items-center gap-3"
@@ -90,8 +91,13 @@ const Footer = () => {
         <span className="w-2/3 h-[1px] rounded-full bg-fuchsia-900"></span>
       </div>
 
-      <div className="mb-10 px-32">
-        <span className="text-white">
+      <div className="
+      mb-10 px-1
+      md:px-8 
+      lg:px-24 
+      xl:px-32
+      ">
+        <span className="text-white text-sm md:text-base">
           © Le cabinet du Dr Allain Razakatiana, All Right Reserved.
         </span>
       </div>

@@ -27,8 +27,8 @@ const Root = () => {
       <StubbornImg imgBg={imgBg} />
       <Outlet />
       {pathname !== "/prendrerendez-vous" && <AppointmentBottom />}
-      {/*{pathname !== "/prendrerendez-vous" && <Button/>}
-      <Footer /> */}
+      {pathname !== "/prendrerendez-vous" && <Button/>}
+      <Footer />
     </>
   );
 };

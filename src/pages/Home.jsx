@@ -16,22 +16,14 @@ const Home = () => {
       <SectionPinkTitle
         img={initiateur}
         title="Initiateur des cercles scientifiques"
-        description1="Lorem Ipsum is simply dummy text of the printing and
-typesetting industry. Lorem Ipsum has been the industry's
-standard dummy text ever since the 1500s, when an
-unknown printer took a galley of type and scrambled it to
-make a type specimen book."
-        description2="It has survived not only five centuries, but also the leap into
-electronic typesetting, remaining essentially unchanged."
-        description3="It was popularised in the 1960s with the release of Letraset
-sheets containing Lorem Ipsum passages, and more
-recently with desktop publishing software like Aldus
-PageMaker including versions of Lorem Ipsum."
+        description1="Le Dr. Allain RAZAKATIANA est un pionnier de l'implantologie dentaire à Madagascar. Il a initié des cercles scientifiques pour favoriser l'échange de connaissances et l'innovation dans ce domaine."
+        description2="Ces cercles rassemblent des experts en implantologie dentaire afin de partager les avancées technologiques et médicales, améliorant les pratiques et la formation continue des professionnels de santé."
+        description3="Grâce à ses initiatives, le Dr. Allain RAZAKATIANA a sensibilisé la communauté médicale à l'importance de l'ostéointégration et de l'utilisation du titane, contribuant à améliorer les soins dentaires à Madagascar."
         positionImg="flex-row"
       />
       <PresidentCart />
       <FirmHistory />
-      <WelcomeSection/>
+      <WelcomeSection />
 
       {/* <Team/> */}
     </>

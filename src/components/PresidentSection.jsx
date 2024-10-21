@@ -1,4 +1,4 @@
-import dentiste from "../assets/images/Dr Allain.png";
+import dentiste from "../assets/images/drAllainRazakatiana.jpg";
 import dent from "../assets/images/dent.png";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
@@ -68,15 +68,24 @@ const PresidentSection = () => {
 
         <motion.div style={{ y: textY }}>
           <p className="mt-4 text-justify md:w-4/5">
-            Les évolutions technologiques du monde de la médecine actuelle ont
-            fait des grands pas de géant, et les soins dentaires en particulier
-            en ont énormément bénéficiés.
+            Le titane, issu de l&apos;ilménite et du rutile, est une ressource
+            clé pour la fabrication di&apos;mplants dentaires. Madagascar
+            possède trois sites d&apos;extraction (Fort Dauphin, Tuléar,
+            Fénérive-Est), mais faute de transfert de technologie, ces minerais
+            sont exportés en vrac.
           </p>
           <p className="mt-2 text-justify md:w-4/5">
-            Ainsi, la progression de la profession dentaire Malagasy n&apos;est
-            plus à la traîne et notre cabinet accepte le défi d&apos;aller
-            encore plus loin dans cette course à la technologie pour servir
-            notre métier.
+            Le titane pur Ti40 est largement utilisé en implantologie dentaire
+            en raison de sa dureté et de sa biocompatibilité. Il est
+            ostéointégrable, avec un taux de succès de 97 %, et les 3 %
+            d&apos;échecs sont souvent dus à la santé du patient ou à des
+            erreurs de diagnostic.
+          </p>
+          <p className="mt-2 text-justify md:w-4/5">
+            Madagascar, malgré ses ressources naturelles, se voit contraint
+            d&apos;importer les implants dentaires à un coût inaccessible pour
+            beaucoup. Une production locale permettrait de rendre ces
+            technologies plus abordables.
           </p>
         </motion.div>
       </div>
@@ -92,7 +101,7 @@ const PresidentSection = () => {
           <img
             src={dentiste}
             alt="dentiste"
-            className="object-cover w-full h-96"
+            className="object-cover w-full h-full"
           />
         </motion.div>
         <motion.div

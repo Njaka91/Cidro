@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/images/logo.jpg";
+import logo from "../assets/images/cidroLogo.jpg";
 import { Clock, EnvelopeSimple, HouseLine, Phone } from "@phosphor-icons/react";
 
 const Stubborn = () => {

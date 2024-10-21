@@ -1,5 +1,5 @@
 import { useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import img from "../assets/images/cabinet_dentaire.jpg";
 import PlusDeco from "./PlusDeco";
 import fond1 from "../assets/images/fond1.png";

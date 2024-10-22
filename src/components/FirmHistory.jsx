@@ -1,4 +1,4 @@
-import photeuil from "../assets/images/photeuill.jpg";
+import photeuil from "../assets/images/implant_dentaire.jpg";
 import { motion } from "framer-motion";
 import firm from "../assets/images/firm.png";
 import { useScroll } from "framer-motion";
@@ -42,7 +42,7 @@ const FirmHistory = () => {
       xl:w-1/2 xl:h-[550px]"
       >
         <motion.div className="w-full h-full overflow-hidden bg-black rounded-tl-[60px] rounded-br-[60px] z-40 shadow-lg">
-          <img src={photeuil} alt="" className="object-cover  w-full" />
+          <img src={photeuil} alt="" className="object-cover  w-full h-full" />
         </motion.div>
         <motion.div
           style={{

@@ -6,10 +6,6 @@ import fond1 from "../assets/images/fond1.png";
 import fond2 from "../assets/images/fond2.png";
 
 const AppointmentSection = () => {
-  const [hasMutuelle, setHasMutuelle] = useState("");
-  const [isForMe, setIsForMe] = useState("");
-  const [appointementDay, setAppointementDay] = useState("");
-  const [appointementHour, setAppointementHour] = useState("");
   const [errors, setErrors] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [successMessage, setSuccessMessage] = useState(true);
@@ -17,23 +13,15 @@ const AppointmentSection = () => {
 
   const [formData, setFormData] = useState({
     nom: "",
-    prenom: "",
-    dateNaissance: "",
+    age: "", 
+    telephone: "",
+    email: "",
     adresse: "",
     ville: "",
-    codePostal: "",
-    email: "",
-    telephone: "",
-    mutuelle: "",
-    secuSociale: "",
-    nomEtPernomEnfant: "",
-    dateNaissanceEnfant: "",
+    dateDeRendezVous: "",
+    heure: "",
     demande: "",
   });
-
-  const days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"];
-
-  const hour = ["8h30-12h", "14h00-17h"];
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -47,11 +35,11 @@ const AppointmentSection = () => {
     if (!formData.nom.trim()) {
       newErrors.nom = "Champ obligatoire.";
     }
-    if (!formData.dateNaissance.trim()) {
-      newErrors.dateNaissance = "Champ obligatoire.";
+    if (!formData.dateDeRendezVous.trim()) {
+      newErrors.dateDeRendezVous = "Champ obligatoire.";
     }
-    if (!formData.prenom.trim()) {
-      newErrors.prenom = "Champ obligatoire.";
+    if (!formData.age.trim()) {
+      newErrors.age = "Champ obligatoire.";
     }
     if (!formData.telephone.trim()) {
       newErrors.telephone = "Champ obligatoire.";
@@ -63,10 +51,6 @@ const AppointmentSection = () => {
       newErrors.email = "Champ obligatoire.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Veuillez entrer une adresse email valide.";
-    }
-
-    if (!isForMe) {
-      newErrors.isForMe = "Veuillez sélectionner une option.";
     }
 
     // Ajoutez d'autres validations pour les autres champs ici
@@ -82,8 +66,8 @@ const AppointmentSection = () => {
 
     if (
       errors.nom === "" &&
-      errors.prenom === "" &&
-      errors.dateNaissance === "" &&
+      errors.age === "" &&
+      errors.dateDeRendezVous === "" &&
       errors.telephone === "" &&
       errors.email === ""
     ) {
@@ -98,20 +82,17 @@ const AppointmentSection = () => {
 
     const templateParams = {
       nom: formData.nom,
-      prenom: formData.prenom,
-      dateNaissance: formData.dateNaissance,
+      age: formData.age,
+      telephone: formData.telephone,
+      email: formData.email,
       adresse: formData.adresse ? formData.adresse : "-----",
       ville: formData.ville ? formData.ville : "-----",
-      codePostal: formData.codePostal ? formData.codePostal : "-----",
-      email: formData.email,
-      telephone: formData.telephone,
-      mutuelle: formData.mutuelle ? formData.mutuelle : "Aucune",
-      secuSociale: formData.secuSociale ? formData.secuSociale : "Aucun",
+      dateDeRendezVous: formData.dateDeRendezVous,
+      heureDeRendezVous: formData.heure,
       demande: formData.demande ? formData.demande : "Aucune",
-      appointementDay: appointementDay,
-      appointementHour: appointementHour,
-      isForMe: isForMe,
     };
+
+    console.log(templateParams);
 
     emailjs
       .send(
@@ -155,16 +136,13 @@ const AppointmentSection = () => {
       >
         <div>
           <h1 className="text-2xl font-semibold text-white text-center">
-            QUESTIONNAIRE DE DEMANDE DE RENDEZ-VOUS
+            FORMULAIRE DE DEMANDE DE RENDEZ-VOUS
           </h1>
           <p className="text-white mt-6 text-center">
-            Merci de prendre le temps de répondre à ce questionnaire afin que
-            notre
+            Merci de répondre à ce formuliare pour permettre au secrétariat de
+            vous
             <span className=" block pt-[10px]"> </span>
-            secrétariat vous recontacte dans les meilleurs délais pour vous
-            proposer
-            <span className=" block pt-[10px]"> </span>
-            un rendez-vous.
+            organiser un rendez-vous
           </p>
         </div>
 
@@ -190,12 +168,12 @@ const AppointmentSection = () => {
                   value={formData.nom}
                   onChange={handleChange}
                   onFocus={(e) => {
-                    e.target.placeholder = "Nom ";
+                    e.target.placeholder = "Nom et prénom du patient ";
                     e.target.classList.remove("placeholder-red-500"); // Supprime la classe d'erreur pour le placeholder
                   }}
                   onBlur={(e) => {
                     if (!formData.nom && !errors.nom) {
-                      e.target.placeholder = "Nom "; // Rétablit le placeholder par défaut
+                      e.target.placeholder = "Nom et prénom du patient "; // Rétablit le placeholder par défaut
                     }
                   }}
                   className={`pl-10 bg-white text-black p-2 rounded-2xl border ${
@@ -203,76 +181,45 @@ const AppointmentSection = () => {
                       ? "border-red-500 placeholder-red-500" // Bordure rouge si erreur
                       : "border-slate-400 focus:border-fuchsia-900" // Bordure grise par défaut, bleue au focus
                   } w-full focus:outline-none`} // focus:outline-none pour supprimer le contour par défaut
-                  placeholder={errors.nom || "Nom "} // Affiche l'erreur ou le placeholder par défaut
+                  placeholder={errors.nom || "Nom et prénom du patient "} // Affiche l'erreur ou le placeholder par défaut
                 />
               </div>
 
               <div className="relative flex items-center w-72">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
                   className="absolute left-3 h-4 w-4 opacity-70"
                 >
-                  <path d="M8 8a3 3 0 100-6 3 3 0 000 6zM8 9a5 5 0 00-5 5v.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V14a5 5 0 00-5-5z" />
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    d="M3 .5h18m-18 23h18m-15.5 0v-6l2.856-1.714a4.415 4.415 0 0 0 0-7.572L5.5 6.5v-6m13 0v6l-2.856 1.714a4.416 4.416 0 0 0 0 7.572L18.5 17.5v6"
+                  ></path>
                 </svg>
 
                 <input
                   type="text"
-                  name="prenom"
-                  value={formData.prenom}
+                  name="age"
+                  value={formData.age}
                   onChange={handleChange}
                   onFocus={(e) => {
-                    e.target.placeholder = "Prénom ";
+                    e.target.placeholder = "Age du patient ";
                     e.target.classList.remove("placeholder-red-500");
                   }}
                   onBlur={(e) => {
-                    if (!formData.prenom && !errors.prenom) {
-                      e.target.placeholder = "Prénom ";
+                    if (!formData.age && !errors.age) {
+                      e.target.placeholder = "Age du patient ";
                     }
                   }}
                   className={`pl-10 bg-white text-black p-2 rounded-2xl border ${
-                    errors.prenom
+                    errors.age
                       ? "border-red-500 placeholder-red-500"
                       : "border-slate-400 focus:border-fuchsia-900"
                   } w-full focus:outline-none`}
-                  placeholder={errors.prenom || "Prénom "}
-                />
-              </div>
-
-              <div className="relative flex items-center w-72">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  className="absolute left-3 h-4 w-4 opacity-70"
-                >
-                  <path d="M3 0a.5.5 0 00-.5.5V1h-1A1.5 1.5 0 000 2.5v11A1.5 1.5 0 001.5 15h13A1.5 1.5 0 0016 13.5v-11A1.5 1.5 0 0014.5 1h-1V.5a.5.5 0 00-.5-.5h-1a.5.5 0 00-.5.5V1h-5V.5a.5.5 0 00-.5-.5h-1zM1 4h14v10H1V4zm3 3h2v2H4V7zm4 0h2v2H8V7z" />
-                </svg>
-
-                <input
-                  type={formData.dateNaissance ? "date" : "text"} // Type texte si pas de date
-                  name="dateNaissance"
-                  value={formData.dateNaissance}
-                  onChange={handleChange}
-                  onClick={(e) => e.target.showPicker()}
-                  onFocus={(e) => {
-                    e.target.type = "date"; // Changer en date lors du focus
-                    e.target.classList.remove("placeholder-red-500");
-                    e.target.showPicker();
-                  }}
-                  onBlur={(e) => {
-                    if (!formData.dateNaissance && !errors.dateNaissance) {
-                      e.target.type = "text"; // Revenir à texte si vide
-                      e.target.placeholder = "Date de naissance"; // Placeholder personnalisé
-                    }
-                  }}
-                  className={`pl-10 bg-white text-black p-2 rounded-2xl border ${
-                    errors.dateNaissance
-                      ? "border-red-500 placeholder-red-500"
-                      : " focus:border-fuchsia-900"
-                  } w-full focus:outline-none`}
-                  placeholder={errors.dateNaissance || "Date de naissance"} // Placeholder si champ de texte
+                  placeholder={errors.age || "Age du patient "}
                 />
               </div>
 
@@ -282,16 +229,12 @@ const AppointmentSection = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="1em"
                     height="1em"
-                    viewBox="0 0 50 50"
+                    viewBox="0 0 24 24"
                     className="absolute left-3 h-4 w-4 opacity-70"
                   >
                     <path
-                      fill="none"
-                      stroke="#306cfe"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M43.75 31.25v8.187a4.166 4.166 0 0 1-4.77 4.167A37.5 37.5 0 0 1 6.541 11.021a4.167 4.167 0 0 1 4.146-4.771h8.062a2.083 2.083 0 0 1 2.083 1.854c.207 2.73.913 5.4 2.084 7.875a2.083 2.083 0 0 1-.875 2.625l-1.792 1.02a2.085 2.085 0 0 0-.687 3.043a29.3 29.3 0 0 0 7.687 7.687a2.083 2.083 0 0 0 3.042-.687l1.02-1.792a2.083 2.083 0 0 1 2.709-.792a22.4 22.4 0 0 0 7.875 2.084a2.083 2.083 0 0 1 1.854 2.083"
+                      fill="currentColor"
+                      d="m16.1 13.359l-.528-.532zm.456-.453l.529.532zm2.417-.317l-.358.66zm1.91 1.039l-.358.659zm.539 3.255l.529.532zm-1.42 1.412l-.53-.531zm-1.326.67l.07.747zm-9.86-4.238l.528-.532zM4.002 5.746l-.749.042zm6.474 1.451l.53.532zm.157-2.654l.6-.449zM9.374 2.86l-.601.45zM6.26 2.575l.53.532zm-1.57 1.56l-.528-.531zm7.372 7.362l.529-.532zm4.567 2.394l.455-.453l-1.058-1.064l-.455.453zm1.985-.643l1.91 1.039l.716-1.318l-1.91-1.038zm2.278 3.103l-1.42 1.413l1.057 1.063l1.42-1.412zm-2.286 1.867c-1.45.136-5.201.015-9.263-4.023l-1.057 1.063c4.432 4.407 8.65 4.623 10.459 4.454zm-9.263-4.023c-3.871-3.85-4.512-7.087-4.592-8.492l-1.498.085c.1 1.768.895 5.356 5.033 9.47zm1.376-6.18l.286-.286L9.95 6.666l-.287.285zm.515-3.921L9.974 2.41l-1.201.899l1.26 1.684zM5.733 2.043l-1.57 1.56l1.058 1.064l1.57-1.56zm4.458 5.44c-.53-.532-.53-.532-.53-.53h-.002l-.003.004a1 1 0 0 0-.127.157c-.054.08-.113.185-.163.318a2.1 2.1 0 0 0-.088 1.071c.134.865.73 2.008 2.256 3.526l1.058-1.064c-1.429-1.42-1.769-2.284-1.832-2.692c-.03-.194.001-.29.01-.312q.009-.02 0-.006a.3.3 0 0 1-.03.039l-.01.01l-.01.009zm1.343 4.546c1.527 1.518 2.676 2.11 3.542 2.242c.443.068.8.014 1.071-.087a1.5 1.5 0 0 0 .42-.236l.05-.045l.007-.006l.003-.003l.001-.002s.002-.001-.527-.533c-.53-.532-.528-.533-.528-.533l.002-.002l.002-.002l.006-.005l.01-.01l.038-.03q.014-.009-.007.002c-.025.009-.123.04-.32.01c-.414-.064-1.284-.404-2.712-1.824zm-1.56-9.62C8.954 1.049 6.95.834 5.733 2.044L6.79 3.107c.532-.529 1.476-.475 1.983.202zM4.752 5.704c-.02-.346.139-.708.469-1.036L4.163 3.604c-.537.534-.96 1.29-.909 2.184zm14.72 12.06c-.274.274-.57.428-.865.455l.139 1.494c.735-.069 1.336-.44 1.784-.885zM11.006 7.73c.985-.979 1.058-2.527.229-3.635l-1.201.899c.403.539.343 1.246-.085 1.673zm9.52 6.558c.817.444.944 1.49.367 2.064l1.058 1.064c1.34-1.333.927-3.557-.71-4.446zm-3.441-.849c.384-.382 1.002-.476 1.53-.19l.716-1.317c-1.084-.59-2.428-.427-3.304.443z"
                     ></path>
                   </svg>
 
@@ -329,12 +272,25 @@ const AppointmentSection = () => {
                 <div className="relative flex items-center w-72">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 16 16"
-                    fill="currentColor"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
                     className="absolute left-3 h-4 w-4 opacity-70"
                   >
-                    <path d="M1.5 2a.5.5 0 00-.5.5v11a.5.5 0 00.5.5h13a.5.5 0 00.5-.5V2.5a.5.5 0 00-.5-.5h-13zM1 3.5v-.5h14v.5h-14zm0 1h14v10H1V4.5zm0 0z" />
-                    <path d="M1 4.5l7 4.5 7-4.5v10l-7 4.5-7-4.5V4.5z" />
+                    <g fill="none" stroke="currentColor" strokeWidth={1.5}>
+                      <rect
+                        width={18.5}
+                        height={17}
+                        x={2.682}
+                        y={3.5}
+                        rx={4}
+                      ></rect>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m2.729 7.59l7.205 4.13a3.96 3.96 0 0 0 3.975 0l7.225-4.13"
+                      ></path>
+                    </g>
                   </svg>
 
                   <input
@@ -343,12 +299,12 @@ const AppointmentSection = () => {
                     value={formData.email}
                     onChange={handleChange}
                     onFocus={(e) => {
-                      e.target.placeholder = "Email ";
+                      e.target.placeholder = "Adresse Email ";
                       e.target.classList.remove("placeholder-red-500"); // Supprime la classe d'erreur pour le placeholder
                     }}
                     onBlur={(e) => {
                       if (!formData.email && !errors.email) {
-                        e.target.placeholder = "Email "; // Rétablit le placeholder par défaut
+                        e.target.placeholder = "Adresse Email "; // Rétablit le placeholder par défaut
                       }
                     }}
                     className={`pl-10 bg-white text-black p-2 rounded-2xl border ${
@@ -356,7 +312,7 @@ const AppointmentSection = () => {
                         ? "border-red-500 placeholder-red-500" // Bordure rouge si erreur
                         : "border-slate-400 focus:border-fuchsia-900" // Bordure grise par défaut, bleue au focus
                     } w-full focus:outline-none`} // focus:outline-none pour supprimer le contour par défaut
-                    placeholder={errors.email || "Email "} // Affiche l'erreur ou le placeholder par défaut
+                    placeholder={errors.email || "Adresse Email "} // Affiche l'erreur ou le placeholder par défaut
                   />
                 </div>
                 {errors.email ===
@@ -370,11 +326,21 @@ const AppointmentSection = () => {
               <div className="relative flex items-center w-72">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
                   className="absolute left-3 h-4 w-4 opacity-70"
                 >
-                  <path d="M8 .5l7 6.5v8A1.5 1.5 0 0113.5 16h-3A1.5 1.5 0 019 14.5V11H7v3.5A1.5 1.5 0 015.5 16h-3A1.5 1.5 0 010 14.5v-8L8 .5z" />
+                  <g
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                  >
+                    <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
+                    <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  </g>
                 </svg>
                 <input
                   type="text"
@@ -389,11 +355,15 @@ const AppointmentSection = () => {
               <div className="relative flex items-center w-72">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
+                  width="1em"
+                  height="1em"
+                  viewBox="-1.5 -1 24 24"
                   className="absolute left-3 h-4 w-4 opacity-70"
                 >
-                  <path d="M8 0a5 5 0 00-5 5c0 3.5 5 10 5 10s5-6.5 5-10a5 5 0 00-5-5zm0 7a2 2 0 110-4 2 2 0 010 4z" />
+                  <path
+                    fill="currentColor"
+                    d="M18.913 2.9L2.632 9.226l4.829 2.006a5.77 5.77 0 0 1 3.118 3.119l2.006 4.828zm1.847.682l-6.328 16.281c-.4 1.03-1.551 1.557-2.571 1.18a1.92 1.92 0 0 1-1.11-1.067l-2.007-4.83a3.85 3.85 0 0 0-2.079-2.078l-4.828-2.006C.833 10.645.375 9.486.814 8.472A2.05 2.05 0 0 1 1.949 7.38L18.23 1.052a1.945 1.945 0 0 1 2.53 2.53"
+                  ></path>
                 </svg>
                 <input
                   type="text"
@@ -412,161 +382,55 @@ const AppointmentSection = () => {
                   fill="currentColor"
                   className="absolute left-3 h-4 w-4 opacity-70"
                 >
-                  <path d="M3 0a1 1 0 00-1 1v14a1 1 0 001 1h10a1 1 0 001-1V1a1 1 0 00-1-1H3zm1 1h8v12H4V1z" />
-                  <path d="M5 3h6v1H5V3zm0 2h6v1H5V5zm0 2h6v1H5V7zm0 2h6v1H5v-1z" />
+                  <path d="M3 0a.5.5 0 00-.5.5V1h-1A1.5 1.5 0 000 2.5v11A1.5 1.5 0 001.5 15h13A1.5 1.5 0 0016 13.5v-11A1.5 1.5 0 0014.5 1h-1V.5a.5.5 0 00-.5-.5h-1a.5.5 0 00-.5.5V1h-5V.5a.5.5 0 00-.5-.5h-1zM1 4h14v10H1V4zm3 3h2v2H4V7zm4 0h2v2H8V7z" />
                 </svg>
+
                 <input
-                  type="text"
-                  name="codePostal"
-                  value={formData.codePostal}
+                  type={formData.dateDeRendezVous ? "date" : "text"} // Type texte si pas de date
+                  name="dateDeRendezVous"
+                  value={formData.dateDeRendezVous}
                   onChange={handleChange}
-                  className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
-                  placeholder="Code postal"
+                  onClick={(e) => e.target.showPicker()}
+                  onFocus={(e) => {
+                    e.target.type = "date"; // Changer en date lors du focus
+                    e.target.classList.remove("placeholder-red-500");
+                    e.target.showPicker();
+                  }}
+                  onBlur={(e) => {
+                    if (!formData.dateDeRendezVous && !errors.dateDeRendezVous) {
+                      e.target.type = "text"; // Revenir à texte si vide
+                      e.target.placeholder = "Date de rendez-vous souhaitée"; // Placeholder personnalisé
+                    }
+                  }}
+                  className={`pl-10 bg-white text-black p-2 rounded-2xl border ${
+                    errors.dateDeRendezVous
+                      ? "border-red-500 placeholder-red-500"
+                      : " focus:border-fuchsia-900"
+                  } w-full focus:outline-none`}
+                  placeholder={
+                    errors.dateDeRendezVous || "Date de rendez-vous souhaitée"
+                  } // Placeholder si champ de texte
                 />
               </div>
 
               <div className="relative flex items-center w-72">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 14 14"
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
                   className="absolute left-3 h-4 w-4 opacity-70"
                 >
-                  <g
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M8.315 1.031a.5.5 0 0 0-.5.5v1.407H6.409a.5.5 0 0 0-.5.5v1.625a.5.5 0 0 0 .5.5h1.406v1.406a.5.5 0 0 0 .5.5H9.94a.5.5 0 0 0 .5-.5V5.563h1.406a.5.5 0 0 0 .5-.5V3.438a.5.5 0 0 0-.5-.5H10.44V1.53a.5.5 0 0 0-.5-.5zm-7.732 9.75l2.444 2.037a2 2 0 0 0 1.28.463h6.443c.46 0 .833-.373.833-.833c0-.92-.746-1.667-1.667-1.667H5.437"></path>
-                    <path d="m3.583 9.781l.75.75a1.06 1.06 0 1 0 1.5-1.5L4.669 7.867a2 2 0 0 0-1.414-.586H.583"></path>
-                  </g>
+                  <path d="M8 3.5a.5.5 0 0 1 .5.5v4.25l3.25 1.75a.5.5 0 0 1-.5.85l-3.5-1.875A.5.5 0 0 1 7.5 8V4a.5.5 0 0 1 .5-.5zm0-3a8 8 0 1 0 0 16A8 8 0 0 0 8 .5zm0 1A7 7 0 1 1 8 15a7 7 0 0 1 0-14z" />
                 </svg>
-                <select
-                  className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
-                  value={hasMutuelle}
-                  onChange={(e) => setHasMutuelle(e.target.value)}
-                >
-                  <option value="" disabled selected>
-                    Disposez-vous d&apos;une mutuelle ?
-                  </option>
-                  <option value="oui">Oui, j&apos;ai une mutuelle.</option>
-                  <option value="non">
-                    Non, je n&apos;ai pas de mutuelle.
-                  </option>
-                </select>
-              </div>
 
-              <div className="relative flex items-center w-72">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 14 14"
-                  className="absolute left-3 h-4 w-4 opacity-70"
-                >
-                  <g
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M8.315 1.031a.5.5 0 0 0-.5.5v1.407H6.409a.5.5 0 0 0-.5.5v1.625a.5.5 0 0 0 .5.5h1.406v1.406a.5.5 0 0 0 .5.5H9.94a.5.5 0 0 0 .5-.5V5.563h1.406a.5.5 0 0 0 .5-.5V3.438a.5.5 0 0 0-.5-.5H10.44V1.53a.5.5 0 0 0-.5-.5zm-7.732 9.75l2.444 2.037a2 2 0 0 0 1.28.463h6.443c.46 0 .833-.373.833-.833c0-.92-.746-1.667-1.667-1.667H5.437"></path>
-                    <path d="m3.583 9.781l.75.75a1.06 1.06 0 1 0 1.5-1.5L4.669 7.867a2 2 0 0 0-1.414-.586H.583"></path>
-                  </g>
-                </svg>
                 <input
                   type="text"
-                  name="mutuelle"
-                  value={formData.mutuelle}
-                  onChange={handleChange}
-                  className={`focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full ${
-                    hasMutuelle === "non" || hasMutuelle === ""
-                      ? "opacity-75"
-                      : ""
-                  }`}
-                  placeholder="Si oui laquelle ?"
-                  disabled={hasMutuelle === "non" || hasMutuelle === ""}
-                />
-              </div>
-
-              <div className="relative flex items-center w-72">
-                <svg
-                  className="absolute left-3 h-4 w-4 opacity-70"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <g
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                  >
-                    <path d="M12 11.543A2.17 2.17 0 1 0 12 7.2a2.17 2.17 0 0 0 0 4.342m0 .001v3.256"></path>
-                    <path d="M20.672 11.89V6.61a1.93 1.93 0 0 0-1.32-1.831L14.438 3.14a7.8 7.8 0 0 0-4.876 0L4.648 4.778a1.93 1.93 0 0 0-1.32 1.83v5.28a7.71 7.71 0 0 0 3.603 6.524l4.048 2.544a1.93 1.93 0 0 0 2.042 0l4.047-2.544a7.71 7.71 0 0 0 3.604-6.523"></path>
-                  </g>
-                </svg>
-                <input
-                  type="text"
-                  name="secuSociale"
-                  value={formData.secuSociale}
+                  name="heure"
+                  value={formData.heure}
                   onChange={handleChange}
                   className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full"
-                  placeholder="N° de sécurité sociale"
+                  placeholder="Heure de rendez-vojus souhaitée"
                 />
-              </div>
-              <div>
-                <div className="relative flex items-center w-72">
-                  <svg
-                    className="absolute left-3 h-4 w-4 opacity-70"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 32 32"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M26 16h-8.532l-5-6H5a3.003 3.003 0 0 0-3 3v6a2 2 0 0 0 2 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-7h-2v7H6v-9H4v-6a1 1 0 0 1 1-1h6.532l5 6H26a1 1 0 0 1 1 1v3h-2v6h-3v-6h-2v6a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-4a2 2 0 0 0 2-2v-3a3.003 3.003 0 0 0-3-3"
-                    ></path>
-                    <path
-                      fill="currentColor"
-                      d="M23.5 15a3.5 3.5 0 1 1 3.5-3.5a3.504 3.504 0 0 1-3.5 3.5m0-5a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5M8 9a4 4 0 1 1 4-4a4.004 4.004 0 0 1-4 4m0-6a2 2 0 1 0 2 2a2 2 0 0 0-2-2"
-                    ></path>
-                  </svg>
-                  <select
-                    className={`focus:outline-none pl-10 bg-white placeholder:text-red-600 text-black p-2 rounded-2xl border ${
-                      errors.isForMe
-                        ? "border-red-500 placeholder-red-500"
-                        : "border-slate-400 focus:border-fuchsia-900"
-                    } w-full`}
-                    value={isForMe}
-                    onChange={(e) => {
-                      setIsForMe(e.target.value);
-                      // Efface l'erreur si une option est sélectionnée
-                      if (e.target.value) {
-                        setErrors((prevErrors) => ({
-                          ...prevErrors,
-                          isForMe: "",
-                        }));
-                      }
-                    }}
-                  >
-                    <option value="" disabled selected>
-                      Le rendez-vous est pour :
-                    </option>
-                    <option value="le demandeur">moi</option>
-                    <option value="l'enfant du demandeur">mon enfant</option>
-                  </select>
-                </div>
-                {errors.isForMe && (
-                  <p className="text-red-500 text-sm mt-1 bg-white bg-opacity-50 rounded-full px-1 text-center">
-                    {errors.isForMe}
-                  </p>
-                )}
               </div>
             </div>
 
@@ -574,63 +438,11 @@ const AppointmentSection = () => {
               <div className="w-[90%] md:w-3/4 mx-auto  justify-between py-7">
                 <textarea
                   className="focus:outline-none focus:border-fuchsia-900 pl-10 bg-white text-black p-2 rounded-2xl border border-slate-400 w-full h-28"
-                  placeholder="Avez-vous une demande particulière ?"
+                  placeholder="Date et heure suggérées au secrétariat pour vous appeler afin de convenir d'un rendez-vous"
                   name="demande"
                   value={formData.demande}
                   onChange={handleChange}
                 ></textarea>
-              </div>
-              <div className="flex w-3/4 max-w-3xl mx-auto flex-row flex-wrap justify-between gap-4 ">
-                <h1 className="text-2xl font-semibold text-white text-center">
-                  A quel moment notre secrétariat peut-il vous appeler afin de
-                  convenir d&apos;un rendez-vous ?
-                  <span className=" block pt-[10px]"> </span>
-                  Jour:
-                </h1>
-              </div>
-              <div className="flex flex-row flex-wrap items-center gap-4 w-3/4 justify-evenly mx-auto">
-                {days.map((day, index) => (
-                  <div key={index} className="flex flex-col items-center">
-                    <label className="label cursor-pointer">
-                      <span className="label-text text-lg font-semibold text-white">
-                        {day}
-                      </span>
-                    </label>
-                    <input
-                      type="radio"
-                      name="appointementDay"
-                      value={day}
-                      onChange={(e) => setAppointementDay(e.target.value)}
-                      className="radio  bg-white border-0 checked:bg-fuchsia-900 checked:ring-white text-white" // Stylisation du bouton radio
-                    />
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex w-3/4 max-w-3xl mx-auto flex-row flex-wrap justify-between gap-4 ">
-                <h1 className="text-2xl font-semibold text-white text-center mx-auto mt-4">
-                  <span className=" block pt-[10px]"> </span>
-                  Créneau horaire :
-                </h1>
-              </div>
-
-              <div className="flex flex-row items-center gap-4 w-3/4 justify-center mx-auto">
-                {hour.map((hour, index) => (
-                  <div key={index} className="flex flex-col items-center">
-                    <label className="label cursor-pointer">
-                      <span className="label-text text-lg font-semibold text-white">
-                        {hour}
-                      </span>
-                    </label>
-                    <input
-                      type="radio"
-                      name="hour"
-                      value={hour}
-                      onChange={(e) => setAppointementHour(e.target.value)}
-                      className="radio radio-primary bg-white text-white checked:bg-fuchsia-900 border-none" // Stylisation du bouton radio
-                    />
-                  </div>
-                ))}
               </div>
 
               <div className="flex flex-col w-3/4 mx-auto flex-wrap justify-center items-center gap-4 pt-7">

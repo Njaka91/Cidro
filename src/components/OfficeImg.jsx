@@ -1,8 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 
 // eslint-disable-next-line react/prop-types
-const OfficeImg = ({ title, description, img, positionImg }) => {
+const OfficeImg = ({ name, title, description, img, positionImg }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -15,11 +15,23 @@ const OfficeImg = ({ title, description, img, positionImg }) => {
   const y = useTransform(scrollYProgress, [0, 0.82], [200, 0]);
   const opacity = useTransform(scrollYProgress, [0, 0.81], [0, 1]);
 
+  const spanRef = useRef(null);
+  const [spanSize, setSpanSize] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    if (spanRef.current) {
+      setSpanSize({
+        width: spanRef.current.offsetWidth, // Récupère la largeur du span
+        height: spanRef.current.offsetHeight, // Récupère la hauteur du span
+      });
+    }
+  }, [name]);
+
   return (
     <div
       ref={ref}
       className={`
-        flex flex-col relative px-6 my-14 gap-12 ${
+        flex flex-col relative px-6 my-14 gap-12 items-center ${
           positionImg === "flex-row"
             ? "md:flex-row lg:flex-row xl:flex-row"
             : "md:flex-row-reverse lg:flex-row-reverse xl:flex-row-reverse"
@@ -57,23 +69,48 @@ const OfficeImg = ({ title, description, img, positionImg }) => {
       </div>
       <div
         className="
-        relative flex w-full flex-col text-[#1B2C51]
+        relative flex flex-col text-[#1B2C51]
         md:w-1/2 
         "
       >
-        <span className="flex flex-col text-fuchsia-900">
-          <motion.span
+        <div className="inline-block text-fuchsia-900">
+          <p
+            ref={spanRef}
             style={{
               y: y2,
             }}
             className="
-            text-4xl font-medium mb-3
-            lg:text-5xl
-            "
+              px-5 py-4
+              text-4xl font-medium mb-3
+              lg:text-4xl
+              inline-block      // Garde la largeur du contenu et permet le centrage
+             "
           >
-            {title}
-          </motion.span>
-        </span>
+            <span>{name}</span>
+            <span className="block text-base text-left text-[#1B2C51]">{title}</span>
+          </p>
+        </div>
+
+        <div
+          style={{
+            width: spanSize.width,
+            height: spanSize.height,
+          }}
+          className="absolute -top-2 left-0 bg-none border-2 border-[#1B2C51] border-opacity-20 rounded-tl-3xl rounded-br-3xl 
+            lg:w-96
+            xl:h-32 xl:w-[450px] xl:-bottom-6"
+        ></div>
+
+        <div
+          style={{
+            width: spanSize.width,
+            height: spanSize.height,
+          }}
+          className="absolute h-24 top-1 left-3 bg-none border-2 border-fuchsia-900 border-opacity-20 rounded-tl-3xl rounded-br-3xl 
+            lg:w-96
+            xl:h-32 xl:w-[450px] xl:-bottom-6"
+        ></div>
+
         <motion.div
           style={{
             opacity: opacity,

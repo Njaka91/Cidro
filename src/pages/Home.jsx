@@ -11,7 +11,6 @@ const Home = () => {
       <PresidentSection />
       <FirmHistory />
       <WelcomeSection />
-
       {/* <Team/> */}
     </>
   );

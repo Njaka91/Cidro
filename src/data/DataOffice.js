@@ -1,23 +1,24 @@
 // officeData.js
 
 import office01 from "../assets/images/drAllainRazakatiana.jpg";
-import office02 from "../assets/images/office02.jpg";
+import office02 from "../assets/images/dr_Tsiaro.jpg";
 
 export const dataOffice = [
   {
     img: office01,
-    name: "Dr Allain Razakatiana",
+    nameFirstLine: "Dr Allain Razakatiana",
     title:"Docteur en chirurgie dentaire",
-    diplome:[],
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel velit id ipsum dictum scelerisque. Sed facilisis, dolor vitae semper dictum, nunc metus consectetur tellus, non auctor lectus ligula a neque. Nulla facilisi. Integer vel justo vel ex facilisis consequat.",
-  },
+    diplome:["Diplôme de l'Université de Bordeaux II en Biomatériaux et Système Implantable",
+      "Attestation d'Etudes de Recherches Approfondies en Implantologie Orale (AERAIO)",
+      "Diplôme d'Etat ESCD Mahajanga",
+      "Membre associé de l'Académie Malagasy"
+    ],
+    },
   {
     img: office02,
-    name: "Dr Tsiaro Mampiandra Randrianasolo",
-    title: "Docteur en soins de qualités",
-    diplome:[],
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel velit id ipsum dictum scelerisque. Sed facilisis, dolor vitae semper dictum, nunc metus consectetur tellus, non auctor lectus ligula a neque. Nulla facilisi. Integer vel justo vel ex facilisis consequat.",
-  },
+    nameFirstLine: "Dr Tsiaro Mampiandra",
+    nameSecondLine:"Randrianasolo",
+    title: "Docteur dentiste",
+    diplome:["Docteur chirugien-dentiste de I'IOSTM"],
+    },
 ];

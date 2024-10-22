@@ -16,8 +16,10 @@ personnalisée et des traitements adaptés à vos besoins."
         <OfficeImg
           key={index}
           img={office.img}
-          name={office.name}
+          nameFirstLine={office.nameFirstLine}
+          nameSecondLine={office.nameSecondLine}
           title={office.title}
+          diplome={office.diplome}
           description={office.description}
           positionImg={index % 2 !== 0 ? "flex-row" : "flex-row-reverse"}
         />

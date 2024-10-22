@@ -1,19 +1,20 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+/* eslint-disable react/prop-types */
+import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
+import { useInView } from 'react-intersection-observer';
 
-// eslint-disable-next-line react/prop-types
-const OfficeImg = ({ name, title, description, img, positionImg }) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "center center"],
+const OfficeImg = ({
+  nameFirstLine,
+  nameSecondLine,
+  diplome,
+  title,
+  description,
+  img,
+  positionImg,
+}) => {
+  const { ref, inView } = useInView({
+    threshold: 0.1, // Déclenche l'observateur si 10% de l'élément est visible
   });
-
-  const scale = useTransform(scrollYProgress, [0, 0.8], [0.8, 1]);
-  const opacityblur = useTransform(scrollYProgress, [0, 0.8], [0.8, 0]);
-  const y2 = useTransform(scrollYProgress, [0, 0.8], [125, 0]);
-  const y = useTransform(scrollYProgress, [0, 0.82], [200, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 0.81], [0, 1]);
 
   const spanRef = useRef(null);
   const [spanSize, setSpanSize] = useState({ width: 0, height: 0 });
@@ -21,42 +22,29 @@ const OfficeImg = ({ name, title, description, img, positionImg }) => {
   useEffect(() => {
     if (spanRef.current) {
       setSpanSize({
-        width: spanRef.current.offsetWidth, // Récupère la largeur du span
-        height: spanRef.current.offsetHeight, // Récupère la hauteur du span
+        width: spanRef.current.offsetWidth,
+        height: spanRef.current.offsetHeight,
       });
     }
-  }, [name]);
+  }, [nameFirstLine]);
 
   return (
     <div
-      ref={ref}
-      className={`
-        flex flex-col relative px-6 my-14 gap-12 items-center ${
-          positionImg === "flex-row"
-            ? "md:flex-row lg:flex-row xl:flex-row"
-            : "md:flex-row-reverse lg:flex-row-reverse xl:flex-row-reverse"
-        }
-        md:px-8 
-        lg:px-24 
-        xl:px-32 
-      `}
+      ref={ref} // Attacher l'observateur ici
+      className={`flex flex-col relative px-6 my-14 gap-12 items-center ${
+        positionImg === "flex-row"
+          ? "md:flex-row lg:flex-row xl:flex-row"
+          : "md:flex-row-reverse lg:flex-row-reverse xl:flex-row-reverse"
+      } md:px-8 lg:px-24 xl:px-32`}
     >
-      <div
-        className="
-        relative w-full h-[25rem]
-        md:w-1/2 
-        "
-      >
+      <div className="relative w-full h-[25rem] md:w-1/2">
         <motion.div
-          style={{ scale: scale }}
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
+          transition={{ duration: 0.5 }}
           className="relative rounded-tr-3xl rounded-bl-3xl shadow-xl h-full"
         >
-          <motion.div
-            style={{
-              opacity: opacityblur,
-            }}
-            className="absolute overflow-hidden bg-slate-900/70 rounded-tr-3xl z-40 rounded-bl-3xl shadow-xl w-full h-full"
-          />
+          <div className="absolute overflow-hidden bg-slate-900/40 rounded-tr-3xl z-40 rounded-bl-3xl shadow-xl w-full h-full" />
           <div className="absolute overflow-hidden rounded-tr-3xl z-10 rounded-bl-3xl shadow-xl w-full h-full">
             <img
               src={img}
@@ -67,28 +55,22 @@ const OfficeImg = ({ name, title, description, img, positionImg }) => {
         </motion.div>
         <div className="absolute inset-0 bg-slate-900/8 overflow-hidden" />
       </div>
-      <div
-        className="
-        relative flex flex-col text-[#1B2C51]
-        md:w-1/2 
-        "
-      >
+      <div className="relative flex flex-col text-[#1B2C51] md:w-1/2">
         <div className="inline-block text-fuchsia-900">
-          <p
+          <motion.p
             ref={spanRef}
-            style={{
-              y: y2,
-            }}
-            className="
-              px-5 py-4
-              text-4xl font-medium mb-3
-              lg:text-4xl
-              inline-block      // Garde la largeur du contenu et permet le centrage
-             "
+            className="px-5 py-4 text-4xl font-medium mb-3 lg:text-4xl inline-block"
+            initial={{ opacity: 0, y: 20 }} // Animation initiale
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }} // Animation quand dans la vue
+            transition={{ duration: 0.5 }}
           >
-            <span>{name}</span>
-            <span className="block text-base text-left text-[#1B2C51]">{title}</span>
-          </p>
+            <span>{nameFirstLine}</span>
+            <br />
+            <span>{nameSecondLine}</span>
+            <span className="block text-base text-left text-[#1B2C51]">
+              {title}
+            </span>
+          </motion.p>
         </div>
 
         <div
@@ -112,11 +94,15 @@ const OfficeImg = ({ name, title, description, img, positionImg }) => {
         ></div>
 
         <motion.div
-          style={{
-            opacity: opacity,
-            y: y,
-          }}
+          initial={{ opacity: 0, y: 20 }} // Animation initiale
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }} // Animation quand dans la vue
+          transition={{ duration: 0.5 }}
         >
+          <ul className="list-disc pl-5">
+            {diplome.map((diplome, index) => (
+              <li key={index}>{diplome}</li>
+            ))}
+          </ul>
           <p className="mt-4 text-justify line-h">{description}</p>
         </motion.div>
       </div>

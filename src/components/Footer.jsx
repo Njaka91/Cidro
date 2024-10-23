@@ -66,7 +66,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="text-white flex flex-row gap-4">
-              <div>+261 38 08 500 00</div>
+              <div>+261 34 02 267 27</div>
             </div>
             <div className="text-white flex flex-row gap-4">
               <div>Allain.razakatiana.mg@gmail.com</div>

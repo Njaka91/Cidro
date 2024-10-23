@@ -35,22 +35,22 @@ const StubbornImg = ({ imgBg }) => {
       </div>
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
         <motion.div
-          className="text-xl font-semibold text-white"
+          className="md:text-xl font-semibold text-white mb-5"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3, delay: 0.2 }}
           style={{ y: text1YScroll, opacity: text1OpacityScroll }}
         >
-          Retrouver le sourire
+          Prenez soin de vos dents, prenez soin de votre bien-être
         </motion.div>
         <motion.div
-          className="text-7xl font-semibold text-white"
+          className="text-4xl md:text-7xl font-semibold md:font-extrabold text-center text-white"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3, delay: 0.5 }}
           style={{ y: text2YScroll, opacity: text2OpacityScroll }}
         >
-          CIDRO
+          Clinique d’Implantologie Dentaire et de Réhabilitation Orale
         </motion.div>
 
         {location.pathname !== "/prendrerendez-vous" && (

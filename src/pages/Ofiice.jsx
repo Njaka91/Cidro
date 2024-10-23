@@ -11,6 +11,8 @@ import TitleTexte from "../components/TitleTexte";
 import EquipementImage from "../components/EquipementImage";
 import { surgeryRoomData } from "../data/surgeryRoomData";
 import { DentistryRoomData } from "../data/DentistryRoomData";
+import CarousselImage from "../components/CarousselImage";
+import { ddlmImageData } from "../data/ddlmImageData";
 
 const Ofiice = () => {
   return (
@@ -83,6 +85,8 @@ personnalisée et des traitements adaptés à vos besoins."
       />
 
       <EquipementImage data={ddlmData} />
+
+      <CarousselImage images ={ddlmImageData}/>
     </>
   );
 };

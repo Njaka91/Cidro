@@ -4,8 +4,6 @@ import { RouterProvider } from "react-router-dom"
 import './assets/css/body.css'; 
 import Office from "./pages/Ofiice"
 import Home from "./pages/Home"
-import Team from "./pages/Team";
-import Cares from "./pages/Cares";
 import ErroPage from "./pages/ErrorPage";
 import Appointment from "./pages/Appointment";
 
@@ -21,19 +19,11 @@ const App = () => {
           element: <Home/>
         },
         {
-          path:"/lecabinet",
+          path:"/le-cabinet",
           element: <Office/>
         },
         {
-          path:"/equipe",
-          element: <Team/>
-        },
-        {
-          path:"/nossoins",
-          element: <Cares/>
-        },
-        {
-          path:"/prendrerendez-vous",
+          path:"/prendre-rendez-vous",
           element: <Appointment/>
         }
       ]

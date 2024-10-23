@@ -1,9 +1,10 @@
-import photeuil from "../assets/images/implant_dentaire.jpg";
+import photeuil from "../assets/images/Implatologie.jpeg";
 import { motion } from "framer-motion";
 import firm from "../assets/images/firm.png";
 import { useScroll } from "framer-motion";
 import { useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 const FirmHistory = () => {
   const ref = useRef(null);
@@ -77,14 +78,29 @@ const FirmHistory = () => {
           }}
           className="text-[#1B2C51] text-justify"
         >
-          Lorem Ipsum IS simpy ummy text o t e printing an typesetting industry.
-          When an unknown printer took a galley of type and scrambled it to make
-          a type specimen book.
-          <span className=" block pt-[10px]"> </span>
-          It has survived not only five centuries, but also the leap into
-          electronic typesetting, remaining essentially unchanged. It was
-          popularised in the 1960s with the release of Letraset sheets
-          containing Lorem Ipsum passages.
+          <p>
+            Notre cabinet dentaire se distingue par une approche entièrement
+            numérisée, offrant des soins de précision à chaque étape. Du
+            diagnostic à la pose des implants, en passant par la radiologie et
+            la fabrication de prothèses, nous assurons un service complet et
+            personnalisé. En plus de l&apos;implantologie, nous proposons des
+            traitements d’orthodontie, de chirurgie orale et de dentisterie
+            générale.
+          </p>
+          <p className="mt-3">
+            En partenariat avec{" "}
+            <Link
+              to="https://www.roottimplants.fr/"
+              target="_blank"
+              className="font-bold"
+            >
+              ROOTT Implants
+            </Link>
+            , un fabricant reconnu basé à Dubaï, nous utilisons des implants
+            dentaires de haute qualité. Ce partenariat nous permet de garantir
+            des résultats durables et esthétiques, répondant aux besoins
+            spécifiques de chaque patient.
+          </p>
         </motion.p>
 
         <div className="flex flex-col mt-8 overflow-hidden">
@@ -98,19 +114,22 @@ const FirmHistory = () => {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                color="#701a75"
                 className="w-8 lg:w-12 "
+                color="#701a75"
                 viewBox="0 0 32 32"
               >
                 <path
                   fill="currentColor"
-                  d="M16 3c-.625 0-1.246.21-1.781.594L12.563 4.75L10.655 5h-.031l-.031.031A3.39 3.39 0 0 0 8.03 7.594L8 7.625v.031l-.25 1.938l-1.156 1.5l-.032.031v.031c-.699 1.117-.73 2.559.032 3.625l1.187 1.656l.313 1.72l-3.219 4.905l-1.031 1.532h4.781l1.156 2.687L10.5 29l1.031-1.563l3.156-4.75c.848.348 1.805.38 2.626 0l3.156 4.75L21.5 29l.719-1.719l1.156-2.687h4.781l-1.031-1.532L24 18.313l.25-1.875l1.156-1.656l.032-.031v-.031c.699-1.117.73-2.528-.032-3.594L24.25 9.469l-.375-1.875h.031c-.004-.024-.027-.04-.031-.063c-.18-1.308-1.215-2.37-2.531-2.531h-.032l-1.875-.25l-1.656-1.156A3.07 3.07 0 0 0 16 3m0 2.031c.23 0 .457.07.625.188L18.406 6.5l.219.156l.25.032L21.063 7h.03c.45.05.762.363.813.813v.062l.407 2.219l.03.219l.157.187l1.281 1.781c.239.332.27.895-.031 1.375l-1.406 1.969l-.032.25L22 18.063v.03a1 1 0 0 1-.156.438l-.063.032v.03a.88.88 0 0 1-.593.313h-.063l-2.281.407l-.25.03l-.188.157l-1.781 1.281c-.332.239-.926.27-1.406-.031l-1.625-1.25l-.188-.156l-.281-.032L10.937 19h-.03a.89.89 0 0 1-.688-.438a1 1 0 0 1-.125-.375v-.062l-.406-2.281l-.032-.25l-.156-.188l-1.281-1.781c-.239-.332-.27-.926.031-1.406l1.25-1.625l.156-.188l.031-.281l.282-2.094c.004-.015.027-.015.031-.031a1.4 1.4 0 0 1 1-1c.016-.004.016-.027.031-.031l2.094-.282l.25-.03l.219-.157l1.781-1.281c.168-.117.395-.188.625-.188m6.906 15.219l1.532 2.344H22.03l-.25.625l-.687 1.593l-2.125-3.25l.468-.343l1.97-.344v.031c.023-.004.038-.027.062-.031a2.97 2.97 0 0 0 1.437-.625zm-13.812.031a2.85 2.85 0 0 0 1.562.719h.031l1.907.25l.437.344l-2.125 3.218l-.687-1.593l-.25-.625H7.563z"
-                ></path>
+                  d="M13.5 30.815a1 1 0 0 1-.493-.13l-8.5-4.815A1 1 0 0 1 4 25V15a1 1 0 0 1 .507-.87l8.5-4.815a1 1 0 0 1 .986 0l8.5 4.815A1 1 0 0 1 23 15v10a1 1 0 0 1-.507.87l-8.5 4.815a1 1 0 0 1-.493.13M6 24.417l7.5 4.249l7.5-4.249v-8.834l-7.5-4.248L6 15.583Z"
+                />
+                <path
+                  fill="currentColor"
+                  d="M28 17h-2V7.583l-7.5-4.248l-8.007 4.535l-.986-1.74l8.5-4.815a1 1 0 0 1 .986 0l8.5 4.815A1 1 0 0 1 28 7Z"
+                />
               </svg>
 
               <p className="text-[#1B2C51] text-center">
-                Qualité de nos équipements et produits aux normes les plus
-                exigeantes
+                Cabinet entièrement numérisé
               </p>
             </motion.div>
 
@@ -125,20 +144,15 @@ const FirmHistory = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 color="#701a75"
                 className="w-8 lg:w-12 "
-                viewBox="0 0 14 14"
+                viewBox="0 0 24 24"
               >
-                <g
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M8.315 1.031a.5.5 0 0 0-.5.5v1.407H6.409a.5.5 0 0 0-.5.5v1.625a.5.5 0 0 0 .5.5h1.406v1.406a.5.5 0 0 0 .5.5H9.94a.5.5 0 0 0 .5-.5V5.563h1.406a.5.5 0 0 0 .5-.5V3.438a.5.5 0 0 0-.5-.5H10.44V1.53a.5.5 0 0 0-.5-.5zm-7.732 9.75l2.444 2.037a2 2 0 0 0 1.28.463h6.443c.46 0 .833-.373.833-.833c0-.92-.746-1.667-1.667-1.667H5.437"></path>
-                  <path d="m3.583 9.781l.75.75a1.06 1.06 0 1 0 1.5-1.5L4.669 7.867a2 2 0 0 0-1.414-.586H.583"></path>
+                <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+                  <path d="M12 6.25a3.25 3.25 0 1 0 0 6.5a3.25 3.25 0 0 0 0-6.5M10.25 9.5a1.75 1.75 0 1 1 3.5 0a1.75 1.75 0 0 1-3.5 0" />
+                  <path d="M12 2.25a7.25 7.25 0 0 0-6.063 11.226l-2.587 4.48a.75.75 0 0 0 .795 1.11l2.614-.514l.861 2.52a.75.75 0 0 0 1.36.133l2.58-4.468a7 7 0 0 0 .88 0l2.58 4.468a.75.75 0 0 0 1.36-.134l.858-2.526l2.616.52a.75.75 0 0 0 .796-1.11l-2.586-4.479A7.25 7.25 0 0 0 12 2.25M6.25 9.5a5.75 5.75 0 1 1 11.5 0a5.75 5.75 0 0 1-11.5 0m3.734 6.966a7.24 7.24 0 0 1-3.027-1.757l-1.482 2.567l1.637-.322a.75.75 0 0 1 .854.493l.54 1.579zm5.508 2.556l-1.476-2.556a7.24 7.24 0 0 0 3.027-1.757l1.48 2.563l-1.638-.326a.75.75 0 0 0-.856.495z" />
                 </g>
               </svg>
               <p className="text-[#1B2C51] text-center">
-                Travail en collaboratioin avec les entreprises d&apos;assurance
+                Meilleure marque d&apos;implant dentaire
               </p>
             </motion.div>
           </div>
@@ -157,20 +171,13 @@ const FirmHistory = () => {
                 className="w-8 lg:w-12 "
                 viewBox="0 0 24 24"
               >
-                <g
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  color="currentColor"
-                >
-                  <path d="M20 22v-3c0-2.828 0-4.243-.879-5.121C18.243 13 16.828 13 14 13l-2 2l-2-2c-2.828 0-4.243 0-5.121.879C4 14.757 4 16.172 4 19v3m12-9v5.5"></path>
-                  <path d="M8.5 13v4m0 0a2 2 0 0 1 2 2v1m-2-3a2 2 0 0 0-2 2v1m9-13.5v-1a3.5 3.5 0 1 0-7 0v1a3.5 3.5 0 1 0 7 0m1.25 12.75a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0"></path>
-                </g>
+                <path
+                  fill="currentColor"
+                  d="M21 11c0 5.55-3.84 10.74-9 12c-5.16-1.26-9-6.45-9-12V5l9-4l9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12L5 6.3v4.92C5 15.54 8.25 20 12 21m-2-4l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9"
+                />
               </svg>
               <p className="text-[#1B2C51] text-center">
-                Personnel d&apos;appui hautement qualifié
+                Travail en collaboratioin avec les entreprises d&apos;assurance
               </p>
             </motion.div>
 
@@ -199,9 +206,11 @@ const FirmHistory = () => {
           </div>
         </div>
       </div>
-      <div className={`absolute right-0 h-4/6 w-50 top-96
+      <div
+        className={`absolute right-0 h-4/6 w-50 top-96
       md:top-0
-      `}>
+      `}
+      >
         <img src={firm} alt="" className="object-contain w-full h-full" />
       </div>
     </div>

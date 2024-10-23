@@ -3,13 +3,14 @@ import SectionPinkTitle from "../components/SectionPinkTitle";
 import blocOpperatoire from "../assets/images/bloc_operatoire.jpg";
 import photeiull from "../assets/images/photeuillRazakatiana.jpg";
 import radioPanoramique from "../assets/images/Radio_panoramique.jpg";
+import SitrakaImg from "../assets/images/RazakatianaSitraka.jpg";
 import { dataOffice } from "../data/DataOffice";
+import { ddlmData } from "../data/ddlmData";
 
 import TitleTexte from "../components/TitleTexte";
 import EquipementImage from "../components/EquipementImage";
 import { surgeryRoomData } from "../data/surgeryRoomData";
 import { DentistryRoomData } from "../data/DentistryRoomData";
-
 
 const Ofiice = () => {
   return (
@@ -67,6 +68,21 @@ personnalisée et des traitements adaptés à vos besoins."
         description3="L'examen est rapide, non-invasif, et offre des résultats immédiats, permettant ainsi un diagnostic rapide et une prise en charge efficace des soins."
         positionImg="flex-row"
       />
+
+      <TitleTexte
+        title="DDLM"
+        text="Le cabinet CIDRO collabore étroitement avec le laboratoire Digital Dental Lab Madagasikara, un laboratoire de prothèse dentaire entièrement numérique"
+      />
+
+      <SectionPinkTitle
+        img={SitrakaImg}
+        title="Laboratoire de prothése dentaire"
+        description1="Dirigé par M. Sitraka Razakatiana, gérant du DDLM reconnu pour son expertise et son savoir-faire. Spécialisé dans la fabrication de prothèses dentaires de haute qualité, le DDLM utilise des technologies de pointe pour créer des produits en 100% Zircone, un matériau reconnu pour sa durabilité, sa résistance et son esthétique naturelle."
+        description2="Grâce à cette collaboration, nous sommes en mesure de proposer à nos patients des solutions prothétiques précises et adaptées, alliant confort et excellence esthétique. Le processus entièrement digitalisé du DDLM garantit une fabrication rapide et précise, assurant ainsi des résultats de qualité supérieure pour chaque patient."
+        positionImg="flex-row"
+      />
+
+      <EquipementImage data={ddlmData} />
     </>
   );
 };

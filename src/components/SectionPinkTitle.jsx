@@ -8,6 +8,7 @@ const SectionPinkTitle = ({
   description1,
   description2,
   description3,
+  description4,
   img,
   positionImg,
 }) => {
@@ -55,7 +56,7 @@ const SectionPinkTitle = ({
             className="relative rounded-tr-3xl rounded-bl-3xl shadow-xl h-full"
           >
             <motion.div
-              style={{ opacity: inView ? 0 : 0.8 }} // Variation d'opacité selon la visibilité
+              style={{ opacity: inView ? 0 : 1 }} // Variation d'opacité selon la visibilité
               className="absolute overflow-hidden bg-slate-900/70 rounded-tr-3xl z-40 rounded-bl-3xl shadow-xl w-full h-full"
             />
             <div className="absolute overflow-hidden rounded-tr-3xl z-10 rounded-bl-3xl shadow-xl w-full h-full">
@@ -82,6 +83,9 @@ const SectionPinkTitle = ({
             )}
             {description3 && (
               <p className="mt-4 text-justify">{description3}</p>
+            )}
+            {description4 && (
+              <p className="mt-4 text-justify">{description4}</p>
             )}
           </motion.div>
         </div>

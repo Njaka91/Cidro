@@ -44,7 +44,7 @@ const OfficeImg = ({
           transition={{ duration: 0.5 }}
           className="relative rounded-tr-3xl rounded-bl-3xl shadow-xl h-full"
         >
-          <div className="absolute overflow-hidden bg-slate-900/40 rounded-tr-3xl z-40 rounded-bl-3xl shadow-xl w-full h-full" />
+          
           <div className="absolute overflow-hidden rounded-tr-3xl z-10 rounded-bl-3xl shadow-xl w-full h-full">
             <img
               src={img}

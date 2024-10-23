@@ -1,10 +1,18 @@
 .swiper-pagination-bullet {
-    background-color: #353f50; 
-  }
-  
-  .swiper-pagination-bullet-active {
-    background-color: #701a75; 
-  }
-  
-  
-  
+  background-color: #353f50;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #701a75;
+}
+.slide {
+  transition: width 0.3s ease; 
+}
+
+.swiper-slide-active {
+  width: 10pxgit; 
+}
+
+.swiper-slide {
+  width: 720px; 
+}

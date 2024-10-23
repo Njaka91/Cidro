@@ -44,7 +44,8 @@ const StubbornImg = ({ imgBg }) => {
           Prenez soin de vos dents, prenez soin de votre bien-être
         </motion.div>
         <motion.div
-          className="text-4xl md:text-7xl font-semibold md:font-extrabold text-center text-white"
+          className="text-4xl md:text-7xl font-semibold md:font-extrabold text-center text-white px-6
+          md:px-8 lg:px-24 xl-px-32"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3, delay: 0.5 }}

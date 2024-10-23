@@ -1,7 +1,7 @@
 // eslint-disable-next-line react/prop-types
 const TitleTexte = ({title, text}) => {
   return (
-    <div className="flex flex-col justify-center px-6 text-[#1B2C51]
+    <div className="flex flex-col justify-center px-6 mt-12 text-[#1B2C51]
     md:px-8 
       lg:px-24 
       xl-px-40">

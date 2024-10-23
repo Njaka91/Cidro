@@ -6,7 +6,7 @@ const EquipementImage = ({ data }) => {
     
 
     return (
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="flex flex-wrap justify-center gap-8 px-32">
             {data.map((item, index) => (
                 <CardEquipementImage
                     key={index}

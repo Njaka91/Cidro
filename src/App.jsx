@@ -7,6 +7,7 @@ import Home from "./pages/Home"
 import ErroPage from "./pages/ErrorPage";
 import Appointment from "./pages/Appointment";
 import CGU from "./pages/CGU";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const App = () => {
   const router = createBrowserRouter ([
@@ -30,7 +31,11 @@ const App = () => {
         {
           path:"/cgu",
           element: <CGU/>
-        }
+        },
+        {
+          path:"/politique-de-confidentialite",
+          element: <PrivacyPolicy/>
+        },
       ]
     }
   ])

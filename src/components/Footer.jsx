@@ -88,7 +88,7 @@ const Footer = () => {
             </Link>
             <Link className="text-white flex flex-row items-center gap-3" to="politique-de-confidentialite">
               <Dot size={18} weight="fill" color="white" />
-              <div>Politiques de confidentialités et charte de cookies</div>
+              <div>Politiques de confidentialités et charte des cookies</div>
             </Link>
           </div>
         </div>

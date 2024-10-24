@@ -2,7 +2,7 @@
 
 import smile_dental from "../assets/images/Implantologie/Smile_dental.png";
 
-const SmileCareTitle = ({ p,description }) => {
+const SmileCareTitle = ({ p, description }) => {
 
   const splitText = (text) => {
     const middleIndex = Math.floor(text.length / 2);
@@ -20,8 +20,10 @@ const SmileCareTitle = ({ p,description }) => {
             alt="smile_dental"
             className="object-cover w-full h-full rounded-tl-3xl rounded-br-3xl"
           />
-          <p className="flex justify-center absolute right-0 left-0  text-[35px] font-extrabold  -bottom-[25%]
-          md:hidden">
+          <p
+            className="flex justify-center absolute right-0 left-0 text-[35px] font-extrabold -bottom-[25%] 
+            md:hidden whitespace-nowrap"
+          >
             <span className="text-fuchsia-900">{p}</span>
           </p>
 
@@ -29,14 +31,19 @@ const SmileCareTitle = ({ p,description }) => {
             {description}
           </p>
 
-          <p className=" hidden md:block absolute text-[75px] font-extrabold md:top-[50%] lg:top-[60%] right-0">
+          <p
+            className="hidden md:block absolute text-[75px] font-extrabold md:top-[50%] lg:top-[60%] right-0 
+            whitespace-nowrap"
+          >
             <span className="text-white">{firstHalf}</span>
           </p>
-          <p className="hidden md:block absolute text-[75px] font-extrabold md:top-[50%] lg:top-[60%] left-[100%]">
+          <p
+            className="hidden md:block absolute text-[75px] font-extrabold md:top-[50%] lg:top-[60%] left-[100%] 
+            whitespace-nowrap"
+          >
             <span className="text-fuchsia-900">{secondHalf}</span>
           </p>
         </div>
-
       </div>
     </div>
   );

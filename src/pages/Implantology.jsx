@@ -15,7 +15,8 @@ const Implantology = () => {
 
       <SmileCareTitle
       p="implantologie"
-      description="La solution fiable pour un sourire éclatant et durable."/> 
+      description="La solution fiable pour un sourire éclatant et durable."
+      /> 
 
       <OfficeImg
         img={implant_unitaire}

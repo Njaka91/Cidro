@@ -48,7 +48,7 @@ const App = () => {
           element: <Implantology/>
         },
         {
-          path:"/orthodentie",
+          path:"/orthodontie",
           element: <Orthodontie/>
         }
       ],

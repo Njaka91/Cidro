@@ -1,23 +1,26 @@
 import TitleTexte from "./TitleTexte";
-import slide_image from "../assets/images/accueil.jpg";
+import slide_image1 from "../assets/images/Image caroussel/Dr_Allain_patient.jpg"
+import slide_image2 from "../assets/images/Image caroussel/Dr_Allain.jpg"
+import slide_image3 from "../assets/images/Image caroussel/Dr_Tsiaro1.jpg"
+import slide_image4 from "../assets/images/Image caroussel/Dr_Tsiaro.jpg"
+import slide_image5 from "../assets/images/Image caroussel/Poste_Dr_Allain.png"
+import slide_image6 from "../assets/images/Image caroussel/Post_Dr_Tsiaro.jpg"
+import slide_image7 from "../assets/images/Image caroussel/Deco_cidro.jpg"
+import slide_image8 from "../assets/images/Image caroussel/Implantologie_cidro.jpg"
+import slide_image9 from "../assets/images/Image caroussel/Le_cabinet.jpg"
 import CarousselImage from "./CarousselImage";
 
 const WelcomeSection = () => {
   const images = [
-    slide_image,
-    slide_image,
-    slide_image,
-    slide_image,
-    slide_image,
-    slide_image,
-    slide_image,
-    slide_image,
-    slide_image,
-    slide_image,
-    slide_image,
-    slide_image,
-    slide_image,
-    slide_image,
+    {src : slide_image1 , alt : "Dr Allain patient"},
+    {src : slide_image2 , alt : "Dr Allain"},
+    {src : slide_image3 , alt : "Dr Tsiaro1"},
+    {src : slide_image4 , alt : "Dr Tsiaro"},
+    {src : slide_image5 , alt : "Poste dr Allain"},
+    {src : slide_image6 , alt : "Post dr tsiaro"},
+    {src : slide_image7 , alt : "Cidro deco mural"},
+    {src : slide_image8 , alt : "implantologie cidrot"},
+    {src : slide_image9 , alt : "cidro et ddlm"},
   ];
   const title = "Bienvenue chez CIDRO";
   const text =

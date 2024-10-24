@@ -46,8 +46,8 @@ const CarousselImage = ({images}) => {
           map((image, index) => (
             <SwiperSlide key={index} >
               <img
-                src={image}
-                alt="slide_image"
+                src={image.src}
+                alt={image.alt}
                 className="rounded-2xl object-cover lg:w-[700px] h-64 lg:h-96"
               />
             </SwiperSlide>

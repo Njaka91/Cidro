@@ -3,6 +3,7 @@ import OfficeImg from "../components/OfficeImg";
 import implant_unitaire from "../assets/images/Implantologie/Implant-unitaire.png";
 import implant_plural from "../assets/images/Implantologie/Bridge-dentaire.png";
 import implant_all from "../assets/images/Implantologie/All-on-6-dental-Implants.png";
+import SmileCareTitle from "../components/SmileCareTitle";
 
 const Implantology = () => {
   return (
@@ -11,6 +12,10 @@ const Implantology = () => {
         title="Retrouver le sourire"
         text="L'implantologie est une spécialité qui permet de restaurer vos dents manquantes de manière durable et esthétique. Chez CIDRO, nous proposons plusieurs types d'implants adaptés à vos besoins dentaires spécifiques"
       />
+
+      <SmileCareTitle
+      p="implantologie"
+      description="La solution fiable pour un sourire éclatant et durable."/> 
 
       <OfficeImg
         img={implant_unitaire}

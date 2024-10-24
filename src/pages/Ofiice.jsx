@@ -86,7 +86,14 @@ personnalisée et des traitements adaptés à vos besoins."
 
       <EquipementImage data={ddlmData} />
 
-      <CarousselImage images ={ddlmImageData}/>
+      <div className="pt-10 text-center
+      md:px-32 
+      ">
+        <h1 className="text-2xl font-extrabold mb-3 md:text-5xl text-fuchsia-900">Esthétique, Confort et Discrétion</h1>
+        <p>Prothèses Dentaires 100% Zircone, Gouttières Invisibles et Gouttières de Blanchiment</p>
+      </div>
+
+      <CarousselImage images={ddlmImageData} />
     </>
   );
 };

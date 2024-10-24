@@ -60,7 +60,7 @@ const StubbornImg = ({ imgBg }) => {
             className="btn relative bg-[#1B2C51] md:w-[21%] lg:w-[17%] xl:w-[15%] rounded-full shadow-xl border-0 text-white font-medium mt-14 group hover:bg-[#1B2C51]"
           >
             <span className="relative z-40">
-              <Link to="/prendrerendez-vous">Prendre rendez-vous</Link>
+              <Link to="/prendre-rendez-vous">Prendre rendez-vous</Link>
             </span>
             <span className="absolute inset-0 w-0 h-full opacity-0 rounded-full bg-fuchsia-900 transition-all duration-300 group-hover:opacity-75 group-hover:w-full"></span>
           </motion.div>

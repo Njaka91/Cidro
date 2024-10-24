@@ -54,7 +54,7 @@ const StubbornImg = ({ imgBg }) => {
           Clinique d’Implantologie Dentaire et de Réhabilitation Orale
         </motion.div>
 
-        {location.pathname !== "/prendrerendez-vous" && (
+        {location.pathname !== "/prendre-rendez-vous" && (
           <motion.div
             style={{ scale: buttonScale, opacity: buttonOpacity }}
             className="btn relative bg-[#1B2C51] md:w-[21%] lg:w-[17%] xl:w-[15%] rounded-full shadow-xl border-0 text-white font-medium mt-14 group hover:bg-[#1B2C51]"

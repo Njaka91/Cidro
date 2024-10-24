@@ -101,7 +101,14 @@ const NavBar = () => {
                 >
                   {m.submenu.map((sub, key) => (
                     <li key={key}>
-                      <NavLink to={sub.href} className="group hover:bg-[#701a75]">
+                      <NavLink
+                        to={sub.href}
+                        className={({ isActive }) =>
+                          isActive
+                            ? "text-white relative after:content-[''] after:absolute after:left-0 after:bottom-[-5px] after:w-full after:h-1 after:rounded-xl after:bg-white hover:bg-transparent rounded-none"
+                            : "text-white relative group hover:bg-transparent rounded-none"
+                        }
+                      >
                         {sub.label}
                         <span className="absolute left-0 bottom-[-5px] w-0 h-1 rounded-xl bg-white transition-all duration-300 group-hover:w-full"></span>
                       </NavLink>

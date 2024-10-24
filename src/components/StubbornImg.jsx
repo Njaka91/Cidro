@@ -35,7 +35,7 @@ const StubbornImg = ({ imgBg }) => {
       </div>
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
         <motion.div
-          className="md:text-xl font-semibold text-white mb-5"
+          className="md:text-xl font-semibold text-white mb-5 text-center"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3, delay: 0.2 }}
@@ -44,7 +44,7 @@ const StubbornImg = ({ imgBg }) => {
           Prenez soin de vos dents, prenez soin de votre bien-être
         </motion.div>
         <motion.div
-          className="text-4xl md:text-7xl font-semibold md:font-extrabold text-center text-white px-6
+          className="text-xl md:text-4xl lg:text-6xl font-bold md:font-extrabold text-center text-white px-6
           md:px-8 lg:px-24 xl-px-32"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}

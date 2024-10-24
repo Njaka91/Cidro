@@ -19,7 +19,7 @@ const Stubborn = () => {
           />
           <div className="flex flex-col md:text-xs lg:text-sm">
             <span className=" font-semibold">Appelez-nous</span>
-            <span>+261 34 02 267 27</span>
+            <Link to="tel:+261340226727">+261 34 02 267 27</Link>
           </div>
         </div>
 

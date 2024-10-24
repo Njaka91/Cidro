@@ -48,7 +48,7 @@ const CarousselImage = ({images}) => {
               <img
                 src={image.src}
                 alt={image.alt}
-                className="rounded-2xl object-cover lg:w-[700px] h-64 lg:h-96"
+                className="rounded-2xl object-cover lg:w-[700px] h-64 lg:h-full"
               />
             </SwiperSlide>
           ))}

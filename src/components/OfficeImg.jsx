@@ -9,6 +9,7 @@ const OfficeImg = ({
   diplome,
   title,
   description,
+  description2,
   img,
   positionImg,
 }) => {
@@ -98,12 +99,13 @@ const OfficeImg = ({
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }} // Animation quand dans la vue
           transition={{ duration: 0.5 }}
         >
-          <ul className="list-disc pl-5">
+          <p className="mt-4 text-justify line-h">{description}</p>
+          <p className="mt-4 text-justify line-h">{description2}</p>
+          {diplome && <ul className="list-disc pl-5">
             {diplome.map((diplome, index) => (
               <li key={index}>{diplome}</li>
             ))}
-          </ul>
-          <p className="mt-4 text-justify line-h">{description}</p>
+          </ul>}
         </motion.div>
       </div>
     </div>

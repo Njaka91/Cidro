@@ -7,6 +7,7 @@ import Home from "./pages/Home"
 import ErroPage from "./pages/ErrorPage";
 import Appointment from "./pages/Appointment";
 import CGU from "./pages/CGU";
+import Implantology from "./pages/Implantology";
 
 const App = () => {
   const router = createBrowserRouter ([
@@ -30,6 +31,10 @@ const App = () => {
         {
           path:"/cgu",
           element: <CGU/>
+        },
+        {
+          path:"/implantologie",
+          element: <Implantology/>
         }
       ]
     }

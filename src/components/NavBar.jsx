@@ -36,16 +36,16 @@ const menu = [
         href: "/implantologie",
       },
       {
-        label: "Orthodentie",
-        href: "/orthodentie",
+        label: "Orthodontie",
+        href: "/orthodontie",
       },
       {
         label: "Chirurgie orale",
         href: "/chirurgie-orale",
       },
       {
-        label: "Implatologie",
-        href: "/implatologie",
+        label: "Dentisterie générale",
+        href: "/dentisterie-generale",
       },
     ],
   },

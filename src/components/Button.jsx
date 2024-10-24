@@ -17,7 +17,7 @@ const Button = () => {
   return (
     <div className="fixed flex items-center justify-center bottom-10 right-8 z-50">
       <Link
-      to= "/prendrerendez-vous">
+      to= "/prendre-rendez-vous">
       <motion.div
       ref={ref}
       style= {{

@@ -69,7 +69,7 @@ const Footer = () => {
               <div>+261 34 02 267 27</div>
             </div>
             <div className="text-white flex flex-row gap-4">
-              <div>Allain.razakatiana.mg@gmail.com</div>
+              <Link to="mailto:allain.razakatiana.mg@gmail.com">allain.razakatiana.mg@gmail.com</Link>
             </div>
           </div>
         </div>

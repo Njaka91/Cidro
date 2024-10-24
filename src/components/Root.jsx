@@ -6,7 +6,7 @@ import StubbornImg from "./StubbornImg";
 import AppointmentBottom from "./AppointmentBottom";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import bgimg from "../assets/images/bgimg.jpeg";
+import bgimg from "../assets/images/photeuillRazakatiana - Copie.jpg";
 import bgimg2 from "../assets/images/cabinet_dentaire.jpg";
 import Button from "./Button"
 

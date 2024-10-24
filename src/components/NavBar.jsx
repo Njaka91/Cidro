@@ -87,7 +87,7 @@ const NavBar = () => {
         {menu.map((m, index) => (
           <motion.li
             key={index}
-            className="cursor-pointer relative group"
+            className="cursor-pointer relative"
             variants={liVariants}
           >
             {m.submenu ? (
@@ -101,7 +101,10 @@ const NavBar = () => {
                 >
                   {m.submenu.map((sub, key) => (
                     <li key={key}>
-                      <NavLink to={sub.href}>{sub.label}</NavLink>
+                      <NavLink to={sub.href} className="group hover:bg-[#701a75]">
+                        {sub.label}
+                        <span className="absolute left-0 bottom-[-5px] w-0 h-1 rounded-xl bg-white transition-all duration-300 group-hover:w-full"></span>
+                      </NavLink>
                     </li>
                   ))}
                 </ul>

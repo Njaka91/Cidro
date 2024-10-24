@@ -78,18 +78,18 @@ const Footer = () => {
             Informations légales
           </span>
           <div className="text-white flex flex-col gap-2 ">
-            <div className="text-white flex flex-row items-center gap-3 ">
+            <Link className="text-white flex flex-row items-center gap-3 " to="/cgu">
               <Dot size={18} weight="fill" color="white" />
               <div>Conditions générales d&apos;utilisation</div>
-            </div>
-            <div className="text-white flex flex-row items-center gap-3">
+            </Link>
+            <Link className="text-white flex flex-row items-center gap-3" to="mentions-legales">
               <Dot size={18} weight="fill" color="white" />
               <div>Mentions légales</div>
-            </div>
-            <div className="text-white flex flex-row items-center gap-3">
+            </Link>
+            <Link className="text-white flex flex-row items-center gap-3" to="politique-de-confidentialite">
               <Dot size={18} weight="fill" color="white" />
-              <div>Politiques de confidentialités et charte de coolies</div>
-            </div>
+              <div>Politiques de confidentialités et charte de cookies</div>
+            </Link>
           </div>
         </div>
         <div className="flex-col gap-3 mt-3 hidden md:flex">

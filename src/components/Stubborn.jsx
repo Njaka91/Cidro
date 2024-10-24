@@ -35,7 +35,7 @@ const Stubborn = () => {
           >
             <span className=" font-semibold">Notre adresse e-mail</span>
             <Link to="mailto:allain.razakatiana.mg@gmail.com">
-              allain.razakatiana.mg@gmail.com
+              allainrazakatianads@gmail.com
             </Link>
           </div>
         </div>
@@ -49,9 +49,9 @@ const Stubborn = () => {
           />
           <div className="flex flex-col md:text-xs lg:text-sm">
             <span className="font-semibold">
-              Heures d&apos;ouverture : 8h - 17h30
+              Heures d&apos;ouverture : 7h30 - 16h30
             </span>
-            <span>Samedi : 8h - 15h30</span>
+            <span>Samedi : 7h30 - 12h30</span>
           </div>
         </div>
         <div className="flex flex-row items-center md:gap-2 lg:gap-3">

@@ -23,7 +23,7 @@ const CarousselImage = ({images}) => {
           loop={true}
           slidesPerView={1}
           coverflowEffect={{
-            rotate: 10,
+            rotate: 0,
             stretch: 50,
             depth: 250,
           }}
@@ -37,8 +37,8 @@ const CarousselImage = ({images}) => {
           className=" "
           breakpoints={{
             640: { slidesPerView: 1 }, 
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 }, 
+            768: { slidesPerView: 2 , rotate : 10},
+            1024: { slidesPerView: "auto" }, 
           }}
         >
           {images.
@@ -48,7 +48,7 @@ const CarousselImage = ({images}) => {
               <img
                 src={image}
                 alt="slide_image"
-                className="rounded-2xl object-cover w-[720px] h-[24rem]"
+                className="rounded-2xl object-cover lg:w-[700px] h-64 lg:h-96"
               />
             </SwiperSlide>
           ))}

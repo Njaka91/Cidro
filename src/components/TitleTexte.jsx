@@ -13,7 +13,7 @@ const TitleTexte = ({ title, text }) => {
           <div className="bg-fuchsia-900 w-1/2 h-1 rounded-full mt-3" />
         </div>
       </div>
-      <span className="text-center mt-7 mx-32">{text}</span>
+      <span className="text-center mt-7 mx-6 md:mx-8 lg:mx-24 xl:mx-32">{text}</span>
     </div>
   );
 };

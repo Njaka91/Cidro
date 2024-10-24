@@ -12,8 +12,8 @@ const menu = [
     label: "Nos soins",
     submenu: [
       {
-        label: "Implatologie",
-        href: "/implatologie",
+        label: "Implantologie",
+        href: "/implantologie",
       },
       {
         label: "Orthodentie",
@@ -24,8 +24,8 @@ const menu = [
         href: "/chirurgie-orale",
       },
       {
-        label: "Implatologie",
-        href: "/implatologie",
+        label: "Implantologie",
+        href: "/implantologie",
       },
     ],
   },

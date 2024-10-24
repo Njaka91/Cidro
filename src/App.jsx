@@ -9,6 +9,7 @@ import Appointment from "./pages/Appointment";
 import CGU from "./pages/CGU";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import LegalNotices from "./pages/LegalNotices";
+import Implantology from "./pages/Implantology";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -41,10 +42,13 @@ const App = () => {
           path: "/mentions-legales",
           element: <LegalNotices />,
         },
+        {
+          path:"/implantologie",
+          element: <Implantology/>
+        }
       ],
     },
   ]);
   return <RouterProvider router={router} />;
 };
-
 export default App;

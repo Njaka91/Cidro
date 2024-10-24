@@ -11,6 +11,8 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import LegalNotices from "./pages/LegalNotices";
 import Implantology from "./pages/Implantology";
 import { Orthodontie } from "./pages/Orthodontie";
+import { GeneralDentistry } from "./pages/GeneralDentistry";
+import { OralSergery } from "./pages/OralSergery";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -50,6 +52,14 @@ const App = () => {
         {
           path:"/orthodontie",
           element: <Orthodontie/>
+        },
+        {
+          path:"/dentisterie-generale",
+          element: <GeneralDentistry/>
+        },
+        {
+          path:"/chirurgie-orale",
+          element: <OralSergery/>
         }
       ],
     },

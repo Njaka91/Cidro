@@ -10,6 +10,7 @@ import CGU from "./pages/CGU";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import LegalNotices from "./pages/LegalNotices";
 import Implantology from "./pages/Implantology";
+import { Orthodontie } from "./pages/Orthodontie";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -45,6 +46,10 @@ const App = () => {
         {
           path:"/implantologie",
           element: <Implantology/>
+        },
+        {
+          path:"/orthodentie",
+          element: <Orthodontie/>
         }
       ],
     },

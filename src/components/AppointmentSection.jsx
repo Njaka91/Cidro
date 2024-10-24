@@ -1,9 +1,10 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
-import img from "../assets/images/cabinet_dentaire.jpg";
+import img from "../assets/images/IMG_0574.jpg";
 import PlusDeco from "./PlusDeco";
 import fond1 from "../assets/images/fond1.png";
 import fond2 from "../assets/images/fond2.png";
+import blocOpperatoire from "../assets/images/bloc_operatoire.jpg";
 
 const AppointmentSection = () => {
   const [errors, setErrors] = useState("");
@@ -117,7 +118,7 @@ const AppointmentSection = () => {
   return (
     <div className="relative py-10">
       <div className="absolute hidden md:block left-32 top-32 overflow-hidden rounded-tl-3xl z-10 rounded-br-3xl shadow-xl w-1/4 h-2/6">
-        <img src={img} alt="dentiste" className="object-cover w-full h-full" />
+        <img src={blocOpperatoire} alt="dentiste" className="object-cover w-full h-full" />
       </div>
       <div className="absolute hidden md:block left-36 top-36 overflow-hidden bg-none rounded-tl-3xl border-fuchsia-900 border-2 border-opacity-35 z-20 rounded-br-3xl w-1/4 h-2/6" />
       <div className="absolute hidden md:block left-28 top-28 overflow-hidden bg-none rounded-tl-3xl border-[#1B2C51] z-0 border-2 border-opacity-35 rounded-br-3xl w-1/4 h-2/6" />

@@ -9,7 +9,7 @@ const AppointmentBottom = () => {
 
   return (
     <div
-      className="flex flex-col relative justify-center items-center gap-5 overflow-hidden mt-8 px-32 pb-14 
+      className="flex flex-col relative justify-center items-center gap-5 overflow-hidden mt-8 md:px-32 pb-14 
     md:mt-0"
     >
       <motion.div

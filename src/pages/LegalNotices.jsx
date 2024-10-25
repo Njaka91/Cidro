@@ -53,7 +53,7 @@ const LegalNotices = () => {
           <div>
             Email :{" "}
             <span className="font-semibold">
-              allain.razakatiana.mg@gmail.com
+            allainrazakatianad@gmail.com
             </span>
           </div>
         </div>

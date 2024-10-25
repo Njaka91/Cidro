@@ -34,8 +34,8 @@ const Stubborn = () => {
           "
           >
             <span className=" font-semibold">Notre adresse e-mail</span>
-            <Link to="mailto:allain.razakatiana.mg@gmail.com">
-              allainrazakatianads@gmail.com
+            <Link to="mailto:allainrazakatianad@gmail.com">
+            allainrazakatianad@gmail.com
             </Link>
           </div>
         </div>

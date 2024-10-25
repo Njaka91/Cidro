@@ -115,7 +115,7 @@ const AppointmentBottom = () => {
           </motion.div>
         </Link>
 
-        <Link to="mailto:allain.razakatiana.mg@gmail.com">
+        <Link to="mailto:allainrazakatianad@gmail.com">
           <motion.div
             ref={ref}
             initial={{ x: 350, rotate: 270, opacity: 0 }}
@@ -148,7 +148,7 @@ const AppointmentBottom = () => {
                transition-all duration-[400ms] ease-in-out bg-[#101e3b] 
                left-1/2 transform -translate-x-1/2 -bottom-14 rounded-full p-2  absolute w-72"
               >
-                allain.razakatiana.mg@gmail.com
+                allainrazakatianad@gmail.com
               </span>
               <span
                 className="invisible opacity-0 -translate-y-2 text-center group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 

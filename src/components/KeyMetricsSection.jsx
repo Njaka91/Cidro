@@ -45,7 +45,9 @@ const KeyMetricsSection = () => {
               <KeyMetrics n={metric.n} />
             </div>
           ) : (
-            <KeyMetrics n={metric.n} />
+            <div className="text-fuchsia-900 text-4xl md:text-6xl">
+              <KeyMetrics n={metric.n} />
+            </div>
           )}
           <span className="text-sm lg:text-lg font-medium w-36 md:w-60 text-center">
             {metric.texte}

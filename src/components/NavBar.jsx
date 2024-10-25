@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/cidroLogo.jpg";
+import "../assets/css/fontTitle.css";
 
 const liVariants = {
   before: { opacity: 0, y: -20 },
@@ -64,20 +65,22 @@ const NavBar = () => {
 
   return (
     <div className="sticky top-0 bg-[#701a75] flex items-center justify-between md:justify-center py-3 px-5 text-white z-50 md:px-10">
-      {/* Logo (centré) */}
-      <div className="md:hidden">
+      <div className="flex-1 flex justify-start md:hidden">
         <Link to="/">
           <img src={logo} alt="logo" className="w-16 bg-white" />
         </Link>
       </div>
+
+      {/* Titre CIDRO (centre en mobile) */}
+      <div className="flex-1 text-center text-white font-semibold text-2xl varela-font md:hidden">CIDRO</div>
+
       <div className="flex-1 flex justify-end md:hidden">
-        {/* Mobile Menu Button (droite) */}
         <button onClick={toggleMenu} className="text-white text-2xl">
           {isMenuOpen ? "✖" : "☰"}
         </button>
       </div>
 
-      {/* Desktop Menu */}
+      {/* Menu de bureau (Desktop Menu) */}
       <motion.ul
         className="hidden md:flex gap-8 lg:gap-16 items-center font-medium justify-center"
         variants={ulVariants}
@@ -137,7 +140,7 @@ const NavBar = () => {
         ))}
       </motion.ul>
 
-      {/* Mobile Menu */}
+      {/* Menu mobile */}
       {isMenuOpen && (
         <motion.div
           initial={{ opacity: 0, y: -100 }} // Départ en haut de l'écran

@@ -43,7 +43,7 @@ const PresidentCart = () => {
             Président fondateur de la SMIRO
           </span>
           <span className="text-[#1B2C51] text-center pb-2">
-            (Société Malagasy Implantogogie et de Réhabilitation Orale)
+            (Société Malagasy d&apos;Implantogogie et de Réhabilitation Orale)
           </span>
           <motion.div className="overflow-hidden shadow-xl">
             <motion.img

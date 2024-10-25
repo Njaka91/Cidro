@@ -60,10 +60,10 @@ const PrivacyPolicy = () => {
           suppression des données le concernant. Pour exercer ce droit, il peut
           envoyer un email à{" "}
           <Link
-            to="mailto:allain.razakatiana.mg@gmail.com"
+            to="mailto:allainrazakatianad@gmail.com"
             className="font-semibold"
           >
-            allain.razakatiana.mg@gmail.com
+            allainrazakatianad@gmail.com
           </Link>
           .
         </p>

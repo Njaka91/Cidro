@@ -191,7 +191,7 @@ const Footer = () => {
           <img src={logo} alt="logo" className=" h-[80px] md:h-[100px]" />
         </Link>
         <span className="text-white text-sm md:text-base">
-          © Le cabinet du Dr Allain Razakatiana, All Right Reserved.
+          ©2024 CIDRO, tous droits réservés.
         </span>
         <Link to="https://www.roottimplants.fr/" target="_blank">
           <img src={roott} alt="roott-logo" className="w-36 md:w-52" />

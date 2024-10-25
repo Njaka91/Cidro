@@ -14,18 +14,18 @@ const LegalNotices = () => {
           <div>
             Adresse :{" "}
             <span className="font-semibold">
-              -----------------------------------------
+              14, Rue des 5 perches 77500 Chelles, France
             </span>
           </div>
           <div>
             Téléphone :{" "}
             <span className="font-semibold">
-              ---------------------------------------
+              09 87 32 19 12
             </span>
           </div>
           <div>
-            Numéro d&apos;immatriculation :{" "}
-            <span className="font-semibold"> -------------------</span>
+            Mail :{" "}
+            <span className="font-semibold">Informatika@informatika-group.com</span>
           </div>
         </div>
       </div>
@@ -66,23 +66,23 @@ const LegalNotices = () => {
           <div>
             Nom de l&apos;hébergeur :{" "}
             <span className="font-semibold">
-              ------------------------------
+              Tranokala
             </span>
           </div>
           <div>
             Adresse :{" "}
-            <span className="font-semibold">-----------------------------</span>
+            <span className="font-semibold">VI 30 Ambatovinaky, Près du Ministère de l’Eau, de l’Assainissement</span>
           </div>
           <div>
             Téléphone :{" "}
             <span className="font-semibold">
-              ---------------------------------
+            +261 34 41 189 33
             </span>
           </div>
           <div>
             Email:{" "}
             <span className="font-semibold">
-              --------------------------------
+            contact@tranokala.pro
             </span>
           </div>
         </div>

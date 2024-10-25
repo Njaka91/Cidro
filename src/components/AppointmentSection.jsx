@@ -140,7 +140,7 @@ const AppointmentSection = () => {
             FORMULAIRE DE DEMANDE DE RENDEZ-VOUS
           </h1>
           <p className="text-white mt-6 text-center">
-            Merci de répondre à ce formuliare pour permettre au secrétariat de
+            Merci de répondre à ce formulaire pour permettre au secrétariat de
             vous
             <span className=" block pt-[10px]"> </span>
             organiser un rendez-vous

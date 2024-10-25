@@ -15,7 +15,7 @@ const CardEquipementImage = ({image,description}) => {
         initial={{ opacity: 0 }} // Valeur initiale d'opacité
         animate={{ opacity: inView ? 1 : 0 }} // Animer l'opacité en fonction de inView
         transition={{ duration: 0.5 }} // Durée de la transition
-        className="w-60 h-60 shadow-xl overflow-hidden rounded-xl transform transition-transform hover:scale-110"
+        className="w-64 h-60 shadow-xl overflow-hidden rounded-xl transform transition-transform hover:scale-110"
       >
         <img
           src={image}

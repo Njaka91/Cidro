@@ -41,7 +41,7 @@ const AppointmentBottom = () => {
               delay: 0.1,
               ease: [0.17, 0.55, 0.55, 1],
             }}
-            className="flex items-center justify-center relative bg-fuchsia-900 h-12 w-12 rounded-full shadow-xl border-0 text-white font-medium group hover:bg-fuchsia-950"
+            className="flex items-center justify-center relative bg-black h-12 w-12 rounded-full shadow-xl border-0 text-white font-medium group hover:bg-black"
           >
             <span className="relative z-40 group inline-block">
               <svg
@@ -57,14 +57,14 @@ const AppointmentBottom = () => {
               </svg>
               <span
                 className="invisible opacity-0 -translate-y-2 text-center group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 
-               transition-all duration-[400ms] ease-in-out bg-fuchsia-950 
+               transition-all duration-[400ms] ease-in-out bg-black 
                left-1/2 transform -translate-x-1/2 -bottom-14 rounded-full p-2  absolute w-40"
               >
                 +261 34 02 267 27
               </span>
               <span
                 className="invisible opacity-0 -translate-y-2 text-center group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 
-       transition-all duration-[400ms] ease-in-out bg-fuchsia-950  
+       transition-all duration-[400ms] ease-in-out bg-black  
        left-1/2 transform -translate-x-1/2 -bottom-5 h-2 w-2 absolute rotate-45"
               />
             </span>

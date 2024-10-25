@@ -40,8 +40,8 @@ const WelcomeSection = () => {
           Nos heures d&apos;ouverture
         </span>
         <div className="flex flex-row md:gap-12 justify-center mt-4 mb-10">
-          <span>Du lundi au vendredi : 8h à 17h30</span>
-          <span>Samedi : 8h à 15h30</span>
+          <span>Du lundi au vendredi : 7h30 à 16h30</span>
+          <span>Samedi : 7h30 à 12h30</span>
         </div>
       </div>
     </div>

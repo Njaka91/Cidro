@@ -48,9 +48,7 @@ const Footer = () => {
       >
         <div className="text-white text-xs md:text-base flex flex-col gap-3 ">
           <span className="text-lg font-semibold text-white">
-            <span className="border-b-2 border-fuchsia-900">
-              Contacts
-            </span>
+            <span className="border-b-2 border-fuchsia-900">Contacts</span>
           </span>
           <div className="flex flex-col">
             <div className="text-white flex flex-row items-start gap-4">
@@ -115,38 +113,44 @@ const Footer = () => {
         <div className="flex flex-col gap-3 text-xs md:text-base">
           <span className="text-lg font-semibold text-white ">
             <span className="border-b-2 border-fuchsia-900">
-            Informations légales
+              Informations légales
             </span>
           </span>
           <div className="text-white flex flex-col">
-            <Link
-              className="text-white flex flex-row items-center gap-3 "
-              to="/cgu"
-            >
-              <Dot size={18} weight="fill" color="white" />
-              <div>Conditions générales d&apos;utilisation</div>
-            </Link>
-            <Link
-              className="text-white flex flex-row items-center gap-3"
-              to="mentions-legales"
-            >
-              <Dot size={18} weight="fill" color="white" />
-              <div>Mentions légales</div>
-            </Link>
-            <Link
-              className="text-white flex flex-row items-center gap-3"
-              to="politique-de-confidentialite"
-            >
-              <Dot size={18} weight="fill" color="white" />
-              <div>Politiques de confidentialités et charte des cookies</div>
-            </Link>
+            <ul className="list-disc">
+              <li>
+                <Link
+                  className="text-white flex flex-row items-center gap-3 "
+                  to="/cgu"
+                >
+                  <div>Conditions générales d&apos;utilisation</div>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="text-white flex flex-row items-center gap-3"
+                  to="mentions-legales"
+                >
+                  <div>Mentions légales</div>
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  className="text-white flex flex-row items-center gap-3"
+                  to="politique-de-confidentialite"
+                >
+                  <div>
+                    Politiques de confidentialités et charte des cookies
+                  </div>
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
         <div className="flex-col gap-3 hidden md:flex">
-        <span className="text-lg font-semibold text-white ">
-            <span className="border-b-2 border-fuchsia-900">
-            Liens
-            </span>
+          <span className="text-lg font-semibold text-white ">
+            <span className="border-b-2 border-fuchsia-900">Liens</span>
           </span>
           <div className="text-white flex flex-col">
             {menu.map((m, key) =>

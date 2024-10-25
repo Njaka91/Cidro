@@ -145,7 +145,7 @@ const NavBar = () => {
           transition={{ type: "tween", duration: 0.3 }} // Transition douce
           className="absolute md:hidden top-full left-0 w-full bg-[#701a75] text-center py-5"
         >
-          <ul className="flex flex-col gap-4">
+          <ul className="flex flex-col gap-2">
             {menu.map((m, index) => (
               <li key={index}>
                 {m.submenu ? (
@@ -156,7 +156,9 @@ const NavBar = () => {
                       <ul className="w-1/2">
                         {m.submenu.map((sub, key) => (
                           <li key={key} className="text-start mb-4">
-                            <NavLink to={sub.href}>{sub.label}</NavLink>
+                            <NavLink to={sub.href} onClick={toggleMenu}>
+                              {sub.label}
+                            </NavLink>
                           </li>
                         ))}
                       </ul>

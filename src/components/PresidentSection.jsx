@@ -123,7 +123,7 @@ const PresidentSection = () => {
       <KeyMetricsSection />
       <SectionPinkTitle
         img={initiateur}
-        title="Initiateur des cercles scientifiques"
+        title="Initiateur de cercles scientifiques"
         description1="Le Dr. Allain RAZAKATIANA est un pionnier de l'implantologie dentaire à Madagascar. Il a initié des cercles scientifiques pour favoriser l'échange de connaissances et l'innovation dans ce domaine."
         description2="Ces cercles rassemblent des experts en implantologie dentaire afin de partager les avancées technologiques et médicales, améliorant les pratiques et la formation continue des professionnels de santé."
         description3="Grâce à ses initiatives, Dr. Allain RAZAKATIANA a sensibilisé la communauté médicale à l'importance de l'ostéointégration et de l'utilisation du titane, contribuant à améliorer les soins dentaires à Madagascar."

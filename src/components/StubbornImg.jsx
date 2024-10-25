@@ -11,17 +11,20 @@ const StubbornImg = ({ imgBg }) => {
     offset: ["center center", "end start"],
   });
 
-  const text1YScroll = useTransform(scrollYProgress, [0, 0.8], [0, -200]);
-  const text1OpacityScroll = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const isMobile = window.innerWidth < 768;
 
-  const text2YScroll = useTransform(scrollYProgress, [0, 0.65], [0, -300]);
-  const text2OpacityScroll = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
+  // Toujours appeler useTransform
+  const text1YScroll = useTransform(scrollYProgress, [0, 0.8], isMobile ? [0, 0] : [0, -200]);
+  const text1OpacityScroll = useTransform(scrollYProgress, [0, 0.8], isMobile ? [1, 1] : [1, 0]);
 
-  const buttonScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.5]);
-  const buttonOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const text2YScroll = useTransform(scrollYProgress, [0, 0.65], isMobile ? [0, 0] : [0, -300]);
+  const text2OpacityScroll = useTransform(scrollYProgress, [0, 0.65], isMobile ? [1, 1] : [1, 0]);
+
+  const buttonScale = useTransform(scrollYProgress, [0, 0.5], isMobile ? [1, 1] : [1, 0.5]);
+  const buttonOpacity = useTransform(scrollYProgress, [0, 0.5], isMobile ? [1, 1] : [1, 0]);
 
   return (
-    <div ref={ref} className="relative overflow-hidden h-[73vh] bg-slate-600">
+    <div ref={ref} className="relative overflow-hidden h-80 md:h-[73vh] bg-slate-600">
       <img
         src={imgBg}
         alt="logo"
@@ -34,6 +37,7 @@ const StubbornImg = ({ imgBg }) => {
         <div className="h-full w-full bg-[#1ea06c] opacity-20"></div>
       </div>
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+        {/* Animation initiale des textes (visible même en mobile) */}
         <motion.div
           className="md:text-xl font-semibold text-white mb-5 text-center"
           initial={{ opacity: 0, scale: 0 }}

@@ -46,7 +46,7 @@ const Footer = () => {
       xl:px-32
       "
       >
-        <div className="text-white text-xs md:text-base flex flex-col gap-3 ">
+        <div className="text-white text-[10px] md:text-base flex flex-col gap-3 w-1/2 md:w-auto md:px-0 px-[2px]">
           <span className="text-lg font-semibold text-white">
             <span className="border-b-2 border-fuchsia-900">Contacts</span>
           </span>
@@ -110,7 +110,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-3 text-xs md:text-base">
+        <div className="flex flex-col gap-3 text-[10px] md:text-base w-1/2 md:w-auto md:px-0 px-[2px]">
           <span className="text-lg font-semibold text-white ">
             <span className="border-b-2 border-fuchsia-900">
               Informations légales

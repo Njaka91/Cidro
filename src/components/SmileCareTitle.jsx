@@ -27,7 +27,7 @@ const SmileCareTitle = ({ p, description }) => {
             <span className="text-fuchsia-900">{p}</span>
           </p>
 
-          <p className="hidden md:block text-center absolute md:mt-16 lg:mt-40 text-xl font-medium left-[110%] w-full">
+          <p className="hidden md:block text-center absolute md:mt-16 lg:mt-40 text-xl font-semibold left-[110%] w-full text-[#1B2C51]">
             {description}
           </p>
 

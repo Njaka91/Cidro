@@ -60,7 +60,7 @@ const OfficeImg = ({
         <div className="inline-block text-fuchsia-900">
           <motion.p
             ref={spanRef}
-            className="px-5 py-4 text-4xl font-medium mb-3 lg:text-4xl inline-block"
+            className="px-5 py-4 text-2xl md:text-4xl font-semibold mb-3 lg:text-4xl inline-block tracking-wide"
             initial={{ opacity: 0, y: 20 }} // Animation initiale
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }} // Animation quand dans la vue
             transition={{ duration: 0.5 }}

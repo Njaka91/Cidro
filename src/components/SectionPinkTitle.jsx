@@ -30,7 +30,7 @@ const SectionPinkTitle = ({
       {title && (
         <span className="flex flex-col text-fuchsia-900 text-center pb-6">
           <motion.span
-            className="text-4xl font-extrabold mb-3 lg:text-5xl"
+            className="text-3xl font-extrabold mb-3 lg:text-5xl"
             initial={{ opacity: 0, y: 100 }} // Initialement caché et déplacé en bas
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 100 }} // Animation en fonction de la visibilité
             transition={{ duration: 0.8 }} // Durée de l'animation

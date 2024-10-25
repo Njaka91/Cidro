@@ -7,7 +7,7 @@ const TitleTexte = ({ title, text }) => {
       lg:px-24 
       xl-px-40"
     >
-      <div className=" flex flex-col text-center items-center text-6xl font-extrabold ">
+      <div className=" flex flex-col text-center items-center text-3xl md:text-6xl font-extrabold ">
         <div className="flex flex-col items-center">
           <span>{title}</span>
           <div className="bg-fuchsia-900 w-1/2 h-1 rounded-full mt-3" />

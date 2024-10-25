@@ -20,7 +20,8 @@ export const OralSergery = () => {
 
       <OfficeImg
         img={ds_enclavee}
-        nameFirstLine="Interventions chirurgicales"
+        nameFirstLine="Interventions"
+        nameSecondLine="chirurgicales"
         description="Spécialisée dans les interventions chirurgicales dentaires, notre clinique prend en charge les extractions dentaires complexes, notamment celles des dents incluses, pour prévenir les complications liées à leur croissance. Chaque procédure est réalisée dans des conditions optimales de sécurité et de confort."
         description2="Nous prenons en charge l'extraction des dents incluses, comme les canines et dents de sagesse, qui peuvent causer douleurs, infections ou déplacements dentaires. Ces extractions visent à préserver la santé bucco-dentaire à long terme."
         positionImg="flex-row-reverse"

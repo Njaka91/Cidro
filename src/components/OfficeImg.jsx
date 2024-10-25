@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { useInView } from 'react-intersection-observer';
+import { useInView } from "react-intersection-observer";
 
 const OfficeImg = ({
   nameFirstLine,
@@ -38,14 +38,15 @@ const OfficeImg = ({
           : "md:flex-row-reverse lg:flex-row-reverse xl:flex-row-reverse"
       } md:px-8 lg:px-24 xl:px-32`}
     >
-      <div className="relative w-full h-[25rem] md:w-1/2">
+      <div className="relative w-full h-72 md:h-[25rem] md:w-1/2">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
-          animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
+          animate={
+            inView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }
+          }
           transition={{ duration: 0.5 }}
           className="relative rounded-tr-3xl rounded-bl-3xl shadow-xl h-full"
         >
-          
           <div className="absolute overflow-hidden rounded-tr-3xl z-10 rounded-bl-3xl shadow-xl w-full h-full">
             <img
               src={img}
@@ -101,11 +102,13 @@ const OfficeImg = ({
         >
           <p className="mt-4 text-justify line-h">{description}</p>
           <p className="mt-4 text-justify line-h">{description2}</p>
-          {diplome && <ul className="list-disc pl-5">
-            {diplome.map((diplome, index) => (
-              <li key={index}>{diplome}</li>
-            ))}
-          </ul>}
+          {diplome && (
+            <ul className="list-disc pl-5">
+              {diplome.map((diplome, index) => (
+                <li key={index}>{diplome}</li>
+              ))}
+            </ul>
+          )}
         </motion.div>
       </div>
     </div>

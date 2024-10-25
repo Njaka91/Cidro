@@ -48,7 +48,7 @@ const SectionPinkTitle = ({
             : "md:flex-row-reverse lg:flex-row-reverse xl:flex-row-reverse"
         }`}
       >
-        <div className="relative w-full h-[25rem] md:w-1/2">
+        <div className="relative w-full h-56 md:h-[25rem] md:w-1/2">
           <motion.div
             initial={{ scale: 0.8 }} // État initial
             animate={{ scale: inView ? 1 : 0.8 }} // Animation du scale en fonction de inView
@@ -57,7 +57,7 @@ const SectionPinkTitle = ({
           >
             <motion.div
               style={{ opacity: inView ? 0 : 1 }} // Variation d'opacité selon la visibilité
-              className="absolute overflow-hidden bg-slate-900/70 rounded-tr-3xl z-40 rounded-bl-3xl shadow-xl w-full h-full"
+              className="absolute overflow-hidden bg-slate-900/70 rounded-tr-3xl z-40 rounded-bl-3xl shadow-xl w-full"
             />
             <div className="absolute overflow-hidden rounded-tr-3xl z-10 rounded-bl-3xl shadow-xl w-full h-full">
               <img

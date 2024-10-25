@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import smile_dental from "../assets/images/Implantologie/Smile_dental.png";
+import smile_dental from "../assets/images/Nos soins/Smile_dental.png";
 
 const SmileCareTitle = ({ p, description }) => {
 

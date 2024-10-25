@@ -1,8 +1,8 @@
 import TitleTexte from "../components/TitleTexte";
 import OfficeImg from "../components/OfficeImg";
-import implant_unitaire from "../assets/images/Implantologie/Implant-unitaire.png";
-import implant_plural from "../assets/images/Implantologie/Bridge-dentaire.png";
-import implant_all from "../assets/images/Implantologie/All-on-6-dental-Implants.png";
+import implant_unitaire from "../assets/images/Nos soins/Implantologie/Implant-unitaire.png";
+import implant_plural from "../assets/images/Nos soins/Implantologie/Bridge-dentaire.png";
+import implant_all from "../assets/images/Nos soins/Implantologie/All-on-6-dental-Implants.png";
 import SmileCareTitle from "../components/SmileCareTitle";
 
 const Implantology = () => {

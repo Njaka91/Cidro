@@ -13,7 +13,7 @@ export const ddlmData = [
   },
   {
     img: imprimante,
-    description: "Imprimant 3D lfun L4K pro",
+    description: "Imprimante 3D lfun L4K pro",
   },
   {
     img: four_de_cuisson,

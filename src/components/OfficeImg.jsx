@@ -50,7 +50,7 @@ const OfficeImg = ({
           <div className="absolute overflow-hidden rounded-tr-3xl z-10 rounded-bl-3xl shadow-xl w-full h-full">
             <img
               src={img}
-              alt="dentiste"
+              alt={nameFirstLine}
               className="object-cover w-full h-full"
             />
           </div>

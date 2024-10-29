@@ -514,7 +514,19 @@ const AppointmentSection = () => {
             <div className="modal-action">
               <form method="dialog">
                 <button
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {setIsOpen(false)
+                    setFormData({...formData, 
+                      nom: "",
+                      age: "", 
+                      telephone: "",
+                      email: "",
+                      adresse: "",
+                      ville: "",
+                      dateDeRendezVous: "",
+                      heure: "",
+                      demande: "",
+                    })
+                  }}
                   className="btn relative bg-[#1B2C51] w-52 rounded-full shadow-xl border-0 text-white font-medium group hover:bg-[#1B2C51]"
                 >
                   <span className="relative z-40">

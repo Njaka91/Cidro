@@ -18,7 +18,7 @@ export const dataOffice = [
     img: office02,
     nameFirstLine: "Dr Tsiaro Mampiandra",
     nameSecondLine:"Randrianasolo",
-    title: "Docteur dentiste",
+    title: "Docteur en chirurgie dentaire",
     diplome:["Docteur chirugien-dentiste de I'IOSTM"],
     },
 ];

@@ -97,10 +97,10 @@ const AppointmentSection = () => {
 
     emailjs
       .send(
-        "service_vvr0s0i", // Remplacez par votre service ID
-        "template_4gfsnca", // Remplacez par votre template ID
+        "service_hquc909", // Remplacez par votre service ID
+        "template_f31kjjk", // Remplacez par votre template ID
         templateParams,
-        "tuKu1SRcKJQ7bZc5p" // Remplacez par votre user ID
+        "iotxHvJLbI9UTcXRy" // Remplacez par votre user ID
       )
       .then(
         (result) => {

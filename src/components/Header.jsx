@@ -3,10 +3,10 @@ import Stubborn from "./Stubborn"
 
 const Header = () => {
   return (
-    <div className="flex flex-col ">
+    <header className="flex flex-col ">
       <Stubborn/>
       <NavBar/>
-    </div>
+    </header>
   )
 }
 

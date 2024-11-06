@@ -64,7 +64,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="sticky top-0 bg-[#701a75] flex items-center justify-between md:justify-center py-3 px-5 text-white z-50 md:px-10">
+    <nav className="sticky top-0 bg-[#701a75] flex items-center justify-between md:justify-center py-3 px-5 text-white z-50 md:px-10">
       <div className="flex-1 flex justify-start md:hidden">
         <Link to="/">
           <img src={logo} alt="logo" className="w-16 bg-white" />
@@ -185,7 +185,7 @@ const NavBar = () => {
           </ul>
         </motion.div>
       )}
-    </div>
+    </nav>
   );
 };
 

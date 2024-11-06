@@ -35,7 +35,7 @@ const Stubborn = () => {
           >
             <span className=" font-semibold">Notre adresse e-mail</span>
             <Link to="mailto:allainrazakatianad@gmail.com">
-            allainrazakatianad@gmail.com
+              allainrazakatianad@gmail.com
             </Link>
           </div>
         </div>
@@ -62,9 +62,9 @@ const Stubborn = () => {
           />
           <div className="flex flex-col md:text-xs lg:text-sm">
             <span className=" font-semibold">Notre emplacement</span>
-            <span>
+            <address className="not-italic">
               Lot IBF 5Bis Résidence &quot;Les Rosiers&quot; Antsahavola
-            </span>
+            </address>
           </div>
         </div>
       </div>

@@ -14,6 +14,9 @@ importers:
       '@phosphor-icons/react':
         specifier: ^2.1.7
         version: 2.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@vis.gl/react-google-maps':
+        specifier: latest
+        version: 1.5.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       cidro:
         specifier: 'file:'
         version: file:(@react-three/fiber@8.17.7(react-dom@18.3.1(react@18.3.1))(react-native@0.75.3(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1))(react@18.3.1)(three@0.168.0))(konva@9.3.15)(react-konva@18.2.10(konva@9.3.15)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-native@0.75.3(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1))(react-zdog@1.2.2)(three@0.168.0)(zdog@1.1.3)
@@ -29,6 +32,9 @@ importers:
       react-intersection-observer:
         specifier: ^9.13.1
         version: 9.13.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-player:
+        specifier: ^2.16.0
+        version: 2.16.0(react@18.3.1)
       react-router-dom:
         specifier: ^6.26.2
         version: 6.26.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1332,6 +1338,9 @@ packages:
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
 
+  '@types/google.maps@3.58.1':
+    resolution: {integrity: sha512-X9QTSvGJ0nCfMzYOnaVs/k6/4L+7F5uCS+4iUmkLEls6J9S/Phv+m/i3mDeyc49ZBgwab3EFO1HEoBY7k98EGQ==}
+
   '@types/istanbul-lib-coverage@2.0.6':
     resolution: {integrity: sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==}
 
@@ -1376,6 +1385,12 @@ packages:
 
   '@types/yargs@17.0.33':
     resolution: {integrity: sha512-WpxBCKWPLr4xSsHgz511rFJAM+wS28w2zEO1QDNY5zM/S8ok70NNfztH0xwhqKyaK0OHCbN98LDAZuy1ctxDkA==}
+
+  '@vis.gl/react-google-maps@1.5.5':
+    resolution: {integrity: sha512-LgHtK1AtE2/BN4dPoK05oWu0jWmeDdyX0Ffqi+mZc+M4apaHn2sUxxKXAxhPF90O9vcsiou/ntm6/XBWX+gpqw==}
+    peerDependencies:
+      react: '>=16.8.0 || ^19.0 || ^19.0.0-rc'
+      react-dom: '>=16.8.0 || ^19.0 || ^19.0.0-rc'
 
   '@vitejs/plugin-react@4.3.1':
     resolution: {integrity: sha512-m/V2syj5CuVnaxcUJOQRel/Wr31FFXRFlnOoq1TVtkCxsY5veGMTEmpWHndrhB2U8ScHtCQB1e+4hWYExQc6Lg==}
@@ -2579,6 +2594,9 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
+  load-script@1.0.0:
+    resolution: {integrity: sha512-kPEjMFtZvwL9TaZo0uZ2ml+Ye9HUMmPwbYRJ324qF9tqMejwykJ5ggTyvzmrbBeapCAbk98BSbTeovHEEP1uCA==}
+
   locate-path@3.0.0:
     resolution: {integrity: sha512-7AO748wWnIhNqAuaty2ZWHkQHRSNfPVIsPIfwEOWO22AmaoVrWavlOcMR5nzTLNYvp36X220/maaRsrec1G65A==}
     engines: {node: '>=6'}
@@ -3074,6 +3092,9 @@ packages:
     peerDependencies:
       react: ^18.3.1
 
+  react-fast-compare@3.2.2:
+    resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==}
+
   react-intersection-observer@9.13.1:
     resolution: {integrity: sha512-tSzDaTy0qwNPLJHg8XZhlyHTgGW6drFKTtvjdL+p6um12rcnp8Z5XstE+QNBJ7c64n5o0Lj4ilUleA41bmDoMw==}
     peerDependencies:
@@ -3109,6 +3130,11 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  react-player@2.16.0:
+    resolution: {integrity: sha512-mAIPHfioD7yxO0GNYVFD1303QFtI3lyyQZLY229UEAp/a10cSW+hPcakg0Keq8uWJxT2OiT/4Gt+Lc9bD6bJmQ==}
+    peerDependencies:
+      react: '>=16.6.0'
 
   react-reconciler@0.27.0:
     resolution: {integrity: sha512-HmMDKciQjYmBRGuuhIaKA1ba/7a+UsM5FzOZsMO2JYHt9Jh8reCb7j1eDC95NOyUlKM9KRyvdx0flBuDvYSBoA==}
@@ -3459,6 +3485,7 @@ packages:
 
   sudo-prompt@9.2.1:
     resolution: {integrity: sha512-Mu7R0g4ig9TUuGSxJavny5Rv0egCEtpZRNMrZaYS1vxkiIxGiGUwoezU3LazIQ+KE04hTrTfNPgxU5gzi7F5Pw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   supports-color@5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
@@ -5352,6 +5379,8 @@ snapshots:
 
   '@types/estree@1.0.5': {}
 
+  '@types/google.maps@3.58.1': {}
+
   '@types/istanbul-lib-coverage@2.0.6': {}
 
   '@types/istanbul-lib-report@3.0.3':
@@ -5402,6 +5431,13 @@ snapshots:
   '@types/yargs@17.0.33':
     dependencies:
       '@types/yargs-parser': 21.0.3
+
+  '@vis.gl/react-google-maps@1.5.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@types/google.maps': 3.58.1
+      fast-deep-equal: 3.1.3
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   '@vitejs/plugin-react@4.3.1(vite@5.4.3(@types/node@22.5.5)(terser@5.32.0))':
     dependencies:
@@ -5722,10 +5758,12 @@ snapshots:
     dependencies:
       '@emailjs/browser': 4.4.1
       '@phosphor-icons/react': 2.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@vis.gl/react-google-maps': 1.5.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       framer-motion: 11.5.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       react-intersection-observer: 9.13.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-player: 2.16.0(react@18.3.1)
       react-router-dom: 6.26.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-spring: 9.7.4(@react-three/fiber@8.17.7(react-dom@18.3.1(react@18.3.1))(react-native@0.75.3(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1))(react@18.3.1)(three@0.168.0))(konva@9.3.15)(react-dom@18.3.1(react@18.3.1))(react-konva@18.2.10(konva@9.3.15)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-native@0.75.3(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1))(react-zdog@1.2.2)(react@18.3.1)(three@0.168.0)(zdog@1.1.3)
       swiper: 11.1.14
@@ -6782,6 +6820,8 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
+  load-script@1.0.0: {}
+
   locate-path@3.0.0:
     dependencies:
       p-locate: 3.0.0
@@ -7354,6 +7394,8 @@ snapshots:
       react: 18.3.1
       scheduler: 0.23.2
 
+  react-fast-compare@3.2.2: {}
+
   react-intersection-observer@9.13.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
@@ -7428,6 +7470,15 @@ snapshots:
       - supports-color
       - typescript
       - utf-8-validate
+
+  react-player@2.16.0(react@18.3.1):
+    dependencies:
+      deepmerge: 4.3.1
+      load-script: 1.0.0
+      memoize-one: 5.2.1
+      prop-types: 15.8.1
+      react: 18.3.1
+      react-fast-compare: 3.2.2
 
   react-reconciler@0.27.0(react@18.3.1):
     dependencies:

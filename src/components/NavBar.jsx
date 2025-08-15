@@ -30,6 +30,10 @@ const menu = [
     href: "/le-cabinet",
   },
   {
+    label: "Implantologie en action",
+    href: "/implantologie-en-action",
+  },
+  {
     label: "Nos soins",
     submenu: [
       {

@@ -1,8 +1,7 @@
 import PresidentSection from "../components/PresidentSection";
 import FirmHistory from "../components/FirmHistory";
-
 import WelcomeSection from "../components/WelcomeSection";
-import Video from "../components/Video";
+import Location from "../components/sections/Location";
 
 // import Team from "../components/Team"
 
@@ -12,7 +11,8 @@ const Home = () => {
       <PresidentSection />
       <FirmHistory />
       <WelcomeSection />
-      <Video/>
+      <Location/>
+      {/* <Video/> */}
       {/* <Team/> */}
     </>
   );

@@ -3,8 +3,8 @@ import ReactPlayer from "react-player/youtube"
 const Video = () => {
 
 const videos = [
-        "https://www.youtube.com/watch?v=_QWZQh0YYWA",
-        "https://www.youtube.com/watch?v=XpDEdMu_6O8",
+        "https://www.youtube.com/watch?v=wfVZmPEGm0s",
+        "https://www.youtube.com/watch?v=wfVZmPEGm0s",
       ];
   return (
     

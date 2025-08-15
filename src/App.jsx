@@ -13,6 +13,7 @@ import Implantology from "./pages/Implantology";
 import { Orthodontie } from "./pages/Orthodontie";
 import { GeneralDentistry } from "./pages/GeneralDentistry";
 import { OralSergery } from "./pages/OralSergery";
+import ImplantologieInAction from "./pages/ImplantologieInAction";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -60,6 +61,10 @@ const App = () => {
         {
           path:"/chirurgie-orale",
           element: <OralSergery/>
+        },
+        {
+          path:"/implantologie-en-action",
+          element: <ImplantologieInAction/>
         }
       ],
     },

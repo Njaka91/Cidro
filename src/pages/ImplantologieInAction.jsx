@@ -1,8 +1,10 @@
+import FormationPics from "../components/sections/FormationPics"
+
 const ImplantologieInAction = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <FormationPics/>
+    </>
   )
 }
 

@@ -3,7 +3,7 @@ import LocationApi from '../common/LocationApi';
 const Location = () => {
   return (
     <div
-        className="  border-purple-500 relative z-10 w-full h-96 overflow-hidden mb-8
+        className="  border-purple-500 relative z-10 w-full h-96 overflow-hidden mb-8 px-4
         md:px-8 
       lg:px-24 
       xl:px-32

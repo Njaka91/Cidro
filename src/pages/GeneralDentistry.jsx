@@ -1,9 +1,9 @@
 import OfficeImg from "../components/OfficeImg"
 import SmileCareTitle from "../components/SmileCareTitle"
 import TitleTexte from "../components/TitleTexte"
-import orthodontie_reneral from "../assets/images/Nos soins/Dentisterie générale/Odontoligia-geral.png";
-import orthodontie_renerale from "../assets/images/Nos soins/Dentisterie générale/dentisterie_générale.png";
-import protege from "../assets/images/Nos soins/Dentisterie générale/prothèse_dentaire.jpg";
+import orthodontie_reneral from "../assets/images/Nos soins/Dentisterie generale/Odontoligia_geral.png";
+import orthodontie_renerale from "../assets/images/Nos soins/Dentisterie generale/dentisterie_generale.png";
+import protege from "../assets/images/Nos soins/Dentisterie generale/prothèse_dentaire.jpg";
 
 
 export const GeneralDentistry = () => {

@@ -1,7 +1,7 @@
 import OfficeImg from "../components/OfficeImg"
 import SmileCareTitle from "../components/SmileCareTitle"
 import TitleTexte from "../components/TitleTexte"
-import gouttiere_invisible from "../assets/images/Nos soins/Orthodontie/gouttière_invisible.png";
+import gouttiere_invisible from "../assets/images/Nos soins/Orthodontie/gouttiere_invisible.png";
 
 export const Orthodontie = () => {
   return (

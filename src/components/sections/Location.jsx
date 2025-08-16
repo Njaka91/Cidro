@@ -3,7 +3,7 @@ import LocationApi from '../common/LocationApi';
 const Location = () => {
   return (
     <div
-        className="  border-purple-500 relative z-10 w-full h-96 overflow-hidden mb-8 px-4
+        className="  border-purple-500 relative z-10 w-full h-[480px] md:h-96  overflow-hidden mb-8 px-4
         md:px-8 
       lg:px-24 
       xl:px-32
@@ -18,7 +18,7 @@ const Location = () => {
             );
           }}
           className="absolute w-fit inline-flex items-center py-1 px-2 rounded-primitive bg-[#F2F6F7] z-50 hover:bg-[#daeef3]
-        top-13 right-3 
+        top-12 right-2 
         md:top-3 md:left-3"
         >
           <div

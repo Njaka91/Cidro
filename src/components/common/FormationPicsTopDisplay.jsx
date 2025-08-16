@@ -4,14 +4,15 @@ import "lightgallery/css/lightgallery.css"
 import "lightgallery/css/lg-zoom.css"
 import "lightgallery/css/lg-thumbnail.css"
 
-import { images } from "../../data/FormationPics"
 
-const FormationPicsTopDisplay = () => {
-  const pics = Object.entries(images)
+// eslint-disable-next-line react/prop-types
+const FormationPicsTopDisplay = ({pics}) => {
 
   return (
     <div className="mt-14 px-4 md:px-8 lg:px-24 xl:px-32">
-      {pics.map(([key, data]) => (
+      {pics.
+      // eslint-disable-next-line react/prop-types
+      map(([key, data]) => (
         <LightGallery
           key={key}
           plugins={[lgZoom]}

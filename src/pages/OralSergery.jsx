@@ -1,7 +1,7 @@
 import OfficeImg from "../components/OfficeImg"
 import SmileCareTitle from "../components/SmileCareTitle"
 import TitleTexte from "../components/TitleTexte"
-import ds_enclavee from "../assets/images/Nos soins/Chirurgie dentaire/dent-sagesse_enclavée.png";
+import ds_enclavee from "../assets/images/Nos soins/Chirurgie dentaire/dent_sagesse_enclavee.png";
 
 
 export const OralSergery = () => {

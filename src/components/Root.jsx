@@ -10,7 +10,7 @@ import bgimg from "../assets/images/photeuillRazakatiana - Copie.jpg";
 import implant from "../assets/images/Nos soins/Implantologie/implant_dentaire.png";
 import orthodont from "../assets/images/Nos soins/Orthodontie/orthodontie_cidro.png";
 import chirurgieOrale from "../assets/images/Nos soins/Chirurgie dentaire/Chir_orale.png";
-import dentisterieGenerale from "../assets/images/Nos soins/Dentisterie générale/dentisterie_CIDRO.jpg";
+import dentisterieGenerale from "../assets/images/Nos soins/Dentisterie generale/dentisterie_CIDRO.jpg";
 import Button from "./Button"
 
 

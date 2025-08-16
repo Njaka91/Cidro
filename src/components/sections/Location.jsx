@@ -13,7 +13,7 @@ const Location = () => {
         <button
           onClick={() => {
             window.open(
-              "https://www.google.com/maps/dir/?api=1&destination=-18.957416420759895,47.52939082562958",
+              "https://www.google.com/maps/dir/?api=1&destination=-18.908871,47.522731",
               "_blank"
             );
           }}

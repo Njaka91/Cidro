@@ -7,8 +7,8 @@ const LocationApi = () => {
 
   const officeLocation = useMemo(
     () => ({
-      lat: -18.957416420759895,
-      lng: 47.52939082562958,
+      lat: -18.908871,
+      lng: 47.522731,
     }),
     []
   );

@@ -2,7 +2,7 @@ import TitleTexte from "../components/TitleTexte";
 import OfficeImg from "../components/OfficeImg";
 import implant_unitaire from "../assets/images/Nos soins/Implantologie/Implant_unitaire.png";
 import implant_plural from "../assets/images/Nos soins/Implantologie/Bridge_dentaire.png";
-import implant_all from "../assets/images/Nos soins/Implantologie/Allé_on_6_dental_Implants.png";
+import implant_all from "../assets/images/Nos soins/Implantologie/All_on_6_dental_Implants.png";
 import SmileCareTitle from "../components/SmileCareTitle";
 
 const Implantology = () => {

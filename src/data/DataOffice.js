@@ -1,7 +1,6 @@
 // officeData.js
 
 import office01 from "../assets/images/drAllainRazakatiana.jpg";
-import office02 from "../assets/images/dr_Tsiaro.jpg";
 
 export const dataOffice = [
   {
@@ -14,11 +13,5 @@ export const dataOffice = [
       "Membre associé de l'Académie Malagasy"
     ],
     },
-  {
-    img: office02,
-    nameFirstLine: "Dr Tsiaro Mampiandra",
-    nameSecondLine:"Randrianasolo",
-    title: "Docteur en chirurgie dentaire",
-    diplome:["Docteur chirugien-dentiste de I'IOSTM"],
-    },
+  
 ];

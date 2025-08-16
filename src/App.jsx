@@ -63,7 +63,7 @@ const App = () => {
           element: <OralSergery/>
         },
         {
-          path:"/implantologie-en-action",
+          path:"/Formations&Partages",
           element: <ImplantologieInAction/>
         }
       ],

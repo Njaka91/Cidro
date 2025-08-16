@@ -18,7 +18,7 @@ const Ofiice = () => {
   return (
     <>
       <TitleTexte
-        title="Rencontrez nos praticiens"
+        title="Venez nous rencontrer"
         text="Chez CIDRO, nous avons réuni une équipe de praticiens passionnés et hautement qualifiés, chacun apportant une expertise unique
 pour vous offrir des soins de la plus haute qualité. Leur engagement et leur expérience vous garantissent une prise en charge
 personnalisée et des traitements adaptés à vos besoins."

@@ -20,7 +20,7 @@ const FormationVideos = () => {
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 100 }} // Animation en fonction de la visibilité
             transition={{ duration: 0.8 }} // Durée de l'animation
           >
-            Moment de partage avec l’équipe
+            Moments de partage avec l’équipe
           </motion.span>
         </span>
       <Video videos={videos}/>

@@ -63,7 +63,9 @@ const Stubborn = () => {
           <div className="flex flex-col md:text-xs lg:text-sm">
             <span className=" font-semibold">Notre emplacement</span>
             <address className="not-italic">
+              <Link to="/#Home">
               Lot IBF 5Bis Résidence &quot;Les Rosiers&quot; Antsahavola
+              </Link>
             </address>
           </div>
         </div>

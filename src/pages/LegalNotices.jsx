@@ -44,7 +44,7 @@ const LegalNotices = () => {
           <div>
             Adresse :{" "}
             <span className="font-semibold">
-              Lot IBF 5Bis Résidence &quot;Les Rosiers&quot; Antsahavola
+            Immeuble Akany Rainimamonjy FJKM Amparibe Famonjena, 2ème étage
             </span>
           </div>
           <div>

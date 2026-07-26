@@ -64,7 +64,7 @@ const Stubborn = () => {
             <span className=" font-semibold">Notre emplacement</span>
             <address className="not-italic">
               <Link to="/#Home">
-              Lot IBF 5Bis Résidence &quot;Les Rosiers&quot; Antsahavola
+              Immeuble Akany Rainimamonjy FJKM Amparibe Famonjena, 2ème étage
               </Link>
             </address>
           </div>

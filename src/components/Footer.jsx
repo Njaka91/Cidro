@@ -66,9 +66,9 @@ const Footer = () => {
                 </svg>
                 <address className="flex flex-col not-italic">
                   <div>
-                    Lot IBF 5Bis Résidence &quot;Les Rosiers&quot; Antsahavola
+                  Immeuble Akany Rainimamonjy
                   </div>
-                  <div>Antananarivo 101 - Madagasikara</div>
+                  <div>FJKM Amparibe Famonjena, 2ème étage</div>
                 </address>
               </div>
             </div>

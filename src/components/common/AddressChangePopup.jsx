@@ -52,12 +52,15 @@ export default function AddressChangePopup() {
         role="dialog"
         aria-modal="false"
         aria-label="Information changement d'adresse"
-        className="fixed z-50 bottom-4 right-4 left-4 sm:left-auto sm:w-80 md:w-96 transition-all duration-[450ms]"
+        className="fixed z-50  bottom-4 right-4 left-4 sm:left-auto sm:w-80 md:w-96 transition-all duration-[450ms]"
         style={{
           transitionTimingFunction: isVisible
             ? "cubic-bezier(0.22, 1, 0.36, 1)"
             : "ease-in",
-          transform: isVisible ? "translateX(0)" : "translateX(calc(100% + 2rem))",
+          transform: isVisible
+            ? "translateX(0) scale(0.75)"
+            : "translateX(calc(100% + 2rem)) scale(0.75)",
+          transformOrigin: "bottom right",
           opacity: isVisible ? 1 : 0,
         }}
       >
@@ -111,7 +114,7 @@ export default function AddressChangePopup() {
           <div className="px-4 pb-4">
             <button
               onClick={handleClose}
-              className="w-full rounded-xl py-2.5 text-sm font-semibold bg-fuchsia-800 text-white transition-colors duration-150 focus:outline-none focus:ring-2"
+              className="w-full rounded-xl py-2.5 text-md font-bold bg-fuchsia-800 text-white transition-colors duration-150 focus:outline-none focus:ring-2"
               onMouseOver={(e) => (e.currentTarget.style.background = "#c026d3")}
               onMouseOut={(e) => (e.currentTarget.style.background = "#a21caf")}
             >
